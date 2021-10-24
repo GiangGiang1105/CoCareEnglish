@@ -7,4 +7,19 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="color_521313">#521313</color>
+    <color name="color_B2ADAD">#B2ADAD</color>
+    <color name="color_3B4859">#3B4859</color>
+    <color name="color_95FFFFFF">#95FFFFFF</color>
+    <color name="color_DCD6D6">#DCD6D6</color>
+    <color name="color_CBFF35">#CBFF35</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color">#fff</color>
+    <color name="color_0E77A4">#0E77A4</color>
+    <color name="color_D1D1D1">#D1D1D1</color>
+    <color name="color_987B7B">#987B7B</color>
+    <color name="color_B7E8B9">#B7E8B9</color>
+    <color name="color_F9AA33">#F9AA33</color>
+    <color name="color_4B90ED">#4B90ED</color>
+    <color name="color_959595">#959595</color>
 </resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_20">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_help_to_us"
+            android:textColor="@color/color_959595"
+            android:textSize="@dimen/sp_18" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/bg_line_bottom"
+            android:backgroundTint="#c4c4c4" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/feedback"
+        style="@style/StyleButtonProfile"
+        android:drawableLeft="@drawable/ic_feedback"
+        android:text="@string/text_feedback" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/share"
+        style="@style/StyleButtonProfile"
+        android:drawableLeft="@drawable/ic_share"
+        android:text="@string/text_share_app" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/rateUs"
+        style="@style/StyleButtonProfile"
+        android:drawableLeft="@drawable/ic_rate_us"
+        android:text="@string/text_rate_us" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/policy"
+        style="@style/StyleButtonProfile"
+        android:drawableLeft="@drawable/ic_policy"
+        android:text="@string/text_privacy_policy" />
+</androidx.appcompat.widget.LinearLayoutCompat>
