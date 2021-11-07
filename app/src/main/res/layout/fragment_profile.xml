@@ -22,8 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_layout_home"
-            app:contentScrim="@color/color_4B90ED"
             android:elevation="@dimen/dp_20"
+            app:contentScrim="@color/color_4B90ED"
             app:layout_anchor="@+id/appBarLayout"
             app:layout_anchorGravity="center"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
@@ -65,16 +65,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"/>
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        </androidx.core.widget.NestedScrollView>
+            <include layout="@layout/sub_fragment_profile" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

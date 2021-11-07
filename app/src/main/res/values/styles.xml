@@ -93,4 +93,39 @@
         <item name="android:textAlignment">viewStart</item>
         <item name="android:drawablePadding">@dimen/dp_20</item>
     </style>
+
+    <style name="StyleTitleWrittingReview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dp_20</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+    </style>
+
+    <style name="StyleButtonWhile">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_50</item>
+        <item name="android:layout_marginHorizontal">@dimen/dp_20</item>
+        <item name="android:layout_marginTop">@dimen/dp_20</item>
+        <item name="android:background">@drawable/bg_button_white</item>
+        <item name="android:elevation">@dimen/dp_20</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:gravity">start|center</item>
+        <item name="android:paddingLeft">@dimen/dp_10</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/color_cccccc</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+    </style>
+
+    <style name="StyleImageHeader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/sp_24</item>
+        <item name="android:layout_marginLeft">@dimen/dp_30</item>
+        <item name="android:layout_marginBottom">@dimen/dp_10</item>
+    </style>
 </resources>
