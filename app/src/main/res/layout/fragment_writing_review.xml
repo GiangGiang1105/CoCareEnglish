@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/dp_20">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_writing_review"
+            style="@style/StyleTitleWrittingReview"
+            android:text="@string/title_writting_review"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_writing_review">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/star1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star_yellow" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/star2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star_yellow" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/star3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star_yellow" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/star4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star_yellow" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/star5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star_yellow" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_1"
+            style="@style/StyleTitleWrittingReview"
+            android:text="@string/text_rating_for_review"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear1" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edit_writing_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_250"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/bg_layout_input_writting"
+            app:boxStrokeColor="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/writting_field"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:gravity="top|start"
+                android:hint="@string/hint_text_writting"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:padding="15dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDone"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_50"
+            android:background="@drawable/bg_button_done"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/text_button_done"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_writing_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

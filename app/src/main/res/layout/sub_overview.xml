@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_layout_home"
+        android:elevation="@dimen/dp_10"
+        android:paddingHorizontal="@dimen/dp_10"
+        android:paddingVertical="@dimen/dp_20">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/text_home_1"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:shadowColor="#CCCCCC"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="1"
+            android:text="Trần Đình Nam "
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_22"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_1" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@drawable/avatar"
+            app:layout_constraintBottom_toBottomOf="@+id/text_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/text_overview"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linear1"
+            style="@style/StyleHomeLinear"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintEnd_toStartOf="@+id/linear2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/overview">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_overview_speaking" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/StyleHomeLinearText1"
+                android:text="@string/text_home_speaking" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/StyleHomeLinearText2"
+                android:text="12 excercises" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linear3"
+            style="@style/StyleHomeLinear"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/linear2"
+            app:layout_constraintTop_toBottomOf="@+id/overview">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_overview_vocabulary" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/StyleHomeLinearText1"
+                android:text="@string/text_home_vocabulary" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/StyleHomeLinearText2"
+                android:text="12 words" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linear2"
+            style="@style/StyleHomeLinear"
+            app:layout_constraintBottom_toBottomOf="@+id/linear1"
+            app:layout_constraintEnd_toStartOf="@id/linear3"
+            app:layout_constraintStart_toEndOf="@id/linear1"
+            app:layout_constraintTop_toTopOf="@+id/linear1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_overview_writting" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/StyleHomeLinearText1"
+                android:text="@string/text_home_writting" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/StyleHomeLinearText2"
+                android:text="12 essays" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

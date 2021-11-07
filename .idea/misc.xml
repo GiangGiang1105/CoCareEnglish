@@ -3,8 +3,60 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/activity_auth.xml" value="0.20199275362318841" />
-        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/activity_main.xml" value="0.13360507246376813" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_auth_button.xml" value="0.536" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_auth_button_facebook.xml" value="0.271875" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_auth_button_google.xml" value="0.15555555555555556" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_auth_edit_text.xml" value="0.2676923076923077" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_auth_edittext.xml" value="0.2712820512820513" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_auth_sigin.xml" value="0.2712820512820513" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_auth_signin.xml" value="0.15104166666666666" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_auth_signup.xml" value="0.2712820512820513" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_button_done.xml" value="0.2598958333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_button_white.xml" value="0.2598958333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_home_1.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_home_gray.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_home_item_essays.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_home_white.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_layout_home.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_layout_input_writting.xml" value="0.2598958333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_line_back.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_line_black.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/bg_line_bottom.xml" value="0.1203125" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/cursor_color.xml" value="0.2712820512820513" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_auth_facebook.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_auth_twitter.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_back.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_bg_auth.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_cocarelish.xml" value="0.1203125" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_done.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_essay.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_header.xml" value="0.536" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_home.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_login_facebook.xml" value="0.15555555555555556" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_login_google.xml" value="0.271875" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_overview_speaking.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_overview_vocabulary.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_overview_writting.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/drawable/ic_profile.xml" value="0.2755208333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/activity_home.xml" value="0.24592391304347827" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/fragment_auth.xml" value="0.4839650145772595" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/fragment_essay.xml" value="0.13489583333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/fragment_login.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/fragment_sign_up.xml" value="0.4" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/fragment_writing_review.xml" value="0.34765625" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/fragment_writting_task.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/item_mission.xml" value="0.6" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/item_profile_toolbar.xml" value="0.19739583333333333" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/item_task.xml" value="0.24375" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/item_writting_categories.xml" value="0.536" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/sub_fragment_home.xml" value="0.23641304347826086" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/sub_fragment_profile.xml" value="0.536" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/sub_overview.xml" value="0.23641304347826086" />
+        <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/menu/bottom_menu.xml" value="0.13489583333333333" />
       </map>
     </option>
   </component>
