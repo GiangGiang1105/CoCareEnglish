@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoCareLish">
         <activity
-            android:name=".view.home.HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".view.auth.AuthActivity"
+            android:name=".ui.auth.AuthActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

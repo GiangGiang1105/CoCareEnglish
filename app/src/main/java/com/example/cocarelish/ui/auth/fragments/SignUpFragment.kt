@@ -1,4 +1,4 @@
-package com.example.cocarelish.view.auth.fragments
+package com.example.cocarelish.ui.auth.fragments
 
 import com.example.cocarelish.R
 import com.example.cocarelish.base.BaseFragment

@@ -1,4 +1,4 @@
-package com.example.cocarelish.view.home
+package com.example.cocarelish.ui.home
 
 import android.content.Context
 import android.content.Intent

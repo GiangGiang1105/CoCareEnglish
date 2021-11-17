@@ -1,4 +1,4 @@
-package com.example.cocarelish.view.auth
+package com.example.cocarelish.ui.auth
 
 import android.view.LayoutInflater
 import androidx.navigation.fragment.NavHostFragment
