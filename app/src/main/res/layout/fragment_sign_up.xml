@@ -28,7 +28,7 @@
                 android:id="@+id/iconTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_cocarelish"
+                android:src="@drawable/ic_co_care_lish"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textWelcome" />
