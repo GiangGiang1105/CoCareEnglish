@@ -10,23 +10,27 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.cocarelish.utils.CommonHelper
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
-abstract class BaseFragment<T : ViewDataBinding, VM : ViewModel> :
+abstract class BaseFragment<T : ViewDataBinding, VM : CommonViewModel> :
     Fragment() {
+    protected val TAG by lazy { this::class.simpleName }
 
     private var _binding: T? = null
     val binding: T get() = _binding!!
 
+    private var jobEventSender: Job? = null
     private lateinit var controller: NavController
     abstract val viewModel: VM
 
     @get:LayoutRes
     abstract val layoutID: Int
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +45,21 @@ abstract class BaseFragment<T : ViewDataBinding, VM : ViewModel> :
         return binding.apply { lifecycleOwner = viewLifecycleOwner }.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        jobEventSender = lifecycleScope.launch {
+            viewModel.eventReceiver.collectLatest {
+                when(it){
+                    is CommonEvent.OnNavigation -> navigateToDestination(it.destination, it.bundle)
+                    CommonEvent.OnCloseApp -> activity?.finish()
+                    CommonEvent.OnBackScreen -> onBackFragment()
+                    is CommonEvent.OnOpenAnotherApp -> openAnotherApp(it.packageName)
+                    is CommonEvent.OnShowToast -> showToast(it.content, it.type)
+                }
+            }
+        }
+    }
+
     open fun navigateToDestination(actionID: Int, bundle: Bundle?) {
         bundle?.let {
             findNavController().navigate(actionID, it)
@@ -49,6 +68,11 @@ abstract class BaseFragment<T : ViewDataBinding, VM : ViewModel> :
 
     open fun onBackFragment() {
         findNavController().popBackStack()
+    }
+
+    open fun openAnotherApp(packageName: String){
+        val launchIntent = context?.packageManager?.getLaunchIntentForPackage(packageName)
+        startActivity(launchIntent)
     }
 
     private var toast: Toast? = null
@@ -61,7 +85,9 @@ abstract class BaseFragment<T : ViewDataBinding, VM : ViewModel> :
     abstract fun handleTasks()
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
+        jobEventSender?.cancel()
+        super.onDestroyView()
+
     }
 }

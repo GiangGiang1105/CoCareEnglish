@@ -1,7 +1,6 @@
 package com.example.cocarelish.ui.essay.viewmodels
 
-import androidx.lifecycle.ViewModel
-import com.example.cocarelish.base.BaseViewModel
+import com.example.cocarelish.base.CommonViewModel
 
-class WritingReviewViewModel: BaseViewModel() {
+class WritingReviewViewModel: CommonViewModel() {
 }

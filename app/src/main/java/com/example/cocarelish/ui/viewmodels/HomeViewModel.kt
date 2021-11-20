@@ -1,6 +1,6 @@
 package com.example.cocarelish.ui.viewmodels
 
-import com.example.cocarelish.base.BaseViewModel
+import com.example.cocarelish.base.CommonViewModel
 
-class HomeViewModel: BaseViewModel() {
+class HomeViewModel: CommonViewModel() {
 }
