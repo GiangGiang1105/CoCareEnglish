@@ -1,5 +1,7 @@
 package com.example.cocarelish.ui.auth.fragments
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.BaseFragment
@@ -13,7 +15,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     override val layoutID: Int
         get() = R.layout.fragment_login
 
-    override fun handleTasks() {
-        TODO("Not yet implemented")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            action = viewModel
+        }
     }
 }

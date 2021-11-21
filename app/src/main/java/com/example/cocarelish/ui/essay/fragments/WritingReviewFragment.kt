@@ -10,7 +10,4 @@ class WritingReviewFragment() : BaseFragment<FragmentWritingReviewBinding, Writi
     override val viewModel: WritingReviewViewModel by viewModels()
     override val layoutID: Int
         get() = R.layout.fragment_writing_review
-    override fun handleTasks() {
-        // TODO handle task
-    }
 }

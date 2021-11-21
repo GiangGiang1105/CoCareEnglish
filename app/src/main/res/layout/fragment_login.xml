@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="viewModel"
+            name="action"
             type="com.example.cocarelish.ui.auth.viewmodels.LoginViewModel" />
 
         <import
@@ -27,9 +27,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/ic_auth_back"
+                android:onClick="@{()-> action.onBackStack()}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:onClick="@{()-> viewModel.onNavigate(Title.AUTH_SIGN_UP)}"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textWelcome"
@@ -179,6 +179,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/dp_30"
                     android:layout_gravity="center_vertical"
+                    android:onClick="@{() -> action.onNavigate(Title.AUTH_SIGN_UP)}"
                     android:background="@android:color/transparent"
                     android:fontFamily="@font/poppins"
                     android:text="@string/text_button_sign_up"

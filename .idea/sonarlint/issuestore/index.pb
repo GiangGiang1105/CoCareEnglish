@@ -1,8 +1,6 @@
 
 „
 Tapp/src/main/java/com/example/cocarelish/ui/essay/viewmodels/WritingTaskViewModel.kt,0\d\0d089319d1ffd9ad00c468ba00dc5f90787f221e
-z
-Japp/src/main/java/com/example/cocarelish/ui/home/fragments/HomeFragment.kt,f\2\f2d46259bc443e164996ddabdf6e0caa76f335d3
 w
 Gapp/src/main/java/com/example/cocarelish/ui/viewmodels/HomeViewModel.kt,6\6\662e1853c9c0a42ac30a4a38404ad55517edb459
 z

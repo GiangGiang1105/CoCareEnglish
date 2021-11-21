@@ -11,9 +11,4 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(){
     override val viewModel: HomeViewModel by viewModels()
     override val layoutID: Int
         get() = R.layout.fragment_home
-    override fun handleTasks() {
-        // TODO
-    }
-
-
 }

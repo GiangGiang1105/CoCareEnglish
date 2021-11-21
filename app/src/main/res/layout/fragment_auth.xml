@@ -34,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="48dp"
             android:background="@drawable/bg_line_bottom"
             android:fontFamily="@font/poppins"
             android:gravity="center"
@@ -44,7 +45,6 @@
             android:textSize="@dimen/dp_22"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.696"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iconTitle" />
@@ -53,6 +53,7 @@
             android:id="@+id/titleContent1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/poppins"
             android:paddingVertical="@dimen/dp_30"
             android:text="@string/text_title_content_1"
@@ -61,6 +62,7 @@
             android:textSize="@dimen/sp_20"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleContent" />
 
@@ -69,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_70"
             android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="36dp"
             android:alpha="0.8"
             android:background="@drawable/bg_auth_signup"
             android:onClick="@{() -> action.onNavigate(Title.AUTH_SIGN_UP)}"
