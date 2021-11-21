@@ -19,7 +19,8 @@
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.cocarelish.ui.auth.fragments.SignUpFragment"
-        android:label="SignUpFragment" >
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -27,7 +28,8 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.cocarelish.ui.auth.fragments.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />

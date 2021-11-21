@@ -10,7 +10,4 @@ class EssayFragment :BaseFragment<FragmentEssayBinding, EssayViewModel>(){
     override val viewModel: EssayViewModel by viewModels()
     override val layoutID: Int
         get() = R.layout.fragment_essay
-    override fun handleTasks() {
-        // TODO
-    }
 }

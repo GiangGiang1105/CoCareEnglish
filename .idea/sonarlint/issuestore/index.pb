@@ -3,16 +3,10 @@
 Tapp/src/main/java/com/example/cocarelish/ui/essay/viewmodels/WritingTaskViewModel.kt,0\d\0d089319d1ffd9ad00c468ba00dc5f90787f221e
 z
 Japp/src/main/java/com/example/cocarelish/ui/home/fragments/HomeFragment.kt,f\2\f2d46259bc443e164996ddabdf6e0caa76f335d3
-}
-Mapp/src/main/java/com/example/cocarelish/ui/home/fragments/ProfileFragment.kt,3\4\34f33109b695b29e3f82f74bed4f26769d20c93e
 w
 Gapp/src/main/java/com/example/cocarelish/ui/viewmodels/HomeViewModel.kt,6\6\662e1853c9c0a42ac30a4a38404ad55517edb459
 z
 Japp/src/main/java/com/example/cocarelish/ui/viewmodels/ProfileViewModel.kt,5\c\5cb3500c2f38a659faaf5ad3ba216926f04c34bd
-p
-@app/src/main/java/com/example/cocarelish/ui/home/HomeActivity.kt,5\a\5a71919fec2e4609e7de2b5fd3580e3f77991ff1
-{
-Kapp/src/main/java/com/example/cocarelish/ui/home/fragments/EssayFragment.kt,6\3\63add291ba5442af686028070b58c6e0adc87cb2
 o
 ?app/src/main/java/com/example/cocarelish/data/model/user/Job.kt,f\1\f104d3d28873224ac340c748eba3ce7eef893283
 p
@@ -27,3 +21,19 @@ f
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+z
+Japp/src/main/java/com/example/cocarelish/data/repository/AuthRepository.kt,6\e\6e03476772e784a21e7f0f7c58257619ec14e03c
+r
+Bapp/src/main/java/com/example/cocarelish/data/model/write/Essay.kt,8\a\8a0794c60f46f206f5bdc2aabbf63302c75758c4
+r
+Bapp/src/main/java/com/example/cocarelish/data/model/write/Image.kt,e\5\e521e037621f67ad6b3d6d2bdafc72177b6693cd
+r
+Bapp/src/main/java/com/example/cocarelish/data/model/write/Level.kt,b\6\b63f0c9aa41b95d7d17d188c53e17227ddce363d
+r
+Bapp/src/main/java/com/example/cocarelish/data/model/write/Order.kt,f\8\f8697b4aab2ae2283f652a0c1746667529a99d0b
+s
+Capp/src/main/java/com/example/cocarelish/data/model/write/Rating.kt,e\1\e10157e1a1a64b679795522a149fdccf45661749
+s
+Capp/src/main/java/com/example/cocarelish/data/model/write/Result.kt,3\b\3b89273b157f4e7080eb81d3a2c57c4014311780
+p
+@app/src/main/java/com/example/cocarelish/data/model/user/User.kt,0\4\04b53738ae62c555506c0babdedf73ba2138d0d7

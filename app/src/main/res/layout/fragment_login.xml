@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.example.cocarelish.ui.auth.viewmodels.LoginViewModel" />
 
+        <import
+            type="com.example.cocarelish.utils.Title" />
     </data>
 
     <ScrollView
@@ -14,7 +19,17 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="16dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/ic_auth_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{()-> viewModel.onNavigate(Title.AUTH_SIGN_UP)}"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textWelcome"
@@ -89,8 +104,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/sp_18"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/passwordInput"
                 app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -109,7 +123,7 @@
                 android:layout_marginVertical="@dimen/dp_10"
                 android:layout_marginTop="@dimen/dp_40"
                 android:fontFamily="@font/poppins"
-                android:text="Or connect using"
+                android:text="@string/or_connect_using"
                 android:textAlignment="center"
                 android:textColor="@color/color_DCD6D6"
                 android:textSize="@dimen/sp_18"
@@ -132,7 +146,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/loginByGoogleButton"
                 android:background="@drawable/bg_auth_button_google"
-                android:drawableLeft="@drawable/ic_login_google"
+                android:drawableStart="@drawable/ic_login_google"
                 android:text="@string/text_button_google"
                 app:layout_constraintBottom_toBottomOf="@id/loginByFacebookButton"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -156,7 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="Don’t have account?"
+                    android:text="@string/don_t_have_account"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sp_18" />
 

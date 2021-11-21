@@ -16,5 +16,4 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
     override fun handleTask() {
 
     }
-
 }

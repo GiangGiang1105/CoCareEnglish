@@ -44,4 +44,6 @@
     <string name="text_button_done">Done</string>
     <string name="text_learn_more">Learn more ...</string>
     <string name="text_ielts_writing_type">Ielts writing type</string>
+    <string name="or_connect_using">Or connect using</string>
+    <string name="don_t_have_account">Don’t have account?</string>
 </resources>

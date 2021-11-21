@@ -11,7 +11,4 @@ class WritingTaskFragment :
     override val viewModel: WritingTaskViewModel by viewModels()
     override val layoutID: Int
         get() = R.layout.fragment_writting_task
-    override fun handleTasks() {
-        TODO("implement")
-    }
-    }
+}

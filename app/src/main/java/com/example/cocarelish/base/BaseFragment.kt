@@ -41,15 +41,16 @@ abstract class BaseFragment<T : ViewDataBinding, VM : CommonViewModel> :
         _binding = DataBindingUtil.inflate(inflater, layoutID, container, false)
         controller = findNavController()
 
-        handleTasks()
         return binding.apply { lifecycleOwner = viewLifecycleOwner }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         jobEventSender = lifecycleScope.launch {
+            Log.d(TAG, "onViewCreated: Receive Item from Eventsender")
             viewModel.eventReceiver.collectLatest {
-                when(it){
+                when (it) {
                     is CommonEvent.OnNavigation -> navigateToDestination(it.destination, it.bundle)
                     CommonEvent.OnCloseApp -> activity?.finish()
                     CommonEvent.OnBackScreen -> onBackFragment()
@@ -61,6 +62,7 @@ abstract class BaseFragment<T : ViewDataBinding, VM : CommonViewModel> :
     }
 
     open fun navigateToDestination(actionID: Int, bundle: Bundle?) {
+        Log.d(TAG, "navigateToDestination: Navigating to $actionID")
         bundle?.let {
             findNavController().navigate(actionID, it)
         } ?: findNavController().navigate(actionID)
@@ -70,9 +72,13 @@ abstract class BaseFragment<T : ViewDataBinding, VM : CommonViewModel> :
         findNavController().popBackStack()
     }
 
-    open fun openAnotherApp(packageName: String){
+    open fun openAnotherApp(packageName: String) {
         val launchIntent = context?.packageManager?.getLaunchIntentForPackage(packageName)
         startActivity(launchIntent)
+    }
+
+    fun onClearViewModelInScopeActivity() {
+        activity?.viewModelStore?.clear()
     }
 
     private var toast: Toast? = null
@@ -82,12 +88,9 @@ abstract class BaseFragment<T : ViewDataBinding, VM : CommonViewModel> :
         toast?.show()
     }
 
-    abstract fun handleTasks()
-
     override fun onDestroyView() {
         _binding = null
         jobEventSender?.cancel()
         super.onDestroyView()
-
     }
 }

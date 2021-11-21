@@ -11,8 +11,4 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding,ProfileViewModel>(){
     override val viewModel: ProfileViewModel by viewModels()
     override val layoutID: Int
         get() = R.layout.fragment_profile
-
-    override fun handleTasks() {
-        TODO("implement")
-    }
 }
