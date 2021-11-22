@@ -5,7 +5,9 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.cocarelish.R
 import com.example.cocarelish.base.BaseActivity
 import com.example.cocarelish.databinding.ActivityAuthBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AuthActivity : BaseActivity<ActivityAuthBinding>() {
     override fun getActivityBinding(layoutInflater: LayoutInflater): ActivityAuthBinding =
         ActivityAuthBinding.inflate(layoutInflater)

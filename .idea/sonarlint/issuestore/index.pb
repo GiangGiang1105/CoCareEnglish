@@ -17,10 +17,6 @@ f
 6app/src/main/java/com/example/cocarelish/base/Event.kt,a\9\a98f8707e7cf700eb2d05bc38d9aa767b999686e
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-z
-Japp/src/main/java/com/example/cocarelish/data/repository/AuthRepository.kt,6\e\6e03476772e784a21e7f0f7c58257619ec14e03c
 r
 Bapp/src/main/java/com/example/cocarelish/data/model/write/Essay.kt,8\a\8a0794c60f46f206f5bdc2aabbf63302c75758c4
 r

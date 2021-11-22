@@ -1,4 +1,4 @@
-package com.example.cocarelish.utils
+package com.example.cocarelish.utils.base
 
 import android.util.Log
 

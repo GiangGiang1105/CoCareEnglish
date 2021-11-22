@@ -1,38 +1,52 @@
 package com.example.cocarelish.data.network
 
-class RemoteDataSource {
-}
-
-
-
-/*
-package com.example.namtd8_androidbasic_day8.data.network
-
-import com.example.namtd8_androidbasic_day8.utils.Const.BASE_URL
+import com.example.cocarelish.BuildConfig
+import com.example.cocarelish.utils.Consts.BASE_URL
+import okhttp3.Authenticator
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RemoteDataSource {
-    fun <Api> buildAPI(
-        api: Class<Api>
-    ): Api  {
-        val clientBuilder = OkHttpClient.Builder()
-
-        val loggingInterceptor = HttpLoggingInterceptor()
-
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-
-        clientBuilder.addInterceptor(loggingInterceptor)
-
+    fun <Api> buildApi(
+        api: Class<Api>,
+        authToken: String? = null
+    ): Api {
+//        val authenticator = TokenAuthenticator(context, buildTokenApi())
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(
-                clientBuilder.build()
-            ).addConverterFactory(
-                GsonConverterFactory.create()
-            ).build().create(api)
+            .client(OkHttpClient.Builder().addInterceptor{
+                    chain -> chain.proceed(chain.request().newBuilder().also {
+                it.addHeader("Authorization","Bearer $authToken")
+            }.build())
+            }.also { client ->
+                val logging = HttpLoggingInterceptor()
+                logging.level = HttpLoggingInterceptor.Level.BODY
+                client.addInterceptor(logging)
+            }.build())//hiện log
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(api)
+    }
+
+
+    private fun getRetrofitClient(authenticator: Authenticator? = null): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                chain.proceed(chain.request().newBuilder().also {
+                    it.addHeader("Accept", "application/json")
+                }.build())
+            }.also { client ->
+                authenticator?.let { client.authenticator(it) }
+                if (BuildConfig.DEBUG) {
+                    val logging = HttpLoggingInterceptor()
+                    logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+                    client.addInterceptor(logging)
+                }
+            }.build()
+    }
+    companion object{
+
     }
 }
-*/

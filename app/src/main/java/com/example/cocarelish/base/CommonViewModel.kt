@@ -5,13 +5,13 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cocarelish.utils.CommonItemMenuAction
+import com.example.cocarelish.utils.base.CommonItemMenuAction
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-open class CommonViewModel: ViewModel(), CommonItemMenuAction{
+open class CommonViewModel: ViewModel(), CommonItemMenuAction {
 
     protected val TAG by lazy { this::class.simpleName}
     protected val evenSender = Channel<CommonEvent>()

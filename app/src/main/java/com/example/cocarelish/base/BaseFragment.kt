@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.example.cocarelish.utils.CommonHelper
+import com.example.cocarelish.utils.base.CommonHelper
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

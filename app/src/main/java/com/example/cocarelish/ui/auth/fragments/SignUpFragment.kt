@@ -7,7 +7,9 @@ import com.example.cocarelish.R
 import com.example.cocarelish.base.BaseFragment
 import com.example.cocarelish.databinding.FragmentSignUpBinding
 import com.example.cocarelish.ui.auth.viewmodels.SignUpViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpViewModel>() {
 
     override val viewModel: SignUpViewModel by viewModels()
