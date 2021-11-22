@@ -6,7 +6,7 @@
     <data>
         <variable
             name="action"
-            type="com.example.cocarelish.ui.auth.viewmodels.LoginViewModel" />
+            type="com.example.cocarelish.presentation.auth.viewmodels.LoginViewModel" />
 
         <import
             type="com.example.cocarelish.utils.Title" />

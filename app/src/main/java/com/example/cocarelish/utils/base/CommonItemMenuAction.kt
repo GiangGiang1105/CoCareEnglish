@@ -26,6 +26,10 @@ interface CommonItemMenuAction {
     fun onBackStack() {
         Log.d(TAG, "onBackStack")
     }
+
+    fun onShowDialog(){
+        Log.d(TAG, "onShowDialog")
+    }
     companion object {
         const val TAG = "CommonItemMenuAction"
     }

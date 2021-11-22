@@ -1,17 +1,20 @@
 package com.example.cocarelish.base
 
+import android.app.Application
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.cocarelish.utils.Title
 import com.example.cocarelish.utils.base.CommonItemMenuAction
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-open class CommonViewModel: ViewModel(), CommonItemMenuAction {
+open class CommonViewModel(application: Application): AndroidViewModel(application), CommonItemMenuAction {
 
     protected val TAG by lazy { this::class.simpleName}
     protected val evenSender = Channel<CommonEvent>()
@@ -41,6 +44,20 @@ open class CommonViewModel: ViewModel(), CommonItemMenuAction {
             evenSender.send(CommonEvent.OnBackScreen)
         }
     }
+
+    fun getString(stringID: Int) = getApplication<Application>().getString(stringID)
+
+    fun showToast(stringID: Int){
+        viewModelScope.launch {
+            evenSender.send(CommonEvent.OnShowToast(getString(stringID)))
+        }
+    }
+
+    fun showLoadingDialog(isShowing: Boolean){
+        viewModelScope.launch {
+            evenSender.send(CommonEvent.OnShowLoadingDialog(isShowing))
+        }
+    }
 }
 
 sealed class CommonEvent{
@@ -49,4 +66,5 @@ sealed class CommonEvent{
     object OnCloseApp : CommonEvent()
     object OnBackScreen : CommonEvent()
     class OnShowToast(val content: String, val type: Int = Toast.LENGTH_SHORT) : CommonEvent()
+    class OnShowLoadingDialog(val isShowing: Boolean) : CommonEvent()
 }

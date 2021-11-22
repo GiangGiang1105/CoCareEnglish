@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //Title screen
+    <string name= "text_id_1">Login</string>
+    <string name= "text_id_2">Sign Up</string>
+    <string name= "text_id_3">Auth Introduce</string>
+    <string name= "text_id_4">Home</string>
+
+
+    <string name="login_success">Login Successfully</string>
+</resources>

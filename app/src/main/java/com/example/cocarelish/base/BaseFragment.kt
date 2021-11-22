@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.example.cocarelish.presentation.main.LoadingDialog
 import com.example.cocarelish.utils.base.CommonHelper
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
@@ -31,6 +32,8 @@ abstract class BaseFragment<T : ViewDataBinding, VM : CommonViewModel> :
 
     @get:LayoutRes
     abstract val layoutID: Int
+
+    private val loadingDialog : LoadingDialog by lazy{ LoadingDialog(requireActivity()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,6 +59,7 @@ abstract class BaseFragment<T : ViewDataBinding, VM : CommonViewModel> :
                     CommonEvent.OnBackScreen -> onBackFragment()
                     is CommonEvent.OnOpenAnotherApp -> openAnotherApp(it.packageName)
                     is CommonEvent.OnShowToast -> showToast(it.content, it.type)
+                    is CommonEvent.OnShowLoadingDialog -> showLoadingDialog(it.isShowing)
                 }
             }
         }
@@ -86,6 +90,14 @@ abstract class BaseFragment<T : ViewDataBinding, VM : CommonViewModel> :
         toast?.cancel()
         toast = CommonHelper.makeToast(context, content, duration)
         toast?.show()
+    }
+
+    open fun showLoadingDialog(isShowing: Boolean){
+        if(isShowing){
+            loadingDialog.startLoading()
+        }else{
+            loadingDialog.dismissDialog()
+        }
     }
 
     override fun onDestroyView() {
