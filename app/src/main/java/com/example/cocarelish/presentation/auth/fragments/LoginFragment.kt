@@ -1,12 +1,16 @@
 package com.example.cocarelish.presentation.auth.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.BaseFragment
 import com.example.cocarelish.databinding.FragmentLoginBinding
 import com.example.cocarelish.presentation.auth.viewmodels.LoginViewModel
+import com.example.cocarelish.utils.validate.ValidateExtend.validate
+import com.example.cocarelish.utils.validate.isValidEmail
+import com.example.cocarelish.utils.validate.isValidPassword
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +24,17 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             action = viewModel
+        }
+
+        handleTask()
+    }
+
+    private fun handleTask() {
+        binding.loginButton.setOnClickListener {
+            Log.d(TAG, "handleTask: click")
+            if (binding.txtUsernameOrEmail.validate(::isValidEmail) && binding.txtPassword.validate(::isValidPassword) )
+                return@setOnClickListener
+            viewModel.login()
         }
     }
 }

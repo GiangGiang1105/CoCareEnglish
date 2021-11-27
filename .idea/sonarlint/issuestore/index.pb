@@ -1,33 +1,5 @@
 
-„
-Tapp/src/main/java/com/example/cocarelish/ui/essay/viewmodels/WritingTaskViewModel.kt,0\d\0d089319d1ffd9ad00c468ba00dc5f90787f221e
-w
-Gapp/src/main/java/com/example/cocarelish/ui/viewmodels/HomeViewModel.kt,6\6\662e1853c9c0a42ac30a4a38404ad55517edb459
-z
-Japp/src/main/java/com/example/cocarelish/ui/viewmodels/ProfileViewModel.kt,5\c\5cb3500c2f38a659faaf5ad3ba216926f04c34bd
-o
-?app/src/main/java/com/example/cocarelish/data/model/user/Job.kt,f\1\f104d3d28873224ac340c748eba3ce7eef893283
-p
-@app/src/main/java/com/example/cocarelish/data/model/user/Role.kt,4\d\4d1a3ef307ccfae1ac826dcb48bd22932d48ea5c
-v
-Fapp/src/main/java/com/example/cocarelish/data/model/write/Criterion.kt,7\a\7a46cd6191e78e1acc93e64a50ae14f7e565144d
-u
-Eapp/src/main/java/com/example/cocarelish/data/model/write/Deadline.kt,f\7\f78807de8511ec95b65c9d35e65fe5775be2f3f6
 f
 6app/src/main/java/com/example/cocarelish/base/Event.kt,a\9\a98f8707e7cf700eb2d05bc38d9aa767b999686e
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-r
-Bapp/src/main/java/com/example/cocarelish/data/model/write/Essay.kt,8\a\8a0794c60f46f206f5bdc2aabbf63302c75758c4
-r
-Bapp/src/main/java/com/example/cocarelish/data/model/write/Image.kt,e\5\e521e037621f67ad6b3d6d2bdafc72177b6693cd
-r
-Bapp/src/main/java/com/example/cocarelish/data/model/write/Level.kt,b\6\b63f0c9aa41b95d7d17d188c53e17227ddce363d
-r
-Bapp/src/main/java/com/example/cocarelish/data/model/write/Order.kt,f\8\f8697b4aab2ae2283f652a0c1746667529a99d0b
-s
-Capp/src/main/java/com/example/cocarelish/data/model/write/Rating.kt,e\1\e10157e1a1a64b679795522a149fdccf45661749
-s
-Capp/src/main/java/com/example/cocarelish/data/model/write/Result.kt,3\b\3b89273b157f4e7080eb81d3a2c57c4014311780
-p
-@app/src/main/java/com/example/cocarelish/data/model/user/User.kt,0\4\04b53738ae62c555506c0babdedf73ba2138d0d7
