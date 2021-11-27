@@ -9,7 +9,7 @@ import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonEvent
 import com.example.cocarelish.base.CommonViewModel
 import com.example.cocarelish.data.authentication.remote.dto.LoginRequest
-import com.example.cocarelish.domain.auth.usecase.AuthenticationUseCase
+import com.example.cocarelish.domain.auth.usecase.LoginUseCase
 import com.example.cocarelish.utils.Resource
 import com.example.cocarelish.utils.Title
 import com.example.cocarelish.utils.Title.HOME
@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val authUseCase: AuthenticationUseCase, application: Application): CommonViewModel(application) {
+class LoginViewModel @Inject constructor(private val authUseCase: LoginUseCase, application: Application): CommonViewModel(application) {
 
     val userName = MutableLiveData<String>("admin@email.com")
     val passWord = MutableLiveData<String>("12345678")
@@ -37,7 +37,8 @@ class LoginViewModel @Inject constructor(private val authUseCase: Authentication
     }
 
     fun login(){
-        val loginRequest = LoginRequest(userName.value!!, passWord.value!!)
+
+        val loginRequest = LoginRequest(userName.value?: "", passWord.value?: "")
 
         viewModelScope.launch {
             authUseCase.execute(loginRequest).onStart {

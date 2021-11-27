@@ -32,9 +32,15 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
     private fun handleTask() {
         binding.loginButton.setOnClickListener {
             Log.d(TAG, "handleTask: click")
-            if (binding.txtUsernameOrEmail.validate(::isValidEmail) && binding.txtPassword.validate(::isValidPassword) )
-                return@setOnClickListener
-            viewModel.login()
+            if (binding.txtUsernameOrEmail.validate(
+                    getString(R.string.error_validate_email),
+                    ::isValidEmail
+                ) && binding.txtPassword.validate(
+                    getString(R.string.error_validate_password),
+                    ::isValidPassword
+                )
+            )
+                viewModel.login()
         }
     }
 }

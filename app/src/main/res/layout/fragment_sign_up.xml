@@ -71,7 +71,10 @@
                     android:id="@+id/txt_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textCursorDrawable="@drawable/cursor_color" />
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:text="@={action.userName}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -89,7 +92,10 @@
                     android:id="@+id/txt_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textCursorDrawable="@drawable/cursor_color" />
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:textColor="@color/white"
+                    android:maxLines="1"
+                    android:text="@={action.email}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -107,7 +113,11 @@
                     android:id="@+id/txt_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textCursorDrawable="@drawable/cursor_color" />
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:textColor="@color/white"
+                    android:maxLines="1"
+                    android:inputType="textPassword"
+                    android:text="@={action.password}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -125,7 +135,11 @@
                     android:id="@+id/txt_re_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textCursorDrawable="@drawable/cursor_color" />
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:inputType="textPassword"
+                    android:text="@={action.rePassword}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -147,6 +161,7 @@
                 android:gravity="center_horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/signUpButton"
                 app:layout_constraintEnd_toEndOf="parent">
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/text_login_3"
                     android:layout_width="wrap_content"
@@ -155,6 +170,7 @@
                     android:text="@string/text_sign_up_2"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sp_18" />
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/loginButton"
                     android:layout_width="wrap_content"

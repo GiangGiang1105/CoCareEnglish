@@ -1,22 +1,34 @@
 package com.example.cocarelish.utils.validate
 
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
 import com.google.android.material.textfield.TextInputEditText
 
 object ValidateExtend {
 
-    fun TextInputEditText.validate(validator: (String) -> Pair<Boolean,String>): Boolean {
-        val data = validator(this.text.toString())
-        this.error = if (data.first) null else data.second
-        return data.first
+    fun TextInputEditText.validate(message: String, validator: (String) -> Boolean): Boolean {
+        val isValid = validator(this.text.toString())
+        this.error = if (isValid) null else message
+        return isValid
+    }
+
+    fun TextInputEditText.validateSamePassword(
+        message: String,
+        mainPassword: String
+    ): Boolean {
+        val isValid = mainPassword == this.text.toString()
+        this.error = if (isValid) null else message
+        return isValid
     }
 }
 
-fun isValidEmail(text: String): Pair<Boolean,String> =
-    Pair(text.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(text).matches(), "Nhập sai username")
+fun isValidateName(text: String): Boolean = text.isNotEmpty() && text.length > 8 && text.length < 50
 
-fun isValidPassword(text: String):Pair<Boolean,String> = Pair(text.length > 6, "Nhập sai password")
+fun isValidEmail(text: String): Boolean {
+    Log.d("TAGG", "isValidEmail: text")
+    return text.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(text).matches()
+}
+
+fun isValidPassword(text: String): Boolean = text.length > 6
+
 

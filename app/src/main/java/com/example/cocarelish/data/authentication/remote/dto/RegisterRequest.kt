@@ -1,4 +1,9 @@
 package com.example.cocarelish.data.authentication.remote.dto
 
-class RegisterRequest {
-}
+import com.google.gson.annotations.SerializedName
+
+data class RegisterRequest(
+    @SerializedName("name") val name : String,
+    @SerializedName("email") val email: String,
+    @SerializedName("password") val password: String
+)

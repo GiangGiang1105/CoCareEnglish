@@ -6,14 +6,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonEvent
 import com.example.cocarelish.base.CommonViewModel
-import com.example.cocarelish.domain.auth.usecase.AuthenticationUseCase
+import com.example.cocarelish.domain.auth.usecase.LoginUseCase
 import com.example.cocarelish.utils.Title
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AuthViewModel @Inject constructor(private val authenticationUseCase: AuthenticationUseCase, application: Application) : CommonViewModel(application) {
+class AuthViewModel @Inject constructor( application:Application) : CommonViewModel(application) {
     override fun onNavigate(itemTitle: Int) {
         Log.d(TAG, "onNavigate: ViewModel Navigate Onclick")
         viewModelScope.launch {

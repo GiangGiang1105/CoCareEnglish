@@ -71,7 +71,9 @@
                     android:id="@+id/txt_username_or_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textCursorDrawable="@drawable/cursor_color" />
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:maxLines="1"
+                    android:textColor="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -88,8 +90,11 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txt_password"
                     android:layout_width="match_parent"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
                     android:layout_height="wrap_content"
-                    android:textCursorDrawable="@drawable/cursor_color" />
+                    android:textCursorDrawable="@drawable/cursor_color"
+                    android:textColor="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
