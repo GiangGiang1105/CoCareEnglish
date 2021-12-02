@@ -1,16 +1,16 @@
 package com.example.cocarelish.data.authentication.remote.api
 
-import com.example.cocarelish.data.authentication.remote.dto.LoginRequest
-import com.example.cocarelish.data.authentication.remote.dto.LoginResponse
-import com.example.cocarelish.data.authentication.remote.dto.RegisterRequest
-import com.example.cocarelish.data.authentication.remote.dto.RegisterResponse
+import com.example.cocarelish.base.BaseResponse
+import com.example.cocarelish.data.authentication.remote.dto.*
+import com.example.cocarelish.domain.auth.entity.LoginEntity
+import com.example.cocarelish.domain.auth.entity.RegisterEntity
 import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface AuthApi {
     @POST("login")
-    suspend fun login(@Body loginRequest: LoginRequest): LoginResponse
+    suspend fun login(@Body loginRequest: LoginRequest): BaseResponse<LoginEntity>
 
     @POST("user")
-    suspend fun register(@Body registerRequest: RegisterRequest): RegisterResponse
+    suspend fun register(@Body registerRequest: RegisterRequest): BaseResponse<RegisterEntity>
 }
