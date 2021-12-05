@@ -6,7 +6,6 @@ import com.example.cocarelish.data.authentication.remote.dto.RegisterRequest
 import com.example.cocarelish.domain.auth.entity.LoginEntity
 import com.example.cocarelish.domain.auth.entity.RegisterEntity
 import com.example.cocarelish.utils.Resource
-import dagger.Binds
 import kotlinx.coroutines.flow.Flow
 
 abstract class AuthRepository : BaseRepository() {

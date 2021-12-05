@@ -19,7 +19,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-abstract class BaseFragment<T : ViewDataBinding, VM : CommonViewModel> :
+abstract class CommonFragment<T : ViewDataBinding, VM : CommonViewModel> :
     Fragment() {
     protected val TAG by lazy { this::class.simpleName }
 

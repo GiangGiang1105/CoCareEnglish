@@ -18,4 +18,7 @@
         <item name="android:windowEnterAnimation">@anim/slide_left</item>
         <item name="android:windowExitAnimation">@anim/slide_right</item>
     </style>
+
+    <style name="Theme.Scroll.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Scroll.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -19,7 +19,8 @@ class AuthViewModel @Inject constructor( application:Application) : CommonViewMo
         viewModelScope.launch {
             when(itemTitle){
                 Title.AUTH_SIGN_UP -> evenSender.send(CommonEvent.OnNavigation(R.id.action_authFragment_to_signUpFragment))
-                Title.AUTH_LOGIN -> evenSender.send(CommonEvent.OnNavigation(R.id.action_authFragment_to_loginFragment))
+                Title.AUTH_LOGIN -> evenSender.send(CommonEvent.OnNavigation(R.id.action_authFragment_to_levelFragment))
+//                Title.AUTH_LOGIN -> evenSender.send(CommonEvent.OnNavigation(R.id.action_authFragment_to_loginFragment))
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.example.cocarelish.utils.base
 
 import android.util.Log
+import com.example.cocarelish.utils.listTemplate.MenuItem
 
 interface CommonItemMenuAction {
     fun onLongClick(idItem: Int, drawableId: Int?, isFavorite: Boolean, clickable: Boolean): Boolean {
@@ -21,6 +22,10 @@ interface CommonItemMenuAction {
 
     fun onNavigate(itemTitle: Int) {
         Log.d(TAG, "onNavigate")
+    }
+
+    fun onNavigate(itemMenu: MenuItem){
+        Log.d(TAG, "onNavigate Menu Item")
     }
 
     fun onBackStack() {

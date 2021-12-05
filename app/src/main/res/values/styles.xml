@@ -109,7 +109,8 @@
         <item name="android:layout_height">@dimen/dp_50</item>
         <item name="android:layout_marginHorizontal">@dimen/dp_20</item>
         <item name="android:layout_marginTop">@dimen/dp_20</item>
-        <item name="android:background">@drawable/bg_button_white</item>
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:backgroundTint">@color/white</item>
         <item name="android:elevation">@dimen/dp_20</item>
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:gravity">start|center</item>

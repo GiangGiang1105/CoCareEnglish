@@ -138,4 +138,21 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+
+    <!--BottomAppBar-->
+    <string name="bottom_app_bar_chevron_content_desc">Open or close bottom navigation drawer</string>
+    <string name="bottom_app_bar_logo_content_desc">Reply logo</string>
+    <string name="bottom_nav_drawer_profile_image_content_desc">profile avatar image</string>
+    <string name="fab_dictionary_look_up">Look up dictionary</string>
+
+    <!--BottomNavigationDrawer-->
+    <string name="navigation_home">home</string>
+    <string name="navigation_essay">essay</string>
+    <string name="navigation_sent">Sent</string>
+    <string name="navigation_trash">Trash</string>
+    <string name="navigation_spam">Spam</string>
+    <string name="navigation_drafts">Drafts</string>
+    <string name="complete">Complete</string>
+
+
 </resources>

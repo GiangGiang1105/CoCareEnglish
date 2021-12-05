@@ -3,9 +3,9 @@ package com.example.cocarelish.presentation.main
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.example.cocarelish.R
 import com.example.cocarelish.base.BaseActivity
 import com.example.cocarelish.databinding.ActivityHomeBinding
@@ -20,9 +20,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     override fun getNavHostFragment(): NavHostFragment =
         supportFragmentManager.findFragmentById(R.id.mainContainerView) as NavHostFragment
 
-    override fun handleTask() {
-        binding.bottomNavigationView.setupWithNavController(controller)
-    }
 
     companion object {
         val TAG: String = HomeActivity::class.java.name
@@ -34,5 +31,22 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
                 startActivityAnimation(context)
             }
         }
+    }
+
+    override fun handleTask() {
+        initListener()
+    }
+
+    private fun initListener() {
+        controller.addOnDestinationChangedListener{_, destination, _ ->
+            when(destination.id){
+                R.id.authFragment, R.id.loginFragment, R.id.signUpFragment ->
+                    viewVisibility(View.GONE)
+            }
+        }
+    }
+
+    private fun viewVisibility(visibilityType: Int){
+        binding.bottomAppBar.visibility = visibilityType
     }
 }

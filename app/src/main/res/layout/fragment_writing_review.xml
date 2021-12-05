@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -99,7 +98,8 @@
             android:layout_width="@dimen/dp_120"
             android:layout_height="@dimen/dp_40"
             android:layout_marginTop="@dimen/dp_50"
-            android:background="@drawable/bg_button_done"
+            android:background="@drawable/bg_button"
+            android:backgroundTint="@color/color_549CF0"
             android:fontFamily="@font/poppins_light"
             android:text="@string/text_button_done"
             android:textAllCaps="false"

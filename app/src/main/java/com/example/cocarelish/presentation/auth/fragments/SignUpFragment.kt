@@ -6,7 +6,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.utils.validate.ValidateExtend.validate
-import com.example.cocarelish.base.BaseFragment
+import com.example.cocarelish.base.CommonFragment
 import com.example.cocarelish.databinding.FragmentSignUpBinding
 import com.example.cocarelish.presentation.auth.viewmodels.SignUpViewModel
 import com.example.cocarelish.utils.validate.ValidateExtend.validateSamePassword
@@ -16,7 +16,7 @@ import com.example.cocarelish.utils.validate.isValidateName
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SignUpFragment : BaseFragment<FragmentSignUpBinding, SignUpViewModel>() {
+class SignUpFragment : CommonFragment<FragmentSignUpBinding, SignUpViewModel>() {
 
     override val viewModel: SignUpViewModel by viewModels()
     override val layoutID: Int

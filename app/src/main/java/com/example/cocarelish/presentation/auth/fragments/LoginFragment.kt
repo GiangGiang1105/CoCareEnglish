@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
-import com.example.cocarelish.base.BaseFragment
+import com.example.cocarelish.base.CommonFragment
 import com.example.cocarelish.databinding.FragmentLoginBinding
 import com.example.cocarelish.presentation.auth.viewmodels.LoginViewModel
 import com.example.cocarelish.utils.validate.ValidateExtend.validate
@@ -14,7 +14,7 @@ import com.example.cocarelish.utils.validate.isValidPassword
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
+class LoginFragment : CommonFragment<FragmentLoginBinding, LoginViewModel>() {
 
     override val viewModel: LoginViewModel by viewModels()
     override val layoutID: Int

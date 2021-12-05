@@ -23,4 +23,11 @@
     <color name="color_4B90ED">#4B90ED</color>
     <color name="color_959595">#959595</color>
     <color name="color_cccccc">#cccccc</color>
+
+
+    <color name="colorPrimary">#cccccc</color>
+    <color name="colorPrimaryDark">#cccccc</color>
+    <color name="color_549CF0">#549CF0</color>
+    <color name="color_13D455">#13D455</color>
+
 </resources>
