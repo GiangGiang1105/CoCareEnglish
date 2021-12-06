@@ -49,6 +49,13 @@
     <string name="error_validate_email">Email is not validate!</string>
     <string name="error_validate_password">Password is not validate!</string>
     <string name="error_validate_username">Username is not validate!</string>
+    <string name="summarize_title_essay">
+        "Summarize the information by selecting and reporting the main features and make comparisons"
+        "where relevant."
+    </string>
+    <string name="summarize_title_essay_2">
+        "Write at least 150 words"
+    </string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

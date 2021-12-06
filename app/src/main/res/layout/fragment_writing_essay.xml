@@ -15,10 +15,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="10dp">
-
-                <TextView
-                    android:layout_width=""
-                    android:layout_height=""
                 
                 <TextView
                     android:id="@+id/textView"
@@ -318,7 +314,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="10dp"
                     android:text="@string/complete"
-                    android:background="@drawable/bg_button"
+                    android:background="@drawable/bg_button_corner"
                     android:backgroundTint="@color/color_13D455"
                     android:drawableEnd="@drawable/ic_arrow_right"
                     app:layout_constraintBottom_toBottomOf="parent"
