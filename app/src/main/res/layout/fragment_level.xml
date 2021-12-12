@@ -5,6 +5,13 @@
 
     <data>
 
+        <import type="com.example.cocarelish.presentation.essay.viewmodels.LevelViewModel" />
+
+        <import type="com.example.cocarelish.utils.Title" />
+
+        <variable
+            name="action"
+            type="LevelViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -14,7 +21,9 @@
 
         <include
             android:id="@+id/appBarLayout"
-            layout="@layout/toolbar" />
+            layout="@layout/toolbar"
+            app:action="@{action}"
+            app:title="@{Title.IELTS_WRITING}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"

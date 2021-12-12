@@ -37,6 +37,4 @@
     <dimen name="navigation_drawer_profile_image_size">48dp</dimen>
     <dimen name="navigation_drawer_profile_image_size_padded">32dp</dimen>
     <dimen name="navigation_drawer_menu_item_height">56dp</dimen>
-    <dimen name="dp_5">5dp</dimen>
-    <dimen name="dp_20">20dp</dimen>
 </resources>

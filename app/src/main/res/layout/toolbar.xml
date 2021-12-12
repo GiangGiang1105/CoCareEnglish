@@ -28,7 +28,7 @@
             android:background="@drawable/background"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="Ielts Writing "
+            app:title="@{title}"
             app:titleCollapseMode="scale"
             app:toolbarId="@+id/toolbar">
 
