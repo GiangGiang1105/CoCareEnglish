@@ -20,7 +20,7 @@ class LevelFragment : CommonFragment<FragmentLevelBinding, LevelViewModel>() {
         binding.apply {
             menuAdapter.submitList(viewModel.listMenuItem)
             recyclerView.adapter = menuAdapter
+            imageResource = R.drawable.ic_back
         }
     }
-
 }

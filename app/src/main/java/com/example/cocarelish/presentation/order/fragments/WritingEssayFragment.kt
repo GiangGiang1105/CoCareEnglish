@@ -1,15 +1,17 @@
 package com.example.cocarelish.presentation.order.fragments
 
 import android.graphics.Color
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
-import android.view.View
+import android.view.*
 import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
 import com.example.cocarelish.databinding.FragmentWritingEssayBinding
 import com.example.cocarelish.presentation.order.viewmodels.WritingEssayViewModel
 import com.github.onecode369.wysiwyg.WYSIWYG
+import kotlinx.coroutines.NonDisposableHandle.parent
 
 class WritingEssayFragment : CommonFragment<FragmentWritingEssayBinding, WritingEssayViewModel>() {
     override val viewModel: WritingEssayViewModel by viewModels()
@@ -17,8 +19,27 @@ class WritingEssayFragment : CommonFragment<FragmentWritingEssayBinding, Writing
         get() = R.layout.fragment_writing_essay
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN or WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN )
         super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            action = viewModel
+        }
         handleTask()
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN or WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN )
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN or WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN )
+
+        super.onCreate(savedInstanceState)
     }
 
     private fun handleTask() {
@@ -28,14 +49,18 @@ class WritingEssayFragment : CommonFragment<FragmentWritingEssayBinding, Writing
 
     private fun initListener() {
 
-        binding.editor.setOnTextChangeListener(object : WYSIWYG.OnTextChangeListener {
-            override fun onTextChange(text: String?) {
-                binding.btnComplete.isEnabled = text?.trim() != ""
-            }
-        })
+//        binding.editor.setOnTextChangeListener(object : WYSIWYG.OnTextChangeListener {
+//            override fun onTextChange(text: String?) {
+//                binding.btnComplete.isEnabled = text?.trim() != ""
+//            }
+//        })
+        binding.root.viewTreeObserver.addOnGlobalLayoutListener {
+
+        }
     }
 
     private fun initView() {
+
         val wysiwygEditor = binding.editor
         wysiwygEditor.setEditorHeight(200)
         wysiwygEditor.setEditorFontSize(16)

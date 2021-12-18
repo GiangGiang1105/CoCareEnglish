@@ -9,6 +9,14 @@
             type="int" />
 
         <variable
+            name="text"
+            type="String" />
+
+        <variable
+            name="imageResource"
+            type="int" />
+
+        <variable
             name="action"
             type="com.example.cocarelish.base.CommonViewModel" />
     </data>
@@ -25,10 +33,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0.8"
-            android:background="@drawable/background"
+            android:background="@{imageResource,  default = @drawable/background_level}"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="@{title}"
+            app:title="@{title, default = 0}"
+            app:text="@{text}"
             app:titleCollapseMode="scale"
             app:toolbarId="@+id/toolbar">
 
@@ -59,7 +68,6 @@
                     android:layout_height="wrap_content"
                     android:onClick="@{() -> action.onBackStack()}"
                     android:background="@drawable/ic_auth_back" />
-
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

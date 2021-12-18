@@ -49,6 +49,7 @@
     <string name="error_validate_email">Email is not validate!</string>
     <string name="error_validate_password">Password is not validate!</string>
     <string name="error_validate_username">Username is not validate!</string>
+    <string name="essay_writing_requirement">Complete the task above in 20 minutes, then send it for us we will score and give comments to according to the international ielts grading standards.</string>
     <string name="summarize_title_essay">
         "Summarize the information by selecting and reporting the main features and make comparisons"
         "where relevant."
@@ -160,6 +161,9 @@
     <string name="navigation_spam">Spam</string>
     <string name="navigation_drafts">Drafts</string>
     <string name="complete">Complete</string>
+    <string name="adjust_your_text_size">Adjust your Text Size</string>
+    <string name="write_at_least_150_words">Write at least 150 words</string>
+    <string name="topic">topic</string>
 
 
 </resources>

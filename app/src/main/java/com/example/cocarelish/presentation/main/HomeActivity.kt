@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.cocarelish.R
 import com.example.cocarelish.base.BaseActivity
 import com.example.cocarelish.databinding.ActivityHomeBinding
@@ -13,6 +15,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity<ActivityHomeBinding>() {
+
+    private lateinit var topLevelDestination: Set<Int>
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun getActivityBinding(layoutInflater: LayoutInflater): ActivityHomeBinding =
         ActivityHomeBinding.inflate(layoutInflater)
@@ -35,6 +40,13 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
 
     override fun handleTask() {
         initListener()
+        createBottomNavigation()
+    }
+
+    private fun createBottomNavigation() {
+        binding.bottomNavigationView.setupWithNavController(controller)
+
+//        topLevelDestination = setOf(R.id.homeFragment, R.id.essayFragment, R.id.profileFragment)
     }
 
     private fun initListener() {
