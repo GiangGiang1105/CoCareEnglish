@@ -20,9 +20,10 @@
             type="com.example.cocarelish.presentation.essay.viewmodels.ShowDetailTitleViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".presentation.essay.fragments.ShowDetailTitleFragment">
 
         <include
@@ -41,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
+            android:layout_gravity="center"
             android:text="@string/adjust_your_text_size"
             android:textColor="@color/color_7D7979"
             android:textSize="@dimen/sp17"
@@ -53,7 +55,7 @@
             android:id="@+id/layoutChangeTextSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,14 +80,18 @@
             android:id="@+id/includeTitleContent"
             layout="@layout/layout_collapse_essay_title"
             app:action="@{action}"
+            android:layout_marginTop="@dimen/dp_20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutChangeTextSize" />
+            app:layout_constraintTop_toBottomOf="@id/layoutChangeTextSize"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
             android:layout_marginHorizontal="20dp"
             android:background="@drawable/bg_view_corner"
             app:cardCornerRadius="@dimen/dp_5"
@@ -144,5 +150,5 @@
             app:layout_constraintTop_toBottomOf="@+id/appCompatButton" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

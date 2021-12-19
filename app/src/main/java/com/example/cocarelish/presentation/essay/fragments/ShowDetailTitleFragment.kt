@@ -16,6 +16,7 @@ class ShowDetailTitleFragment : CommonFragment<FragmentShowDetailTitleBinding, S
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            action =  viewModel
             title = "abc"
         }
     }

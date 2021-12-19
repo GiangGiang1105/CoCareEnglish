@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_homeFragment_to_essayFragment"
             app:destination="@id/essayFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_levelFragment"
+            app:destination="@id/levelFragment" />
     </fragment>
 
     <fragment
@@ -47,9 +50,6 @@
         <action
             android:id="@+id/action_authFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_authFragment_to_levelFragment"
-            app:destination="@id/levelFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
