@@ -9,6 +9,10 @@
 
         <import type="com.example.cocarelish.utils.Title" />
 
+        <import type="android.view.View" />
+
+        <import type="android.widget.LinearLayout.LayoutParams" />
+
         <variable
             name="imageResource"
             type="int" />
@@ -27,7 +31,7 @@
             android:id="@+id/appBarLayout"
             layout="@layout/toolbar_collapse"
             app:action="@{action}"
-            app:imageResource = "@{imageResource}"
+            app:imageResource="@{imageResource}"
             app:title="@{Title.IELTS_WRITING}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -59,13 +63,75 @@
                     android:maxLines="1"
                     android:text="" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/titleTask"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    android:layout_marginHorizontal="@dimen/dp_30"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:background="@drawable/bg_writting_task"
+                    android:fontFamily="@font/poppins_bold"
+                    android:onClickListener="@{() -> action.onClickNormal()}"
+                    android:text="@{action.isVisibleType() ? action.listTypes[2].name :action.listLevels[0].name}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_24" />
 
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_30"
+                    android:background="@drawable/bg_writting_task"
+                    android:elevation="@dimen/dp_10"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnIelts"
+                        android:layout_width="match_parent"
+                        android:layout_height="@{action.isVisibleType ? LayoutParams.WRAP_CONTENT : LayoutParams.MATCH_PARENT}"
+                        android:layout_marginBottom="@dimen/dp_10"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins_bold"
+                        android:onClickListener="@{()-> action.onClickIeltsWriting()}"
+                        android:text="@{action.listLevels[1].name}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_24" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/dp_10"
+                        android:visibility="@{action.isVisibleType ? View.VISIBLE : View.GONE }"
+                        android:weightSum="2">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnIelts1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/dp_5"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_bold"
+                            android:onClickListener="@{() ->action.onClickIeltsWritingTask1()}"
+                            android:text="@{action.listTypes[0].name}"
+                            android:textAllCaps="false"
+                            android:textSize="@dimen/sp_24" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnIelts2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_bold"
+                            android:onClickListener="@{() ->action.onClickIeltsWritingTask2()}"
+                            android:text="@{action.listTypes[1].name}"
+                            android:textAllCaps="false"
+                            android:textSize="@dimen/sp_24" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

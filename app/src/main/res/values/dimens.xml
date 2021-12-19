@@ -40,4 +40,7 @@
     <dimen name="sp17">17sp</dimen>
     <dimen name="sp15">15sp</dimen>
     <dimen name="dp5">5dp</dimen>
+    <dimen name="dp_90">90dp</dimen>
+    <dimen name="dp_135">135dp</dimen>
+    <dimen name="dp_140">140dp</dimen>
 </resources>

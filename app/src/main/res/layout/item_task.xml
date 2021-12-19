@@ -6,22 +6,22 @@
 
         <variable
             name="menuItem"
-            type="com.example.cocarelish.utils.listTemplate.MenuItem" />
+            type="com.example.cocarelish.utils.listTemplate.ItemListModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_150"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="@dimen/dp_10"
-        android:elevation="8dp"
         android:background="@drawable/bg_writting_task"
-        android:layout_marginHorizontal="20dp">
+        android:elevation="8dp">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/titleTask"
             style="@style/StyleImageHeader"
             android:layout_marginTop="@dimen/dp_10"
-            android:text="@{menuItem.titleID}"
+            android:text="@{menuItem.title}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +33,7 @@
             android:layout_marginStart="@dimen/dp_30"
             android:layout_marginRight="@dimen/dp_10"
             android:fontFamily="@font/poppins_medium"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus interdum egestas in sagittis."
+            android:text="@{menuItem.message}"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_18"
             app:layout_constraintEnd_toEndOf="parent"

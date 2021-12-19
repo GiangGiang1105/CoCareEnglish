@@ -66,7 +66,7 @@ abstract class CommonFragment<T : ViewDataBinding, VM : CommonViewModel> :
     }
 
     open fun navigateToDestination(actionID: Int, bundle: Bundle?) {
-        Log.d(TAG, "navigateToDestination: Navigating to $actionID")
+        Log.d(TAG, "navigateToDestination: Navigating to $actionID with bundle $bundle")
         bundle?.let {
             findNavController().navigate(actionID, it)
         } ?: findNavController().navigate(actionID)

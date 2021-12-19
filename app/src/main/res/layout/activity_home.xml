@@ -12,10 +12,10 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
+            android:background="@drawable/ic_general_background"
             android:layout_height="match_parent">
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/mainContainerView"
-                android:background="@drawable/ic_general_background"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

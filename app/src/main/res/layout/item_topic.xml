@@ -4,39 +4,45 @@
 
     <data>
 
-        <import type="com.example.cocarelish.data.essay.remote.dto.Topic" />
+        <import type="com.example.cocarelish.utils.listTemplate.ItemListModel" />
 
         <variable
-            name="topic"
-            type="Topic" />
+            name="menuItem"
+            type="ItemListModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topicConstraint"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_5"
+        android:elevation="@dimen/dp_30"
+        android:background="@drawable/bg_image_item_topic">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_topic"
-            android:layout_width="@dimen/dp_100"
-            android:layout_height="@dimen/dp_100"
+            android:layout_width="@dimen/dp_140"
+            android:layout_height="@dimen/dp_150"
             android:layout_margin="@dimen/dp_10"
-            android:background="@drawable/bg_image_item_topic"
-            app:url="@{topic.image_topic}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:url="@{menuItem.image}" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/title_topic"
-            android:layout_width="@dimen/dp_100"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_5"
-            android:fontFamily="@font/poppins_thin"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@{menuItem.title}"
             android:textAlignment="center"
-            android:text="@{topic.name}"
+            android:gravity="center"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:textSize="@dimen/sp_16"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_topic" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -56,6 +56,12 @@ open class CommonViewModel(application: Application): AndroidViewModel(applicati
             evenSender.send(CommonEvent.OnShowLoadingDialog(isShowing))
         }
     }
+
+    fun navigate(destination: Int, bundle: Bundle? = null){
+        viewModelScope.launch {
+            evenSender.send(CommonEvent.OnNavigation(destination, bundle))
+        }
+    }
 }
 
 sealed class CommonEvent{
