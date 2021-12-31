@@ -1,18 +1,30 @@
 package com.example.cocarelish.utils.listTemplate
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil
 
-data class ItemListModel(
+class ItemListModel(
     var itemListType: ItemListType,
     var titleID: Int = 0,
     var message: String = "",
     var title: String = "",
-    var image: String = ""
+    var image: String = "",
+    var id: Int = -1,
+    val user_id: Int = -1,
+    val status: Int = 0,
+    val type_name: String = "",
+    val question_of_test: String = "",
+    val teacher_name: String = "",
+    val content: String = "",
+    val score: String = "",
+    val updated_at: String = ""
 )
 
 enum class ItemListType {
     ITEM_LEVEL,
-    ITEM_TOPIC
+    ITEM_TOPIC,
+    ITEM_LIST_ESSAY_BY_TOPIC,
+    ITEM_LIST_MY_ESSAY
 }
 
 object MenuItemDiffCallback : DiffUtil.ItemCallback<ItemListModel>() {
@@ -23,6 +35,10 @@ object MenuItemDiffCallback : DiffUtil.ItemCallback<ItemListModel>() {
                 && oldItemListModel.itemListType == newItemListModel.itemListType
                 && oldItemListModel.title == newItemListModel.title
 
-    override fun areContentsTheSame(oldItemListModel: ItemListModel, newItemListModel: ItemListModel) =
+    @SuppressLint("DiffUtilEquals")
+    override fun areContentsTheSame(
+        oldItemListModel: ItemListModel,
+        newItemListModel: ItemListModel
+    ) =
         oldItemListModel == newItemListModel
 }

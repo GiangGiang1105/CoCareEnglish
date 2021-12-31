@@ -4,40 +4,36 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
-import com.example.cocarelish.databinding.FragmentTopicBinding
-import com.example.cocarelish.presentation.essay.viewmodels.TopicViewModel
-import com.example.cocarelish.utils.Title
+import com.example.cocarelish.databinding.FragmentEssaysByTopicBinding
+import com.example.cocarelish.presentation.essay.viewmodels.EssaysByTopicViewModel
 import com.example.cocarelish.utils.listTemplate.MenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TopicFragment : CommonFragment<FragmentTopicBinding, TopicViewModel>() {
+class EssaysByTopicFragment :
+    CommonFragment<FragmentEssaysByTopicBinding, EssaysByTopicViewModel>() {
 
-    override val viewModel: TopicViewModel by viewModels()
-    override val layoutID: Int
-        get() = R.layout.fragment_topic
     private val idTopic by lazy { arguments?.getInt(ARG_ID_TOPIC) }
+    private val nameTopic by lazy { arguments?.getString(ARG_NAME_TOPIC) }
+
+    override val viewModel: EssaysByTopicViewModel by viewModels()
+    override val layoutID: Int
+        get() = R.layout.fragment_essays_by_topic
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val menuAdapter = MenuAdapter(viewModel)
         idTopic?.let {
             Log.d(TAG, "onViewCreated: ")
-            viewModel.getAllTopics(it)
+            viewModel.getAllTestByTopic(it)
         }
         binding.apply {
             recyclerView.adapter = menuAdapter
-            recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             action = viewModel
-            title = Title.IELTS_WRITING_TASK_1
+            title = nameTopic
 
-        }
-        menuAdapter.setOnClickListener {
-            Log.e(TAG, "onViewCreated:${it.id} ")
         }
         viewModel.listData.observe(viewLifecycleOwner) {
             Log.d(TAG, "onViewCreated: $it")
@@ -47,5 +43,6 @@ class TopicFragment : CommonFragment<FragmentTopicBinding, TopicViewModel>() {
 
     companion object {
         const val ARG_ID_TOPIC = "IdTopic"
+        const val ARG_NAME_TOPIC = "NameTopic"
     }
 }

@@ -19,8 +19,8 @@ interface EssayApi {
     @GET("test/{test_id}")
     suspend fun getAllTestById(@Path("test_id") test_id: Int): BaseResponse<TestEntity>
 
-    @GET("essay-of-user/{id_essay}")
-    suspend fun getAllEssayOfUser(@Path("id_essay") essay_id: Int): BaseResponse<EssayOfUserEntity>
+    @GET("my-essay/{id_user}")
+    suspend fun getAllEssayOfUser(@Path("id_user") id_user: Int): BaseResponse<EssayOfUserEntity>
 
     //TODO: Chưa có API
     /*@GET("essay")

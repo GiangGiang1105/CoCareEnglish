@@ -2,11 +2,14 @@ package com.example.cocarelish.presentation.essay.viewmodels
 
 import android.app.Application
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonViewModel
 import com.example.cocarelish.domain.essay.usecase.TopicUseCase
+import com.example.cocarelish.presentation.essay.fragments.EssaysByTopicFragment
 import com.example.cocarelish.utils.LinkImage
 import com.example.cocarelish.utils.Resource
 import com.example.cocarelish.utils.listTemplate.ItemListModel
@@ -24,12 +27,12 @@ class TopicViewModel @Inject constructor(
     application: Application
 ) : CommonViewModel(application) {
 
-    var listData =  MutableLiveData<List<ItemListModel>> ()
-         private set
+    var listData = MutableLiveData<List<ItemListModel>>()
+        private set
 
     private var mListItemListModel = mutableListOf<ItemListModel>()
 
-    fun getAllTopics(id_topic: Int ) {
+    fun getAllTopics(id_topic: Int) {
         Log.d("TAGG", "getAllTopics: $id_topic")
         viewModelScope.launch {
             topicUseCase.execute(id_topic).onStart {
@@ -48,7 +51,8 @@ class TopicViewModel @Inject constructor(
                                     title = item.name,
                                     itemListType = ItemListType.ITEM_TOPIC,
                                     message = item.description,
-                                    image = mapListImageTopic[item.id] as String
+                                    image = mapListImageTopic[item.id] as String,
+                                    id = item.id
                                 )
                             )
                         }
@@ -78,6 +82,16 @@ class TopicViewModel @Inject constructor(
             15 to LinkImage.ART,
             16 to LinkImage.CHILDREN,
             17 to LinkImage.FAMILY
+        )
+    }
+
+    override fun onNavigate(itemListModel: ItemListModel) {
+        navigate(
+            R.id.action_topicFragment_to_essaysByTopicFragment,
+            bundle = bundleOf(
+                EssaysByTopicFragment.ARG_ID_TOPIC to itemListModel.id,
+                EssaysByTopicFragment.ARG_NAME_TOPIC to itemListModel.title
+            )
         )
     }
 }

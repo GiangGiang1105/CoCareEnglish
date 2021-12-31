@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
 import com.example.cocarelish.R
 import com.example.cocarelish.application.MyApplication.Companion.context
+import com.example.cocarelish.data.essay.remote.dto.EssayOfUser
+import com.example.cocarelish.databinding.ItemEssayByTopicBinding
+import com.example.cocarelish.databinding.ItemMyEssayBinding
 import com.example.cocarelish.databinding.ItemTaskBinding
 import com.example.cocarelish.databinding.ItemTopicBinding
 import com.example.cocarelish.utils.base.CommonItemMenuAction
@@ -21,6 +24,12 @@ class MenuAdapter(private val viewModel: CommonItemMenuAction) :
     ) {
 
     private val TAG by lazy { this::class.simpleName }
+
+    private var onItemCLickListener: ((itemListModel: ItemListModel) -> Unit)? = null
+
+    fun setOnClickListener(listener: ((itemListModel: ItemListModel) -> Unit)) {
+        onItemCLickListener = listener
+    }
 
     inner class ItemLevelHolder(
         private val parent: ViewGroup,
@@ -53,8 +62,41 @@ class MenuAdapter(private val viewModel: CommonItemMenuAction) :
             binding.root.setOnClickListener {
                 viewModel.onNavigate(data)
             }
-            binding.topicConstraint.background.alpha =125
+
+            binding.topicConstraint.background.alpha = 125
             binding.menuItem = data
+        }
+    }
+
+    inner class ItemEssayByTopicHolder(
+        private val parent: ViewGroup,
+        private val binding: ItemEssayByTopicBinding = ItemEssayByTopicBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+    ) : MenuViewHolder<ItemListModel, CommonItemMenuAction>(binding.root) {
+        override fun bindData(data: ItemListModel, viewModel: CommonItemMenuAction) {
+            Log.d(TAG, "bindData: ItemEssayByTopicHolder")
+            binding.root.setOnClickListener {
+                onItemCLickListener
+                viewModel.onNavigate(data)
+            }
+            binding.menuItem = data
+        }
+    }
+
+    inner class ItemMyEssayHolder(
+        private val parent: ViewGroup,
+        private val binding: ItemMyEssayBinding = ItemMyEssayBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+    ) : MenuViewHolder<ItemListModel, CommonItemMenuAction>(binding.root) {
+        override fun bindData(data: ItemListModel, viewModel: CommonItemMenuAction) {
+            Log.d(TAG, "bindData: ItemEssayByTopicHolder")
+            binding.root.setOnClickListener {
+                onItemCLickListener
+                viewModel.onNavigate(data)
+            }
+            binding.myEssay = data
         }
     }
 
@@ -69,6 +111,10 @@ class MenuAdapter(private val viewModel: CommonItemMenuAction) :
         ItemListType.ITEM_TOPIC.ordinal -> {
             Log.e(TAG, "onCreateViewHolder: ItemTopicHolder")
             ItemTopicHolder(parent)
+        }
+        ItemListType.ITEM_LIST_ESSAY_BY_TOPIC.ordinal -> {
+            Log.e(TAG, "onCreateViewHolder:ItemEssayByTopicHolder")
+            ItemEssayByTopicHolder(parent)
         }
         else -> throw IllegalArgumentException("Not found viewType...")
     }

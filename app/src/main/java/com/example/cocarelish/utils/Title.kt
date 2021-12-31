@@ -15,4 +15,5 @@ object Title {
 
 
     const val LOGIN_SUCCESS = R.string.login_success
+
 }

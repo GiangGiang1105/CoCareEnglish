@@ -165,5 +165,6 @@
     <string name="write_at_least_150_words">Write at least 150 words</string>
     <string name="topic">topic</string>
 
-
+    <string name="teacher">Teacher: %s</string>
+    <string name="update">Update: %s</string>
 </resources>

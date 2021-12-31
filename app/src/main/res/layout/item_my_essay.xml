@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="myEssay"
+            type="com.example.cocarelish.utils.listTemplate.ItemListModel" />
+
+        <import type="com.example.cocarelish.utils.Status" />
+
+        <variable
+            name="position"
+            type="int" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_150"
+        android:background="@drawable/bg_home_white"
+        android:padding="@dimen/sp_20">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/status"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_70"
+            android:src="@{myEssay.status == Status.STATUS_1  ? @drawable/ic_complete : @drawable/ic_un_complete }"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linear"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:orientation="vertical"
+            android:weightSum="2"
+            app:layout_constraintBottom_toBottomOf="@+id/status"
+            app:layout_constraintStart_toEndOf="@+id/status"
+            app:layout_constraintTop_toTopOf="@+id/status">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/titleTopic"
+                position="@{position}"
+                type_topic="@{myEssay.type_name}"
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:lineHeight="@dimen/dp_20"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_20" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="@dimen/dp_200"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_medium"
+                android:lineHeight="@dimen/dp_20"
+                android:maxLines="1"
+                android:text="@{myEssay.question_of_test}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_18" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/status_name"
+            score="@{myEssay.score}"
+            status_id="@{myEssay.status}"
+            android:layout_width="@dimen/dp_75"
+            android:layout_height="@dimen/dp_25"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@{myEssay.status ==Status.STATUS_1? @drawable/bg_status_name_complete : @drawable/bg_status_name_un_complete}"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linear"
+            app:layout_constraintTop_toTopOf="@+id/linear" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_30"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_extra_light"
+            android:maxLines="3"
+            android:text="@{myEssay.content}"
+            android:textSize="@dimen/sp_18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linear" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/content"
+            android:layout_marginTop="@dimen/dp_10">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/teacher(myEssay.teacher_name)}"
+                android:gravity="left"
+                android:layout_gravity="left"
+                android:textSize="@dimen/sp_18"
+                android:fontFamily="@font/poppins_thin" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/update(myEssay.teacher_name)}"
+                android:gravity="left"
+                android:layout_gravity="left"
+                android:textSize="@dimen/sp_18"
+                android:fontFamily="@font/poppins_thin" />
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

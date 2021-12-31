@@ -78,7 +78,7 @@
     <fragment
         android:id="@+id/levelFragment"
         android:name="com.example.cocarelish.presentation.essay.fragments.LevelFragment"
-        android:label="LevelFragment" >
+        android:label="LevelFragment">
         <action
             android:id="@+id/action_levelFragment_to_topicFragment"
             app:destination="@id/topicFragment" />
@@ -98,5 +98,20 @@
         <argument
             android:name="IdTopic"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_topicFragment_to_essaysByTopicFragment"
+            app:destination="@id/essaysByTopicFragment" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/essaysByTopicFragment"
+        android:name="com.example.cocarelish.presentation.essay.fragments.EssaysByTopicFragment"
+        android:label="EssaysByTopicFragment" />
+    <argument
+        android:name="IdTopic"
+        app:argType="integer" />
+    <argument
+        android:name="NameTopic"
+        app:argType="string" />
 </navigation>
