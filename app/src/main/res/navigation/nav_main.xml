@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/levelFragment">
+    app:startDestination="@id/writingEssayFragment">
 
     <fragment
         android:id="@+id/essayFragment"
@@ -91,16 +91,6 @@
         android:id="@+id/showDetailTitleFragment"
         android:name="com.example.cocarelish.presentation.essay.fragments.ShowDetailTitleFragment"
         android:label="ShowDetailTitleFragment" />
-    <fragment
-        android:id="@+id/topicFragment"
-        android:name="com.example.cocarelish.presentation.essay.fragments.TopicFragment"
-        android:label="TopicFragment">
-        <argument
-            android:name="IdTopic"
-            app:argType="integer" />
-        <action
-            android:id="@+id/action_topicFragment_to_essaysByTopicFragment"
-            app:destination="@id/essaysByTopicFragment" />
 
     </fragment>
 

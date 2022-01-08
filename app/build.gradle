@@ -96,7 +96,7 @@ dependencies {
 
     // circleImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-
+    implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.19.0'
     //glide
 
 }

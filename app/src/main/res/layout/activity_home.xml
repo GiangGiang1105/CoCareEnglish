@@ -33,6 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:visibility="gone"
             android:background="@color/color_0E77A4"
             app:backgroundTint="@color/color_0E77A4"
             app:elevation="10dp"
@@ -43,10 +44,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/color_0E77A4"
-                app:labelVisibilityMode="selected"
                 app:itemIconTint="@color/white"
+
                 app:itemRippleColor="@color/color_B7E8B9"
                 app:itemTextColor="@color/color_F9AA33"
+                app:labelVisibilityMode="selected"
                 app:menu="@menu/bottom_menu" />
         </com.google.android.material.bottomappbar.BottomAppBar>
 

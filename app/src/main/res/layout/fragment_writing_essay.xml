@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.main.fragment.createOrder.EnterEssayFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -11,89 +10,101 @@
             type="com.example.cocarelish.presentation.order.viewmodels.WritingEssayViewModel" />
     </data>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.main.fragment.createOrder.EnterEssayFragment">
 
-        <androidx.core.widget.NestedScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/footer"
-            android:isScrollContainer="true">
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/include"
+                layout="@layout/layout_collapse_essay_title"
+                app:action="@{action}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp">
-
-                <include
-                    android:id="@+id/include"
-                    layout="@layout/layout_collapse_essay_title"
-                    app:action = "@{action}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/include"
+                android:orientation="horizontal"
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_2"
                     android:background="@drawable/bg_view_bottom_line"
                     android:gravity="center"
                     android:paddingVertical="@dimen/dp_5"
                     android:text="Word Count: 2"
                     android:textSize="19sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/include" />
-
-                <com.github.onecode369.wysiwyg.WYSIWYG
-                    android:id="@+id/editor"
-                    android:layout_width="match_parent"
-                    android:layout_height="580dp"
-                    android:layout_weight="10"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnComplete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/bg_button_corner"
-                    android:backgroundTint="@color/color_13D455"
-                    android:drawableEnd="@drawable/ic_arrow_right"
-                    android:ems="15"
-                    android:gravity="center"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="10dp"
-                    android:text="@string/complete"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="30dp"
+                    android:id="@+id/imgSpeak"
+                    android:src="@drawable/ic_speaking"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
 
-        <RelativeLayout
-            android:id="@+id/footer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:gravity="center">
+            <com.github.onecode369.wysiwyg.WYSIWYG
+                android:id="@+id/editor"
+                android:layout_width="match_parent"
+                android:layout_height="580dp"
+                android:layout_below="@id/linearLayout"
+                android:layout_marginTop="21dp"
+                android:layout_weight="10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnComplete"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@id/editor"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/color_13D455"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:ems="15"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:paddingEnd="10dp"
+                android:text="@string/complete"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/btnComplete"
+                android:layout_alignParentBottom="true"
                 android:layout_marginTop="@dimen/dp_10"
                 android:background="@color/teal_200"
                 android:scrollbarSize="0.5dp"
+                app:layout_constraintBottom_toTopOf="@id/btnComplete"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editor">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -346,9 +357,5 @@
 
             </HorizontalScrollView>
         </RelativeLayout>
-
-
-    </RelativeLayout>
-
-
+    </ScrollView>
 </layout>

@@ -1,6 +1,7 @@
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
+        'https://csspeechstorage.blob.core.windows.net/maven/'
         maven { url "https://jitpack.io" }
         google()
         mavenCentral()
