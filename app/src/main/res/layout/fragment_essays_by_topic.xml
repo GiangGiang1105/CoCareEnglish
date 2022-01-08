@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.example.cocarelish.presentation.essay.viewmodels.EssaysByTopicViewModel" />
+        <import type="com.example.cocarelish.presentation.essay.viewmodels.EssayViewModel" />
 
         <variable
             name="title"
@@ -13,7 +13,7 @@
 
         <variable
             name="action"
-            type="EssaysByTopicViewModel" />
+            type="EssayViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

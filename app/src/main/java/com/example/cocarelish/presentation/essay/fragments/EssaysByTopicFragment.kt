@@ -3,22 +3,24 @@ package com.example.cocarelish.presentation.essay.fragments
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
 import com.example.cocarelish.databinding.FragmentEssaysByTopicBinding
+import com.example.cocarelish.presentation.essay.viewmodels.EssayViewModel
 import com.example.cocarelish.presentation.essay.viewmodels.EssaysByTopicViewModel
 import com.example.cocarelish.utils.listTemplate.MenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class EssaysByTopicFragment :
-    CommonFragment<FragmentEssaysByTopicBinding, EssaysByTopicViewModel>() {
+    CommonFragment<FragmentEssaysByTopicBinding, EssayViewModel>() {
 
     private val idTopic by lazy { arguments?.getInt(ARG_ID_TOPIC) }
     private val nameTopic by lazy { arguments?.getString(ARG_NAME_TOPIC) }
 
-    override val viewModel: EssaysByTopicViewModel by viewModels()
+    override val viewModel: EssayViewModel by activityViewModels()
     override val layoutID: Int
         get() = R.layout.fragment_essays_by_topic
 
@@ -28,6 +30,7 @@ class EssaysByTopicFragment :
         idTopic?.let {
             Log.d(TAG, "onViewCreated: ")
             viewModel.getAllTestByTopic(it)
+
         }
         binding.apply {
             recyclerView.adapter = menuAdapter

@@ -37,7 +37,7 @@ class EssayRepositoryImpl @Inject constructor(private val essayApi: EssayApi) : 
 
     override fun getAllTestById(test_id: Int): Flow<Resource<TestEntity>> {
         return flow {
-            val response = safeApiCall { essayApi.getAllTestById(test_id).data }
+            val response = safeApiCall { essayApi.getDetailTest(test_id).data }
             Log.d("TAG", "getAllTestById: $response")
             emit(response)
         }

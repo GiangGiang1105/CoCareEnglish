@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/writingEssayFragment">
+    app:startDestination="@id/levelFragment">
 
     <fragment
         android:id="@+id/essayFragment"
@@ -89,19 +89,42 @@
         android:label="WritingEssayFragment" />
     <fragment
         android:id="@+id/showDetailTitleFragment"
-        android:name="com.example.cocarelish.presentation.essay.fragments.ShowDetailTitleFragment"
+        android:name="com.example.cocarelish.presentation.essay.fragments.ShowDetailTitleEssayFragment"
         android:label="ShowDetailTitleFragment" />
+    <fragment
+        android:id="@+id/topicFragment"
+        android:name="com.example.cocarelish.presentation.essay.fragments.TopicFragment"
+        android:label="TopicFragment">
+        <argument
+            android:name="IdTopic"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_topicFragment_to_essaysByTopicFragment"
+            app:destination="@id/essaysByTopicFragment" />
 
     </fragment>
 
     <fragment
         android:id="@+id/essaysByTopicFragment"
         android:name="com.example.cocarelish.presentation.essay.fragments.EssaysByTopicFragment"
-        android:label="EssaysByTopicFragment" />
-    <argument
-        android:name="IdTopic"
-        app:argType="integer" />
-    <argument
-        android:name="NameTopic"
-        app:argType="string" />
+        android:label="EssaysByTopicFragment">
+        <argument
+            android:name="IdTopic"
+            app:argType="integer" />
+        <argument
+            android:name="NameTopic"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_essaysByTopicFragment_to_showDetailEssayTitleFragment"
+            app:destination="@+id/showDetailEssayTitleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/showDetailEssayTitleFragment"
+        android:name="com.example.cocarelish.presentation.essay.fragments.ShowDetailTitleEssayFragment"
+        android:label="ShowDetailTitleEssayFragment">
+        <argument
+            android:name="IdEssay"
+            app:argType="integer" />
+    </fragment>
 </navigation>

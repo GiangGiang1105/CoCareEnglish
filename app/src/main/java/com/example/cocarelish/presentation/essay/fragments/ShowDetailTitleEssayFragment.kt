@@ -6,26 +6,32 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
-import com.example.cocarelish.databinding.FragmentLevelBinding
+import com.example.cocarelish.databinding.FragmentShowDetailEssayTitleBinding
 import com.example.cocarelish.presentation.essay.viewmodels.EssayViewModel
-import com.example.cocarelish.presentation.essay.viewmodels.LevelViewModel
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.cocarelish.presentation.essay.viewmodels.ShowDetailTitleViewModel
 
-@AndroidEntryPoint
-class LevelFragment : CommonFragment<FragmentLevelBinding, EssayViewModel>() {
+class ShowDetailTitleEssayFragment :
+    CommonFragment<FragmentShowDetailEssayTitleBinding, EssayViewModel>() {
+
     override val viewModel: EssayViewModel by activityViewModels()
     override val layoutID: Int
-        get() = R.layout.fragment_level
+        get() = R.layout.fragment_show_detail_essay_title
+    private val idEssay by lazy {
+        arguments?.getInt(ARG_ID_ESSAY)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        idEssay?.let { viewModel.getDetailTest(it) }
         binding.apply {
             action = viewModel
-            imageResource = R.drawable.ic_back
+            viewModel.levelName.observe(viewLifecycleOwner) {
+                title = it
+            }
         }
-        viewModel.apply {
-            getAllLevels()
-            getAllTypes()
-        }
+    }
+
+    companion object {
+        const val ARG_ID_ESSAY = "IdEssay"
     }
 }

@@ -1,5 +1,6 @@
 package com.example.cocarelish.base
 
+import android.app.ProgressDialog.show
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -33,7 +35,7 @@ abstract class CommonFragment<T : ViewDataBinding, VM : CommonViewModel> :
     @get:LayoutRes
     abstract val layoutID: Int
 
-    private val loadingDialog : LoadingDialog by lazy{ LoadingDialog(requireActivity()) }
+//    private val loadingDialog : LoadingDialog by lazy{ LoadingDialog(requireActivity()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -94,9 +96,16 @@ abstract class CommonFragment<T : ViewDataBinding, VM : CommonViewModel> :
 
     open fun showLoadingDialog(isShowing: Boolean){
         if(isShowing){
-            loadingDialog.startLoading()
+//            LoadingDialog.show.startLoading()
+            LoadingDialog().show(childFragmentManager,"aa")
         }else{
-            loadingDialog.dismissDialog()
+//            loadingDialog.dismissDialog()
+            childFragmentManager.findFragmentByTag("aa")?.let {
+                (it as DialogFragment).dismiss()
+                activity
+            }
+//            LoadingDialog().dismissDialog()
+
         }
     }
 

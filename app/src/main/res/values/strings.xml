@@ -167,4 +167,10 @@
 
     <string name="teacher">Teacher: %s</string>
     <string name="update">Update: %s</string>
+    <string name="let_s_go">Let\'s go</string>
+    <string name="open_our_note">Open our note</string>
+    <string name="view_full_screen">View full screen</string>
+    <string name="large">Large</string>
+    <string name="medium">Medium</string>
+    <string name="small">Small</string>
 </resources>

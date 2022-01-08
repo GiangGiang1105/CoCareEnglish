@@ -2,10 +2,13 @@ package com.example.cocarelish.presentation.essay.viewmodels
 
 import android.app.Application
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonViewModel
 import com.example.cocarelish.domain.essay.usecase.TestByTopicUseCase
+import com.example.cocarelish.presentation.essay.fragments.ShowDetailTitleEssayFragment
 import com.example.cocarelish.utils.Resource
 import com.example.cocarelish.utils.listTemplate.ItemListModel
 import com.example.cocarelish.utils.listTemplate.ItemListType
@@ -54,5 +57,15 @@ class EssaysByTopicViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+
+
+    override fun onNavigate(itemListModel: ItemListModel) {
+        navigate(
+            R.id.action_essaysByTopicFragment_to_showDetailEssayTitleFragment, bundle = bundleOf(
+                ShowDetailTitleEssayFragment.ARG_ID_ESSAY to itemListModel.id
+            )
+        )
     }
 }
