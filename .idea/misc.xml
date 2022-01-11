@@ -77,6 +77,10 @@
         <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/toolbar.xml" value="0.18489583333333334" />
         <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/layout/toolbar_collapse.xml" value="0.16458333333333333" />
         <entry key="..\:/AndroidStudioProject/CoCareLish/app/src/main/res/menu/bottom_menu.xml" value="0.13489583333333333" />
+        <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/drawable/bg_payment_selection_corner.xml" value="0.112890625" />
+        <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/drawable/bg_payment_status_corner.xml" value="0.112890625" />
+        <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/drawable/btn_writing_essay_normal.xml" value="0.112890625" />
+        <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/drawable/btn_writing_essay_selector_1.xml" value="0.112890625" />
         <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/drawable/ic_auth_back.xml" value="0.146484375" />
         <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/drawable/ic_auth_facebook.xml" value="0.287890625" />
         <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/drawable/ic_back.xml" value="0.14921875" />
@@ -90,6 +94,9 @@
         <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/layout/fragment_sign_up.xml" value="0.15" />
         <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/layout/fragment_writing_review.xml" value="0.25" />
         <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/layout/fragment_writting_task.xml" value="0.25" />
+        <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/layout/toolbar_collapse.xml" value="0.17929117442668518" />
+        <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/layout/toolbar_normal.xml" value="0.10078125" />
+        <entry key="..\:/Workstation/do_an_tot_nghiep/programming/android_app/student_app/CoCareEnglish/app/src/main/res/layout/toolbar_payment.xml" value="0.22" />
       </map>
     </option>
   </component>

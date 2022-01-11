@@ -16,4 +16,5 @@ class WritingEssayViewModel(application: Application) : CommonViewModel(applicat
         Log.d("TAGG", "imgRecordStateClick: ")
         isRecording.value = isRecording.value?.not()
     }
+
 }

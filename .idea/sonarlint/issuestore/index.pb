@@ -9,8 +9,6 @@ Iapp/src/main/java/com/example/cocarelish/data/entity/ItemListViewModel.kt,2\a\
 Papp/src/main/java/com/example/cocarelish/utils/databinding/ViewBindingAdapter.kt,e\0\e0825652f5d25e4623ba480ca027058d6e53c9b6
 à
 Xapp/src/main/java/com/example/cocarelish/presentation/essay/viewmodels/LevelViewModel.kt,8\e\8e3bc53cc250b755a19e02220722cec148e41a2c
-ê
-`app/src/main/java/com/example/cocarelish/presentation/essay/fragments/ShowDetailTitleFragment.kt,3\7\37f0669c12d175ac058caa8d2cb34a697bfdde29
 í
 bapp/src/main/java/com/example/cocarelish/presentation/essay/viewmodels/ShowDetailTitleViewModel.kt,4\b\4bf6effbb404d60889b220c509c52466a5b41c85
 è
