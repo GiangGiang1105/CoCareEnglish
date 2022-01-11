@@ -1,11 +1,8 @@
 package com.example.cocarelish.data.essay
 
-import com.example.cocarelish.data.authentication.remote.api.AuthApi
-import com.example.cocarelish.data.authentication.repository.AuthRepositoryImpl
 import com.example.cocarelish.data.common.module.NetworkModule
 import com.example.cocarelish.data.essay.remote.api.EssayApi
 import com.example.cocarelish.data.essay.repository.EssayRepositoryImpl
-import com.example.cocarelish.domain.auth.AuthRepository
 import com.example.cocarelish.domain.essay.EssayRepository
 import dagger.Module
 import dagger.Provides

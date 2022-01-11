@@ -16,6 +16,7 @@ import com.example.cocarelish.domain.essay.usecase.*
 import com.example.cocarelish.presentation.essay.fragments.EssaysByTopicFragment
 import com.example.cocarelish.presentation.essay.fragments.ShowDetailTitleEssayFragment
 import com.example.cocarelish.presentation.essay.fragments.TopicFragment
+import com.example.cocarelish.presentation.essay.fragments.WritingEssayFragment
 import com.example.cocarelish.utils.LinkImage
 import com.example.cocarelish.utils.Resource
 import com.example.cocarelish.utils.Title
@@ -51,10 +52,12 @@ class EssayViewModel @Inject constructor(
     private val _topicNameCurrent: MutableLiveData<String> = MutableLiveData()
     val topicNameCurrent: LiveData<String> = _topicNameCurrent
 
-    var listDataTopic = MutableLiveData<List<ItemListModel>>()
+    var listDataTopic = MutableLiveData<List<ItemListModel>>(mutableListOf())
         private set
-    var listDataTestByTopic = MutableLiveData<List<ItemListModel>>()
+    var listDataTestByTopic = MutableLiveData<List<ItemListModel>>(mutableListOf())
         private set
+
+    val emptyList = mutableListOf<ItemListModel>()
 
     var listData = MediatorLiveData<List<ItemListModel>>().apply {
         addSource(listDataTopic) {
@@ -80,8 +83,9 @@ class EssayViewModel @Inject constructor(
     private val _listTypes: MutableLiveData<List<Type>> = MutableLiveData()
     val listTypes: LiveData<List<Type>> = _listTypes
 
-    var detailTest: MutableLiveData<Test> = MutableLiveData()
-        private set
+    private val _detailEssay = MutableLiveData<Test>()
+    override val detailEssay: LiveData<Test>
+        get() = _detailEssay
 
     override fun changeStateCollapseView() {
         super.changeStateCollapseView()
@@ -107,18 +111,20 @@ class EssayViewModel @Inject constructor(
     }
 
     fun getAllTypes() {
-
         viewModelScope.launch {
             typeUseCase.execute().onStart {
-                 showLoadingDialog(true)
+                showLoadingDialog(true)
             }.catch { exeption ->
-                 showLoadingDialog(false)
+                showLoadingDialog(false)
                 Log.d(TAG, "Get Types Extension Error: ${exeption.message}")
             }.collect { baseResult ->
-                 showLoadingDialog(false)
+                showLoadingDialog(false)
                 Log.d(TAG, "getAllTypes: $baseResult")
                 when (baseResult) {
-                    is Resource.Success -> _listTypes.postValue(baseResult.value.types)
+                    is Resource.Success -> {
+                        Log.d(TAG, "getAllTypes: qwe")
+                        _listTypes.postValue(baseResult.value.types)
+                    }
                 }
             }
         }
@@ -126,7 +132,8 @@ class EssayViewModel @Inject constructor(
 
     fun onClickNormal() {
         Log.d(TAG, "onClickNormal(): called with direct to normal topic")
-        _levelNameCurrent.postValue(listLevels.value?.get(0).toString())
+        _levelNameCurrent.postValue(listLevels.value?.get(0)?.name)
+        listData.value = emptyList
         navigate(
             R.id.action_levelFragment_to_topicFragment,
             bundle = bundleOf(TopicFragment.ARG_ID_TOPIC to 3)
@@ -140,7 +147,8 @@ class EssayViewModel @Inject constructor(
 
     fun onClickIeltsWritingTask1() {
         Log.d("TAGG", "onClickIeltsWritingTask1(): called with direct to normal topic")
-        _levelNameCurrent.postValue(listTypes.value?.get(0).toString())
+        _levelNameCurrent.postValue(listTypes.value?.get(0)?.name)
+        listData.value = emptyList
         navigate(
             R.id.action_levelFragment_to_topicFragment,
             bundle = bundleOf(TopicFragment.ARG_ID_TOPIC to 1)
@@ -149,7 +157,8 @@ class EssayViewModel @Inject constructor(
 
     fun onClickIeltsWritingTask2() {
         Log.d(TAG, "onClickIeltsWritingTask2(): called with direct to normal topic")
-        _levelNameCurrent.postValue(listTypes.value?.get(1).toString())
+        _levelNameCurrent.postValue(listTypes.value?.get(1)?.name)
+        listData.value = emptyList
         navigate(
             R.id.action_levelFragment_to_topicFragment,
             bundle = bundleOf(TopicFragment.ARG_ID_TOPIC to 2)
@@ -171,6 +180,7 @@ class EssayViewModel @Inject constructor(
                 Log.d(TAG, "getAllTopics: $baseResult")
                 when (baseResult) {
                     is Resource.Success -> {
+                        mListItemTopic.clear()
                         for (item in baseResult.value.topics) {
                             mListItemTopic.add(
                                 ItemListModel(
@@ -182,7 +192,7 @@ class EssayViewModel @Inject constructor(
                                 )
                             )
                         }
-                        listDataTopic.postValue(mListItemTopic)
+                        listDataTopic.value = mListItemTopic
                     }
                 }
             }
@@ -204,6 +214,7 @@ class EssayViewModel @Inject constructor(
                 Log.d(TAG, "getAllTestByTopic: success with data = $baseResult")
                 when (baseResult) {
                     is Resource.Success -> {
+                        mListItemTestByTopic.clear()
                         for (item in baseResult.value.tests) {
                             mListItemTestByTopic.add(
                                 ItemListModel(
@@ -220,9 +231,31 @@ class EssayViewModel @Inject constructor(
         }
     }
 
+    fun addTopicSource() {
+//        listData.addSource(listDataTopic){
+        listData.value = listDataTopic.value
+
+    }
+
+    fun addLevelSource() {
+//        listData.addSource(listDataTestByTopic) {
+        listData.value = listDataTestByTopic.value
+
+    }
+
+    fun onClickLetsGo() {
+        Log.d(TAG, "onClickLetsGo: with value id = ${detailEssay.value?.id}")
+        navigate(
+            R.id.action_showDetailEssayTitleFragment_to_writingEssayFragment, bundleOf(
+                WritingEssayFragment.ARG_ID_ESSAY to detailEssay.value?.id
+            )
+        )
+    }
+
     override fun onNavigate(itemListModel: ItemListModel) {
         when (itemListModel.itemListType) {
             ItemListType.ITEM_LIST_ESSAY_BY_TOPIC -> {
+                Log.d(TAG, "onNavigate: ${itemListModel.id}")
                 navigate(
                     R.id.action_essaysByTopicFragment_to_showDetailEssayTitleFragment,
                     bundle = bundleOf(
@@ -231,6 +264,8 @@ class EssayViewModel @Inject constructor(
                 )
             }
             ItemListType.ITEM_TOPIC -> {
+//                listData.removeSource(listDataTopic)
+                listData.value = emptyList
                 _topicNameCurrent.postValue(itemListModel.title)
                 navigate(
                     R.id.action_topicFragment_to_essaysByTopicFragment,
@@ -260,7 +295,7 @@ class EssayViewModel @Inject constructor(
                     Log.d(TAG, "getDetailTest: success with data = $baseResult")
                     when (baseResult) {
                         is Resource.Success -> {
-                            detailTest.postValue(baseResult.value.tests[0])
+                            _detailEssay.postValue(baseResult.value.tests[0])
                         }
                     }
                 }

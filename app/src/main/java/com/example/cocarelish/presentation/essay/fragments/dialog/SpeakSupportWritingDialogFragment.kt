@@ -18,7 +18,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.databinding.FragmentSpeakSupportWritingBinding
-import com.example.cocarelish.presentation.order.viewmodels.WritingEssayViewModel
+import com.example.cocarelish.presentation.essay.viewmodels.WritingEssayViewModel
 import java.util.*
 
 

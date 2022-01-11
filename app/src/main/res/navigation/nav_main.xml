@@ -83,10 +83,7 @@
             android:id="@+id/action_levelFragment_to_topicFragment"
             app:destination="@id/topicFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/writingEssayFragment"
-        android:name="com.example.cocarelish.presentation.order.fragments.WritingEssayFragment"
-        android:label="WritingEssayFragment" />
+
     <fragment
         android:id="@+id/showDetailTitleFragment"
         android:name="com.example.cocarelish.presentation.essay.fragments.ShowDetailTitleEssayFragment"
@@ -126,5 +123,29 @@
         <argument
             android:name="IdEssay"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_showDetailEssayTitleFragment_to_writingEssayFragment"
+            app:destination="@id/writingEssayFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/writingEssayFragment"
+        android:name="com.example.cocarelish.presentation.essay.fragments.WritingEssayFragment"
+        android:label="WritingEssayFragment">
+        <argument
+            android:name="IdEssay"
+            android:defaultValue="-1"
+            app:argType="integer" />
+
+        <argument
+            android:name="LevelName"
+            android:defaultValue="null"
+            app:argType="string" />
+
+        <argument
+            android:name="TopicName"
+            android:defaultValue="null"
+            app:argType="string" />
     </fragment>
 </navigation>

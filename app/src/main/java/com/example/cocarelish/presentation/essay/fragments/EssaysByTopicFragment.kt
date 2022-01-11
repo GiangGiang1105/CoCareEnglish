@@ -44,6 +44,11 @@ class EssaysByTopicFragment :
         }
     }
 
+    override fun onDestroy() {
+        viewModel.addTopicSource()
+        super.onDestroy()
+    }
+
     companion object {
         const val ARG_ID_TOPIC = "IdTopic"
         const val ARG_NAME_TOPIC = "NameTopic"

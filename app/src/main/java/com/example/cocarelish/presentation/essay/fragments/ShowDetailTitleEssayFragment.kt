@@ -1,6 +1,7 @@
 package com.example.cocarelish.presentation.essay.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -27,9 +28,15 @@ class ShowDetailTitleEssayFragment :
             action = viewModel
             viewModel.levelName.observe(viewLifecycleOwner) {
                 title = it
+                Log.d(TAG, "title = $it")
             }
         }
     }
+//
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        activity?.viewModelStore?.clear()
+//    }
 
     companion object {
         const val ARG_ID_ESSAY = "IdEssay"

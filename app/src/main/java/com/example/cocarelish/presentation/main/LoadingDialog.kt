@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.cocarelish.R
 import java.lang.IllegalStateException
 
-class LoadingDialog: DialogFragment() {
+class LoadingDialog(): DialogFragment() {
   /*  private var dialog: AlertDialog? = null*/
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -55,20 +55,15 @@ class LoadingDialog: DialogFragment() {
         dialog?.dismiss()
     }
 
-//    override fun show(manager: FragmentManager, tag: String?) {
-//        try {
-//            val ft: FragmentTransaction = manager.beginTransaction()
-//            val prev = manager.findFragmentByTag("dialog")
-//            ft.add(this, tag)
-//            if (prev != null) {
-//                ft.remove(prev);
-//            }
-//            ft.addToBackStack(null)
-//            LoadingDialog().show(manager,tag)
-//        } catch (e: IllegalStateException) {
-//            Log.d("ABSDIALOGFRAG", "Exception", e)
-//        }
-//    }
+    override fun show(manager: FragmentManager, tag: String?) {
+        try {
+            val ft: FragmentTransaction = manager.beginTransaction()
+            ft.add(this, tag)
+            ft.commitAllowingStateLoss()
+        } catch (e: IllegalStateException) {
+            Log.d("ABSDIALOGFRAG", "Exception", e)
+        }
+    }
 
 //    fun getInstance
 }

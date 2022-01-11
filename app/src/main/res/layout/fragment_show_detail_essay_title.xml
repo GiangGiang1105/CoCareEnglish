@@ -41,8 +41,8 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
             android:layout_gravity="center"
+            android:layout_marginTop="28dp"
             android:text="@string/adjust_your_text_size"
             android:textColor="@color/color_7D7979"
             android:textSize="@dimen/sp17"
@@ -79,20 +79,21 @@
         <include
             android:id="@+id/includeTitleContent"
             layout="@layout/layout_collapse_essay_title"
-            app:action="@{action}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_20"
+            app:action="@{action}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutChangeTextSize"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent" />
+            app:viewModel="@{action}" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_20"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="@dimen/dp_20"
             android:background="@drawable/bg_view_corner"
             app:cardCornerRadius="@dimen/dp_5"
             app:cardElevation="@dimen/dp_10"
@@ -114,10 +115,10 @@
             android:id="@+id/txt_essay_requirement"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="@dimen/dp_20"
             android:text="@string/essay_writing_requirement"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -140,15 +141,14 @@
             android:layout_height="54dp"
             android:layout_marginHorizontal="@dimen/dp_20"
             android:layout_marginTop="@dimen/dp_20"
-            android:drawableEnd="@drawable/ic_arrow_right"
-            android:paddingHorizontal="@dimen/dp_20"
-            android:textColor="@color/white"
             android:background="@drawable/btn_writing_essay_selector_2"
+            android:drawableEnd="@drawable/ic_arrow_right"
+            android:onClick="@{() -> action.onClickLetsGo()}"
+            android:paddingHorizontal="@dimen/dp_20"
             android:text="@string/let_s_go"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appCompatButton" />
-
-
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

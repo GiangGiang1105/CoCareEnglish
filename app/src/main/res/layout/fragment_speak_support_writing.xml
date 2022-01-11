@@ -7,7 +7,7 @@
 
         <variable
             name="action"
-            type="com.example.cocarelish.presentation.order.viewmodels.WritingEssayViewModel" />
+            type="com.example.cocarelish.presentation.essay.viewmodels.WritingEssayViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
