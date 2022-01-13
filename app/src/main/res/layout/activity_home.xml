@@ -10,31 +10,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/mainContainerView"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/ic_general_background"
-            android:layout_height="match_parent">
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/mainContainerView"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:elevation="0dp"
-                app:defaultNavHost="true"
-                app:layout_anchorGravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:navGraph="@navigation/nav_main" />
-        </androidx.core.widget.NestedScrollView>
+            android:elevation="0dp"
+            app:defaultNavHost="true"
+            app:layout_anchorGravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/nav_main" />
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:visibility="gone"
             android:background="@color/color_0E77A4"
+            android:visibility="gone"
             app:backgroundTint="@color/color_0E77A4"
             app:elevation="10dp"
             app:hideOnScroll="true">

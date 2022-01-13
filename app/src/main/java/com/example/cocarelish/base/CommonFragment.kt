@@ -102,7 +102,6 @@ abstract class CommonFragment<T : ViewDataBinding, VM : CommonViewModel> :
 //            loadingDialog.dismissDialog()
             childFragmentManager.findFragmentByTag("aa")?.let {
                 (it as DialogFragment).dismiss()
-                activity
             }
 //            LoadingDialog().dismissDialog()
 

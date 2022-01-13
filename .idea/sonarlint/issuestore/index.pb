@@ -14,6 +14,4 @@ bapp/src/main/java/com/example/cocarelish/presentation/essay/viewmodels/ShowDeta
 è
 _app/src/main/java/com/example/cocarelish/presentation/essay/viewmodels/WritingEssayViewModel.kt,d\d\dd4bf51799b5bc2f907a4412607c5b966600e9ae
 Ü
-Vapp/src/main/java/com/example/cocarelish/presentation/essay/fragments/LevelFragment.kt,7\2\724dcc6e0fb988a0254ef050e1912f3aecb008f1
-Ü
 Vapp/src/main/java/com/example/cocarelish/presentation/auth/viewmodels/AuthViewModel.kt,e\1\e19a0da61f732fe29bd71174627e2cdb301bea0e

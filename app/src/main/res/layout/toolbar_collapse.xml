@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="title"
             type="int" />
@@ -25,6 +26,7 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
+
         android:theme="@style/Theme.Scroll.AppBarOverlay">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -34,40 +36,42 @@
             android:layout_height="match_parent"
             android:alpha="0.8"
             android:background="@{imageResource,  default = @drawable/background_level}"
+            android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="@{title, default = 0}"
             app:text="@{text}"
+            app:title="@{title, default = 0}"
             app:titleCollapseMode="scale"
             app:toolbarId="@+id/toolbar">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="bottom"
                 android:layout_marginStart="30dp"
-                android:layout_marginBottom="60dp">
+                android:layout_marginBottom="60dp"
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="35sp"
-                    android:text="35 %"/>
+                    android:text="35 %"
+                    android:textSize="35sp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:elevation="8dp"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/Theme.Scroll.PopupOverlay"
-                android:elevation="8dp">
+                app:popupTheme="@style/Theme.Scroll.PopupOverlay">
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{() -> action.onBackStack()}"
-                    android:background="@drawable/ic_auth_back" />
+                    android:background="@drawable/ic_auth_back"
+                    android:onClick="@{() -> action.onBackStack()}" />
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

@@ -26,10 +26,6 @@ class TopicFragment : CommonFragment<FragmentTopicBinding, EssayViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val menuAdapter = MenuAdapter(viewModel)
-        idTopic?.let {
-            Log.d(TAG, "onViewCreated: ")
-            viewModel.getAllTopics(it)
-        }
         binding.apply {
             recyclerView.adapter = menuAdapter
             recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -43,6 +39,10 @@ class TopicFragment : CommonFragment<FragmentTopicBinding, EssayViewModel>() {
         viewModel.listData.observe(viewLifecycleOwner) {
             Log.d(TAG, "onViewCreated: $it")
             menuAdapter.submit(it)
+        }
+        idTopic?.let {
+            Log.d(TAG, "onViewCreated: ")
+            viewModel.getAllTopics(it)
         }
     }
 

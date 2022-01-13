@@ -93,7 +93,6 @@ class EssayViewModel @Inject constructor(
     }
 
     fun getAllLevels() {
-
         viewModelScope.launch {
             levelUseCase.execute().onStart {
 //                 showLoadingDialog(true)
@@ -172,11 +171,11 @@ class EssayViewModel @Inject constructor(
                 Log.d(TAG, "getAllTopics: onStart")
                 showLoadingDialog(true)
             }.catch { exeption ->
-                showLoadingDialog(false)
+//                showLoadingDialog(false)
                 Log.d(TAG, "Get Topics Extension Error: ${exeption.message}")
             }.collect { baseResult ->
                 Log.d(TAG, "getAllTopics: true")
-                showLoadingDialog(false)
+//                showLoadingDialog(false)
                 Log.d(TAG, "getAllTopics: $baseResult")
                 when (baseResult) {
                     is Resource.Success -> {
