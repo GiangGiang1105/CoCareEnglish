@@ -10,6 +10,7 @@ import com.example.cocarelish.base.CommonEvent
 import com.example.cocarelish.base.CommonViewModel
 import com.example.cocarelish.data.authentication.remote.dto.LoginRequest
 import com.example.cocarelish.domain.auth.usecase.LoginUseCase
+import com.example.cocarelish.utils.CoCareLishPrefence
 import com.example.cocarelish.utils.Resource
 import com.example.cocarelish.utils.Title
 import com.example.cocarelish.utils.Title.HOME
@@ -22,37 +23,45 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val authUseCase: LoginUseCase, application: Application): CommonViewModel(application) {
+class LoginViewModel @Inject constructor(
+    private val authUseCase: LoginUseCase,
+    application: Application
+) : CommonViewModel(application) {
 
     val userName = MutableLiveData<String>("admin@email.com")
     val passWord = MutableLiveData<String>("12345678")
+    private val myApplication = application
 
     override fun onNavigate(itemTitle: Int) {
-       viewModelScope.launch {
-           when(itemTitle){
-               Title.AUTH_SIGN_UP -> evenSender.send(CommonEvent.OnNavigation(R.id.action_loginFragment_to_signUpFragment))
-               Title.HOME -> evenSender.send(CommonEvent.OnNavigation(R.id.action_loginFragment_to_homeFragment))
-           }
-       }
+        viewModelScope.launch {
+            when (itemTitle) {
+                Title.AUTH_SIGN_UP -> evenSender.send(CommonEvent.OnNavigation(R.id.action_loginFragment_to_signUpFragment))
+                Title.HOME -> evenSender.send(CommonEvent.OnNavigation(R.id.action_loginFragment_to_homeFragment))
+            }
+        }
     }
 
-    fun login(){
+    fun login() {
 
-        val loginRequest = LoginRequest(userName.value?: "", passWord.value?: "")
+        val loginRequest = LoginRequest(userName.value ?: "", passWord.value ?: "")
 
         viewModelScope.launch {
             authUseCase.execute(loginRequest).onStart {
                 showLoadingDialog(true)
-            }.catch {
-                exeption -> showLoadingDialog(false)
+            }.catch { exeption ->
+                showLoadingDialog(false)
                 Log.d(TAG, "Login Extension Error: ${exeption.message}")
-            }.collect {
-                baseResult ->
+            }.collect { baseResult ->
                 showLoading(false)
-                when(baseResult){
+                when (baseResult) {
                     is Resource.Success -> {
                         showToast(LOGIN_SUCCESS)
                         showLoadingDialog(false)
+                        Log.e(TAG, "login: with id ${baseResult.value.user_info.id}", )
+                        CoCareLishPrefence(myApplication.baseContext).apply {
+                            init()
+                            putIdUser(baseResult.value.user_info.id)
+                        }
                         onNavigate(HOME)
                     }
                 }

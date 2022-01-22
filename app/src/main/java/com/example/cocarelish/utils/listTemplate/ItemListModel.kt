@@ -14,9 +14,9 @@ class ItemListModel(
     val status: Int = 0,
     val type_name: String = "",
     val question_of_test: String = "",
-    val teacher_name: String = "",
-    val content: String = "",
-    val score: String = "",
+    val teacher_name: String? = "",
+    val content: String? = "",
+    val score: String? = "",
     val updated_at: String = ""
 )
 
@@ -24,7 +24,8 @@ enum class ItemListType {
     ITEM_LEVEL,
     ITEM_TOPIC,
     ITEM_LIST_ESSAY_BY_TOPIC,
-    ITEM_LIST_MY_ESSAY
+    ITEM_LIST_MY_ESSAY,
+    ITEM_GENERAL_ESSAY
 }
 
 object MenuItemDiffCallback : DiffUtil.ItemCallback<ItemListModel>() {

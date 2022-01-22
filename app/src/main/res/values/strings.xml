@@ -174,4 +174,22 @@
     <string name="medium">Medium</string>
     <string name="small">Small</string>
     <string name="word_count_2">Word Count: 2</string>
+    <string name="text_essay_information">Essay information</string>
+    <string name="text_standard">Fix errors, grade and give comments according to 4 criteria</string>
+    <string name="text_deadline">Deadline</string>
+    <string name="deadline_hour">%d hour</string>
+    <string name="total_price">Total price</string>
+    <string name="text_unit_price_essay">%d dong</string>
+    <string name="text_submit">Submit</string>
+    <string name="title_submit">Submit your order</string>
+    <string name="toast_length_content_short">Your content length is too short. Please enter more content!</string>
+    <string name="title_general_essay">General Essay</string>
+    <string name="title_new_essay">NEW ESSAY</string>
+    <string name="title_my_essay">MY ESSAY</string>
+    <string name="text_name">Name</string>
+    <string name="text_email">Email</string>
+    <string name="text_address">Address</string>
+    <string name="text_gender">Gender</string>
+    <string name="text_back">Back</string>
+    <string name="text_phone">Phone</string>
 </resources>

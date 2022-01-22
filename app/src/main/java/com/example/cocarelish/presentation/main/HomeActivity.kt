@@ -54,6 +54,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
             when(destination.id){
                 R.id.authFragment, R.id.loginFragment, R.id.signUpFragment ->
                     viewVisibility(View.GONE)
+                else -> viewVisibility(View.VISIBLE)
             }
         }
     }

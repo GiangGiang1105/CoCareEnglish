@@ -2,13 +2,14 @@ package com.example.cocarelish.presentation.essay.fragments
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
 import com.example.cocarelish.databinding.FragmentWritingEssayBinding
@@ -25,7 +26,7 @@ class WritingEssayFragment : CommonFragment<FragmentWritingEssayBinding, Writing
         const val ARG_TOPIC_NAME = "TopicName"
     }
 
-    override val viewModel: WritingEssayViewModel by viewModels()
+    override val viewModel: WritingEssayViewModel by activityViewModels()
     override val layoutID: Int
         get() = R.layout.fragment_writing_essay
 
@@ -40,25 +41,35 @@ class WritingEssayFragment : CommonFragment<FragmentWritingEssayBinding, Writing
         arguments?.getString(ARG_TOPIC_NAME)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //setupListener()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+        setupListener()
+        initView()
         binding.apply {
             action = viewModel
-            Log.e(TAG, "onViewCreated: writing essay fragment ${idEssay}", )
-            idEssay?.let { viewModel.getDetailTest(it) }
+            Log.e(TAG, "onViewCreated: writing essay fragment ${idEssay}")
+            idEssay?.let {
+                viewModel.getDetailEssay(it)
+            }
+            btnComplete.setOnClickListener {
+                viewModel.navigationWritingEssayFragmentToPaymentFragment(binding.editor.html)
+            }
+        }
+        levelName?.let {
+            Log.d(TAG, "onViewCreated:level name  $it")
+            viewModel.setLevelName(it)
+        }
+        topicName?.let {
+            Log.d(TAG, "onViewCreated: topic name $it")
+            viewModel.setTopicName(it)
         }
         requestPermissionLauncher =
             registerForActivityResult(
                 ActivityResultContracts.RequestPermission()
             ) { isGranted: Boolean ->
                 if (isGranted) {
-                    SpeakSupportWritingDialogFragment().show(childFragmentManager,"tag")
+                    SpeakSupportWritingDialogFragment().show(childFragmentManager, "tag")
                 } else {
                     // Explain to the user that the feature is unavailable because the
                     // features requires a permission that the user has denied. At the
@@ -79,8 +90,9 @@ class WritingEssayFragment : CommonFragment<FragmentWritingEssayBinding, Writing
             RQ_SPEECH_REC -> {
                 // If request is cancelled, the result arrays are empty.
                 if ((grantResults.isNotEmpty() &&
-                            grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    SpeakSupportWritingDialogFragment().show(childFragmentManager,"tag")
+                            grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                ) {
+                    SpeakSupportWritingDialogFragment().show(childFragmentManager, "tag")
                 } else {
                     // Explain to the user that the feature is unavailable because
                     // the features requires a permission that the user has denied.
@@ -100,24 +112,139 @@ class WritingEssayFragment : CommonFragment<FragmentWritingEssayBinding, Writing
     }
 
     private fun checkPermissionAudioRecord() {
-        when{
+        when {
             ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.RECORD_AUDIO
             ) == PackageManager.PERMISSION_GRANTED -> {
-                SpeakSupportWritingDialogFragment().show(childFragmentManager,"tag")
+                SpeakSupportWritingDialogFragment().show(childFragmentManager, "tag")
             }
             else -> {
                 requestPermissionLauncher.launch(
-                    Manifest.permission.RECORD_AUDIO)
+                    Manifest.permission.RECORD_AUDIO
+                )
             }
         }
     }
 
-  /*  private fun setupListener() {
+    private fun setupListener() {
         binding.imgSpeak.setOnClickListener {
             checkPermissionAudioRecord()
             Log.d("TAGG", "setupListener: ")
         }
-    }*/
+    }
+
+
+    private fun initView() {
+        val wysiwygEditor = binding.editor
+        wysiwygEditor.setEditorHeight(200)
+        wysiwygEditor.setEditorFontSize(16)
+        wysiwygEditor.setPadding(10, 10, 10, 10)
+        wysiwygEditor.setPlaceholder("Insert your notes here...")
+        binding.actionUndo.setOnClickListener {
+            Log.e("TAG", "onCreate: wqwewq")
+            wysiwygEditor.undo()
+        }
+
+        binding.actionRedo.setOnClickListener { wysiwygEditor.redo() }
+
+        binding.actionBold.setOnClickListener { wysiwygEditor.setBold() }
+
+        binding.actionItalic.setOnClickListener { wysiwygEditor.setItalic() }
+
+        binding.actionSubscript.setOnClickListener { wysiwygEditor.setSubscript() }
+//
+        binding.actionSuperscript.setOnClickListener {
+
+            wysiwygEditor.setSuperscript()
+        }
+
+        binding.actionStrikethrough.setOnClickListener { wysiwygEditor.setStrikeThrough() }
+
+        binding.actionUnderline.setOnClickListener { wysiwygEditor.setUnderline() }
+
+        binding.actionHeading1.setOnClickListener {
+            wysiwygEditor.setHeading(
+                1
+            )
+        }
+
+        binding.actionHeading2.setOnClickListener {
+            wysiwygEditor.setHeading(
+                2
+            )
+        }
+
+        binding.actionHeading3.setOnClickListener {
+            wysiwygEditor.setHeading(
+                3
+            )
+        }
+
+        binding.actionHeading4.setOnClickListener {
+            wysiwygEditor.setHeading(
+                4
+            )
+        }
+
+        binding.actionHeading5.setOnClickListener {
+            wysiwygEditor.setHeading(
+                5
+            )
+        }
+
+        binding.actionHeading6.setOnClickListener {
+            wysiwygEditor.setHeading(
+                6
+            )
+        }
+
+        binding.actionTxtColor.setOnClickListener(object : View.OnClickListener {
+            private var isChanged = false
+            override fun onClick(v: View) {
+                wysiwygEditor.setTextColor(if (isChanged) Color.BLACK else Color.RED)
+                isChanged = !isChanged
+            }
+        })
+
+        binding.actionIndent.setOnClickListener { wysiwygEditor.setIndent() }
+
+        binding.actionOutdent.setOnClickListener { wysiwygEditor.setOutdent() }
+
+        binding.actionAlignLeft.setOnClickListener { wysiwygEditor.setAlignLeft() }
+
+        binding.actionAlignCenter.setOnClickListener { wysiwygEditor.setAlignCenter() }
+
+        binding.actionAlignRight.setOnClickListener { wysiwygEditor.setAlignRight() }
+
+        binding.actionAlignJustify.setOnClickListener { wysiwygEditor.setAlignJustifyFull() }
+
+        binding.actionBlockquote.setOnClickListener { wysiwygEditor.setBlockquote() }
+
+        binding.actionInsertBullets.setOnClickListener { wysiwygEditor.setBullets() }
+
+        binding.actionInsertNumbers.setOnClickListener { wysiwygEditor.setNumbers() }
+
+        binding.actionInsertImage.setOnClickListener {
+            wysiwygEditor.insertImage(
+                "https://i.postimg.cc/JzL891Fm/maxresdefault.jpg",
+                "Night Sky"
+            )
+        }
+
+        binding.actionInsertCheckbox.setOnClickListener { wysiwygEditor.insertTodo() }
+
+        var visible = false
+
+        binding.preview.setOnClickListener {
+            if (!visible) {
+                wysiwygEditor.setInputEnabled(false)
+                binding.preview.setImageResource(R.drawable.visibility_off)
+            } else {
+                wysiwygEditor.setInputEnabled(true)
+                binding.preview.setImageResource(R.drawable.visibility)
+            }
+            visible = !visible
+        }
+    }
 }

@@ -17,6 +17,7 @@ import com.example.cocarelish.presentation.essay.fragments.EssaysByTopicFragment
 import com.example.cocarelish.presentation.essay.fragments.ShowDetailTitleEssayFragment
 import com.example.cocarelish.presentation.essay.fragments.TopicFragment
 import com.example.cocarelish.presentation.essay.fragments.WritingEssayFragment
+import com.example.cocarelish.utils.CoCareLishPrefence
 import com.example.cocarelish.utils.LinkImage
 import com.example.cocarelish.utils.Resource
 import com.example.cocarelish.utils.Title
@@ -42,6 +43,8 @@ class EssayViewModel @Inject constructor(
 
     override var isCollapse = MutableLiveData(false)
         private set
+
+    private val myApplication: Application = application
 
     private val _isVisibleType: MutableLiveData<Boolean> = MutableLiveData(false)
     val isVisibleType: LiveData<Boolean> = _isVisibleType
@@ -133,6 +136,7 @@ class EssayViewModel @Inject constructor(
         Log.d(TAG, "onClickNormal(): called with direct to normal topic")
         _levelNameCurrent.postValue(listLevels.value?.get(0)?.name)
         listData.value = emptyList
+        listTypes.value?.get(2)?.id?.let { saveTypeId(it) }
         navigate(
             R.id.action_levelFragment_to_topicFragment,
             bundle = bundleOf(TopicFragment.ARG_ID_TOPIC to 3)
@@ -148,6 +152,7 @@ class EssayViewModel @Inject constructor(
         Log.d("TAGG", "onClickIeltsWritingTask1(): called with direct to normal topic")
         _levelNameCurrent.postValue(listTypes.value?.get(0)?.name)
         listData.value = emptyList
+        listTypes.value?.get(0)?.id?.let { saveTypeId(it) }
         navigate(
             R.id.action_levelFragment_to_topicFragment,
             bundle = bundleOf(TopicFragment.ARG_ID_TOPIC to 1)
@@ -158,6 +163,7 @@ class EssayViewModel @Inject constructor(
         Log.d(TAG, "onClickIeltsWritingTask2(): called with direct to normal topic")
         _levelNameCurrent.postValue(listTypes.value?.get(1)?.name)
         listData.value = emptyList
+        listTypes.value?.get(1)?.id?.let { saveTypeId(it) }
         navigate(
             R.id.action_levelFragment_to_topicFragment,
             bundle = bundleOf(TopicFragment.ARG_ID_TOPIC to 2)
@@ -171,11 +177,11 @@ class EssayViewModel @Inject constructor(
                 Log.d(TAG, "getAllTopics: onStart")
                 showLoadingDialog(true)
             }.catch { exeption ->
-//                showLoadingDialog(false)
+                showLoadingDialog(false)
                 Log.d(TAG, "Get Topics Extension Error: ${exeption.message}")
             }.collect { baseResult ->
                 Log.d(TAG, "getAllTopics: true")
-//                showLoadingDialog(false)
+                showLoadingDialog(false)
                 Log.d(TAG, "getAllTopics: $baseResult")
                 when (baseResult) {
                     is Resource.Success -> {
@@ -246,7 +252,9 @@ class EssayViewModel @Inject constructor(
         Log.d(TAG, "onClickLetsGo: with value id = ${detailEssay.value?.id}")
         navigate(
             R.id.action_showDetailEssayTitleFragment_to_writingEssayFragment, bundleOf(
-                WritingEssayFragment.ARG_ID_ESSAY to detailEssay.value?.id
+                WritingEssayFragment.ARG_ID_ESSAY to detailEssay.value?.id,
+                WritingEssayFragment.ARG_LEVEL_NAME to levelName.value,
+                WritingEssayFragment.ARG_TOPIC_NAME to topicNameCurrent.value
             )
         )
     }
@@ -298,6 +306,14 @@ class EssayViewModel @Inject constructor(
                         }
                     }
                 }
+        }
+    }
+
+
+    private fun saveTypeId(id_type: Int) {
+        CoCareLishPrefence(myApplication.applicationContext).apply {
+            init()
+            putIdType(id_type)
         }
     }
 

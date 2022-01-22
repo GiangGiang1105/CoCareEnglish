@@ -15,5 +15,9 @@ object Title {
 
 
     const val LOGIN_SUCCESS = R.string.login_success
-
+    const val TITLE_SUBMIT = R.string.title_submit
+    const val TITLE_GENERAL_ESSAY = R.string.title_general_essay
+    const val TITLE_NEW_ESSAY = R.string.title_new_essay
+    const val TITLE_MY_ESSAY = R.string.title_my_essay
+    const val TITLE_PROFILE = R.string.title_profile
 }

@@ -73,6 +73,7 @@
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@drawable/cursor_color"
                     android:maxLines="1"
+                    android:text="@={action.userName}"
                     android:textColor="@color/white"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,6 +92,7 @@
                     android:id="@+id/txt_password"
                     android:layout_width="match_parent"
                     android:inputType="textPassword"
+                    android:text="@={action.passWord}"
                     android:maxLines="1"
                     android:layout_height="wrap_content"
                     android:textCursorDrawable="@drawable/cursor_color"

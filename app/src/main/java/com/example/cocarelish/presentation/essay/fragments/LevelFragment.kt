@@ -28,6 +28,4 @@ class LevelFragment : CommonFragment<FragmentLevelBinding, EssayViewModel>() {
             getAllTypes()
         }
     }
-
-
 }

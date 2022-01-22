@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.example.cocarelish.utils.Consts" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="title"
+            type="int" />
+
+        <variable
+            name="text"
+            type="String" />
+
+        <variable
+            name="imageResource"
+            type="int" />
+
+        <variable
+            name="level"
+            type="String" />
+
+        <variable
+            name="action"
+            type="com.example.cocarelish.presentation.essay.viewmodels.WritingEssayViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/toolbar_layout"
+                layout="@layout/toolbar_payment"
+                app:action="@{action}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="@{title}" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_information"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_150"
+                android:layout_marginTop="@dimen/dp_20"
+                android:src="@drawable/ic_payment_information"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_layout" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:text="@string/text_essay_information"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_24"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_information" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/bg_information_essay"
+                android:elevation="@dimen/dp_20"
+                android:padding="@dimen/dp_20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_1">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/level_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@{action.levelName}"
+                    android:textSize="@dimen/sp_20"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_pen_2"
+                    app:layout_constraintBottom_toBottomOf="@+id/level_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/level_name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_standard"
+                    android:layout_width="@dimen/dp_280"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:fontFamily="@font/poppins_thin"
+                    android:text="@{Consts.STANDARD_IELTS}"
+                    android:textColor="@color/color_263238"
+                    android:textSize="@dimen/sp_16"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/level_name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_weight="3"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/text_deadline"
+                    android:textColor="@color/color_263238"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_standard" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_2">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/deadline_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
+
+
+                <!--
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/text_2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/dp_10"
+                                        android:layout_weight="3"
+                                        android:fontFamily="@font/poppins_thin"
+                                        android:text="@string/text_deadline"
+                                        android:textColor="@color/color_263238"
+                                        android:textStyle="bold"
+                                        android:textSize="@dimen/sp_16" />
+
+                                    <androidx.appcompat.widget.AppCompatSeekBar
+                                        android:id="@+id/slider_deadline"
+                                        android:layout_width="@dimen/dp_200"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/dp_10"
+                                        android:layout_marginTop="@dimen/dp_15"
+                                        android:layout_weight="7"
+                                        android:max="@{Consts.MAX_DEADLINE}"
+                                        android:progress="@{Consts.DEFAULT_DEADLINE}"
+                                        android:visibility="@{action.visibleDeadline? View.VISIBLE : View.GONE}" />
+
+                                    <androidx.appcompat.widget.AppCompatButton
+                                        android:id="@+id/currentDeadline"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="@dimen/dp_30"
+                                        android:layout_marginStart="@dimen/dp_10"
+                                        android:layout_marginTop="@dimen/dp_10"
+                                        android:backgroundTint="@color/color_13D455"
+                                        android:onClick="@{() -> action.visibleSeekbarDeadline()}"
+                                        android:text="@{@string/deadline_hour(action.deadlineEssay)}"
+                                        android:visibility="@{action.visibleDeadline? View.GONE : View.VISIBLE}" />
+                                </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/total_price"
+                android:textSize="@dimen/sp_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/container" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/totalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:fontFamily="@font/poppins"
+                android:text="@{@string/text_unit_price_essay((int)action.totalPriceEssay)}"
+                android:textColor="@color/color_219B60"
+                android:textSize="@dimen/sp_30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_3" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginBottom="@dimen/dp_40"
+                android:background="@drawable/bg_btn_submit"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:onClick="@{()->action.userSaveWrittenEssay()}"
+                android:text="@string/text_submit"
+                android:textAllCaps="false"
+                android:textColor="@color/color_0E4DA4"
+                android:textSize="@dimen/sp_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/totalPrice" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

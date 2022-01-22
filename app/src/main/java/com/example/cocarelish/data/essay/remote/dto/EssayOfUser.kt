@@ -6,9 +6,9 @@ data class EssayOfUser(
     val status: Int,
     val type_name: String,
     val question_of_test: String,
-    val teacher_name: String,
-    val content: String,
-    val score: String,
+    val teacher_name: String?,
+    val content: String?,
+    val score: String?,
     val updated_at: String
 )
 

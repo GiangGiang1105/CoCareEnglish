@@ -43,7 +43,7 @@ class SignUpViewModel @Inject constructor(private val registerUseCase: RegisterU
             }.catch { exception ->
             }.collect { baseResult ->
                 when (baseResult) {
-                    is Resource.Success -> Log.d(TAG, "register: nào")
+                    is Resource.Success -> onNavigate( Title.AUTH_LOGIN)
                 }
             }
         }

@@ -25,17 +25,18 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#0e77a4">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginTop="@dimen/dp_20"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_20"
             android:background="@drawable/bg_payment_status_corner"
             android:orientation="horizontal"
             android:paddingHorizontal="25dp"
             android:paddingTop="@dimen/dp_20"
+            android:paddingBottom="@dimen/dp_20"
             tools:layout_editor_absoluteX="-16dp"
             tools:layout_editor_absoluteY="40dp">
 
@@ -54,13 +55,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="@dimen/dp_30"
-                android:text="@{text}"
+                android:text="@{title}"
                 android:textSize="@dimen/dp_20"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/linearLayoutCompat"
                 app:layout_constraintStart_toEndOf="@+id/appCompatImageButton"
                 app:layout_constraintTop_toTopOf="@+id/linearLayoutCompat"
-                tools:text="Submit your order" />
+                tools:text="@string/title_submit" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/linearLayoutCompat"
@@ -79,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_payment_plus"
-                    android:backgroundTint="@color/white"/>
+                    android:backgroundTint="@color/white" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.constraintlayout.widget.ConstraintLayout>

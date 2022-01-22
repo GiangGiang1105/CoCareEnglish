@@ -30,7 +30,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/color_0E77A4"
-            android:visibility="gone"
             app:backgroundTint="@color/color_0E77A4"
             app:elevation="10dp"
             app:hideOnScroll="true">

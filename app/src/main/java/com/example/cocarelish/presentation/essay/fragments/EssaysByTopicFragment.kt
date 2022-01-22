@@ -32,6 +32,7 @@ class EssaysByTopicFragment :
             viewModel.getAllTestByTopic(it)
 
         }
+
         binding.apply {
             recyclerView.adapter = menuAdapter
             action = viewModel

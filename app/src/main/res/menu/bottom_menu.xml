@@ -6,7 +6,7 @@
         android:iconTint="@null"
         android:title="@string/title_home" />
     <item
-        android:id="@+id/essayFragment"
+        android:id="@+id/generalEssayFragment"
         android:icon="@drawable/ic_essay"
         android:iconTint="@null"
         android:title="@string/title_essay"/>

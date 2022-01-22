@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -18,6 +19,7 @@ class EssayModule {
     @Singleton
     @Provides
     fun provideEssayAPI(retrofit: Retrofit): EssayApi {
+
         return retrofit.create(EssayApi::class.java)
     }
 

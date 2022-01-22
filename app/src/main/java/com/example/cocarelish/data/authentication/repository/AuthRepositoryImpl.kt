@@ -7,6 +7,7 @@ import com.example.cocarelish.data.authentication.remote.dto.RegisterRequest
 import com.example.cocarelish.domain.auth.AuthRepository
 import com.example.cocarelish.domain.auth.entity.LoginEntity
 import com.example.cocarelish.domain.auth.entity.RegisterEntity
+import com.example.cocarelish.domain.auth.entity.UserEntity
 import com.example.cocarelish.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -27,6 +28,14 @@ class AuthRepositoryImpl @Inject constructor(private val authApi: AuthApi): Auth
             val response = safeApiCall { authApi.register(registerRequest).data
             }
             Log.d("TAG", "register: $response")
+            emit(response)
+        }
+    }
+
+    override fun getUserInformation(user_id: Int): Flow<Resource<UserEntity>> {
+        return flow {
+            val response = safeApiCall { authApi.getUserInformation(user_id).data }
+            Log.d("TAG", "getUserInformation: $response ")
             emit(response)
         }
     }

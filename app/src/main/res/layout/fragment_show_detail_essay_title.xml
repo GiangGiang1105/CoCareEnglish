@@ -20,135 +20,140 @@
             type="com.example.cocarelish.presentation.essay.viewmodels.EssayViewModel" />
     </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".presentation.essay.fragments.ShowDetailTitleEssayFragment">
-
-        <include
-            android:id="@+id/appBarLayout"
-            layout="@layout/toolbar_collapse"
-            app:action="@{action}"
-            app:imageResource="@{imageResource}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:text="@{title}" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="28dp"
-            android:text="@string/adjust_your_text_size"
-            android:textColor="@color/color_7D7979"
-            android:textSize="@dimen/sp17"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
-
+        android:layout_height="match_parent">
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/layoutChangeTextSize"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_20"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".presentation.essay.fragments.ShowDetailTitleEssayFragment">
 
-            <androidx.appcompat.widget.AppCompatButton
-                style="@style/ButtonChangeTextSize"
-                android:layout_marginStart="0dp"
-                android:text="@string/small" />
+            <include
+                android:id="@+id/appBarLayout"
+                layout="@layout/toolbar_collapse"
+                app:action="@{action}"
+                app:imageResource="@{imageResource}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:text="@{title}" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                style="@style/ButtonChangeTextSize"
-                android:text="@string/medium" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                style="@style/ButtonChangeTextSize"
-                android:text="@string/large" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <include
-            android:id="@+id/includeTitleContent"
-            layout="@layout/layout_collapse_essay_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_20"
-            app:action="@{action}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutChangeTextSize"
-            app:viewModel="@{action}" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="@dimen/dp_20"
-            android:background="@drawable/bg_view_corner"
-            app:cardCornerRadius="@dimen/dp_5"
-            app:cardElevation="@dimen/dp_10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/includeTitleContent">
-
-            <androidx.appcompat.widget.AppCompatButton
+            <TextView
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@color/white"
-                android:text="@string/view_full_screen"
-                android:textColor="@color/color_969090"
-                android:textSize="@dimen/sp15" />
-        </androidx.cardview.widget.CardView>
+                android:layout_marginTop="28dp"
+                android:text="@string/adjust_your_text_size"
+                android:textColor="@color/color_7D7979"
+                android:textSize="@dimen/sp17"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-        <TextView
-            android:id="@+id/txt_essay_requirement"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="@dimen/dp_20"
-            android:text="@string/essay_writing_requirement"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/layoutChangeTextSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/appCompatButton"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginHorizontal="@dimen/dp_20"
-            android:layout_marginTop="@dimen/dp_20"
-            android:background="@drawable/btn_writing_essay_selector_1"
-            android:text="@string/open_our_note"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_essay_requirement" />
+                <androidx.appcompat.widget.AppCompatButton
+                    style="@style/ButtonChangeTextSize"
+                    android:layout_marginStart="0dp"
+                    android:text="@string/small" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginHorizontal="@dimen/dp_20"
-            android:layout_marginTop="@dimen/dp_20"
-            android:background="@drawable/btn_writing_essay_selector_2"
-            android:drawableEnd="@drawable/ic_arrow_right"
-            android:onClick="@{() -> action.onClickLetsGo()}"
-            android:paddingHorizontal="@dimen/dp_20"
-            android:text="@string/let_s_go"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appCompatButton" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.AppCompatButton
+                    style="@style/ButtonChangeTextSize"
+                    android:text="@string/medium" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    style="@style/ButtonChangeTextSize"
+                    android:text="@string/large" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <include
+                android:id="@+id/includeTitleContent"
+                layout="@layout/layout_collapse_essay_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                app:action="@{action}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutChangeTextSize"
+                app:viewModel="@{action}" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/bg_view_corner"
+                app:cardCornerRadius="@dimen/dp_5"
+                app:cardElevation="@dimen/dp_10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/includeTitleContent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/white"
+                    android:text="@string/view_full_screen"
+                    android:textColor="@color/color_969090"
+                    android:textSize="@dimen/sp15" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/txt_essay_requirement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="@dimen/dp_20"
+                android:text="@string/essay_writing_requirement"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/appCompatButton"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginHorizontal="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/btn_writing_essay_selector_1"
+                android:text="@string/open_our_note"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_essay_requirement" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginHorizontal="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/btn_writing_essay_selector_2"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:onClick="@{() -> action.onClickLetsGo()}"
+                android:paddingHorizontal="@dimen/dp_20"
+                android:text="@string/let_s_go"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatButton" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
 </layout>
