@@ -28,7 +28,7 @@ class LoginViewModel @Inject constructor(
     application: Application
 ) : CommonViewModel(application) {
 
-    val userName = MutableLiveData<String>("admin@email.com")
+    val userName = MutableLiveData<String>("thanhnam@gmail.com")
     val passWord = MutableLiveData<String>("12345678")
     private val myApplication = application
 

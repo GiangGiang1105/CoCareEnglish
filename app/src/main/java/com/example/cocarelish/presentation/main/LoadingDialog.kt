@@ -21,14 +21,8 @@ class LoadingDialog(): DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         isCancelable = false
-        //set view
         val inflater = layoutInflater
         val dialogView = inflater.inflate(R.layout.item_loading, null)
-        //** set dialog */
-//        val builder = AlertDialog.Builder(activity)
-//        builder.setView(dialogView)
-//        builder.setCancelable(false)
-//        dialog = builder.create()
 
         val window = dialog?.window
         val wlp = window?.attributes
@@ -45,15 +39,6 @@ class LoadingDialog(): DialogFragment() {
         return AlertDialog.Builder(requireContext()).setView(dialogView).setCancelable(false).create()
     }
 
-    fun startLoading()
-    {
-
-    }
-
-    fun dismissDialog()
-    {
-        dialog?.dismiss()
-    }
 
     override fun show(manager: FragmentManager, tag: String?) {
         try {
@@ -65,5 +50,4 @@ class LoadingDialog(): DialogFragment() {
         }
     }
 
-//    fun getInstance
 }

@@ -9,92 +9,63 @@
             type="com.example.cocarelish.presentation.home.viewmodels.ProfileViewModel" />
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_layout_home"
-            android:elevation="@dimen/dp_20"
-            app:contentScrim="@color/color_4B90ED"
-            app:layout_anchor="@+id/appBarLayout"
-            app:layout_anchorGravity="center"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
-            app:title="Menu">
+            android:orientation="horizontal">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_avatar"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/dp_20"
-                android:gravity="center"
-                android:orientation="vertical"
-                app:layout_collapseMode="parallax">
+                android:layout_gravity="start"
+                android:src="@drawable/avatar" />
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_30"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_pencil" />
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/avatar" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dp_10"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_toRightOf="@id/img_avatar"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="@{action.userInformation.name}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold" />
 
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/btnShow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:background="@android:color/transparent"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:layout_marginRight="@dimen/dp_30"
-                        android:src="@drawable/ic_pencil" />
-                </FrameLayout>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/dp_10"
-                    android:fontFamily="@font/poppins_semi_bold"
-                    android:text="@{action.userInformation.name}"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_18"
-                    android:textStyle="bold" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/dp_10"
-                    android:fontFamily="@font/poppins_light"
-                    android:text="@{action.userInformation.email}"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_18" />
-
-                <androidx.appcompat.widget.Toolbar
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:layout_collapseMode="pin"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </RelativeLayout>
 
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <!--        <androidx.appcompat.widget.AppCompatTextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginBottom="@dimen/dp_10"-->
+        <!--            android:fontFamily="@font/poppins_light"-->
+        <!--            android:text="@{action.userInformation.email}"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="@dimen/sp_18" />-->
 
-            <include layout="@layout/sub_fragment_profile" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <include layout="@layout/sub_fragment_profile" />
+
+    </LinearLayout>
+
+
 </layout>

@@ -3,6 +3,7 @@ package com.example.cocarelish.presentation.home.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
@@ -14,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProfileFragment : CommonFragment<FragmentProfileBinding, ProfileViewModel>() {
-    override val viewModel: ProfileViewModel by viewModels()
+    override val viewModel: ProfileViewModel by activityViewModels()
     override val layoutID: Int
         get() = R.layout.fragment_profile
 
