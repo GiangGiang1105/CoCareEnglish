@@ -11,7 +11,9 @@ Papp/src/main/java/com/example/cocarelish/utils/databinding/ViewBindingAdapter.k
 Xapp/src/main/java/com/example/cocarelish/presentation/essay/viewmodels/LevelViewModel.kt,8\e\8e3bc53cc250b755a19e02220722cec148e41a2c
 í
 bapp/src/main/java/com/example/cocarelish/presentation/essay/viewmodels/ShowDetailTitleViewModel.kt,4\b\4bf6effbb404d60889b220c509c52466a5b41c85
-è
-_app/src/main/java/com/example/cocarelish/presentation/essay/viewmodels/WritingEssayViewModel.kt,d\d\dd4bf51799b5bc2f907a4412607c5b966600e9ae
 Ü
 Vapp/src/main/java/com/example/cocarelish/presentation/auth/viewmodels/AuthViewModel.kt,e\1\e19a0da61f732fe29bd71174627e2cdb301bea0e
+Ü
+Vapp/src/main/java/com/example/cocarelish/presentation/essay/fragments/LevelFragment.kt,7\2\724dcc6e0fb988a0254ef050e1912f3aecb008f1
+~
+Napp/src/main/java/com/example/cocarelish/presentation/nav/NavigationAdapter.kt,a\5\a5007d9bafc05e1e5fd684429d61d050d4bc475f

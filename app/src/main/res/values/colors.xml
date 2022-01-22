@@ -37,4 +37,7 @@
     <color name="color_cccccc">#cccccc</color>
     <color name="color_030B37">#030B37</color>
 
+    <color name="color_done">#B38FD7</color>
+    <color name="color_not_done">#FFFFFF</color>
+
 </resources>

@@ -40,7 +40,6 @@ class MyPreference @Inject constructor(@ApplicationContext context: Context) {
         editor.apply()
     }
 
-
     private fun <T> get(key: String, clazz: Class<T>): T =
         when (clazz) {
             String::class.java -> sharedPref.getString(key, "")

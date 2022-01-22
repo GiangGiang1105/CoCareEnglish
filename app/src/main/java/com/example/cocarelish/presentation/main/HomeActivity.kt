@@ -25,7 +25,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     override fun getNavHostFragment(): NavHostFragment =
         supportFragmentManager.findFragmentById(R.id.mainContainerView) as NavHostFragment
 
-
     companion object {
         val TAG: String = HomeActivity::class.java.name
 

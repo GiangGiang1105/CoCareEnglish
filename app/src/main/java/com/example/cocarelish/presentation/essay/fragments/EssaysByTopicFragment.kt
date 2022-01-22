@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
 import com.example.cocarelish.databinding.FragmentEssaysByTopicBinding
 import com.example.cocarelish.presentation.essay.viewmodels.EssayViewModel
-import com.example.cocarelish.presentation.essay.viewmodels.EssaysByTopicViewModel
 import com.example.cocarelish.utils.listTemplate.MenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
