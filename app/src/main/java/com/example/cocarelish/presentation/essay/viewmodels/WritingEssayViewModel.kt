@@ -135,19 +135,8 @@ class WritingEssayViewModel @Inject constructor(
 
     fun navigationWritingEssayFragmentToPaymentFragment(content: String?) {
         content?.let {
-            if (content.length < 200) {
-                viewModelScope.launch {
-                    evenSender.send(
-                        CommonEvent.OnShowToast(
-                            getString(R.string.toast_length_content_short),
-                            Toast.LENGTH_LONG
-                        )
-                    )
-                }
-            } else {
-                this.content = content
-                navigate(R.id.action_writingEssayFragment_to_paymentFragment)
-            }
+            this.content = content
+            navigate(R.id.action_writingEssayFragment_to_paymentFragment)
         }
     }
 
@@ -183,6 +172,7 @@ class WritingEssayViewModel @Inject constructor(
                             if (it.value.success) {
                                 viewModelScope.launch {
                                     evenSender.send(CommonEvent.OnShowToast(it.value.data))
+                                    evenSender.send(CommonEvent.OnBackScreen)
                                 }
                             }
                         }

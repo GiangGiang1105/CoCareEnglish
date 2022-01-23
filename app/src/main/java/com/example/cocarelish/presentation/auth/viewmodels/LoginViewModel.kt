@@ -28,8 +28,8 @@ class LoginViewModel @Inject constructor(
     application: Application
 ) : CommonViewModel(application) {
 
-    val userName = MutableLiveData<String>("thanhnam@gmail.com")
-    val passWord = MutableLiveData<String>("12345678")
+    val userName = MutableLiveData<String>("")
+    val passWord = MutableLiveData<String>("")
     private val myApplication = application
 
     override fun onNavigate(itemTitle: Int) {

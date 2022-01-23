@@ -36,7 +36,7 @@
             android:shadowDx="3"
             android:shadowDy="3"
             android:shadowRadius="1"
-            android:text="Trần Đình Nam "
+            android:text="Nguyễn Ngọc Hà Giang"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_22"
             app:layout_constraintStart_toStartOf="parent"

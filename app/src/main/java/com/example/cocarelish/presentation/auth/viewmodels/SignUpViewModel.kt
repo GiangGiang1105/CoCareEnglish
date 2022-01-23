@@ -19,7 +19,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SignUpViewModel @Inject constructor(private val registerUseCase: RegisterUseCase, application: Application) :
+class SignUpViewModel @Inject constructor(
+    private val registerUseCase: RegisterUseCase,
+    application: Application
+) :
     CommonViewModel(application) {
 
     val userName = MutableLiveData<String>()
@@ -43,7 +46,20 @@ class SignUpViewModel @Inject constructor(private val registerUseCase: RegisterU
             }.catch { exception ->
             }.collect { baseResult ->
                 when (baseResult) {
-                    is Resource.Success -> onNavigate( Title.AUTH_LOGIN)
+                    is Resource.Success -> {
+                        viewModelScope.launch {
+                            evenSender.send(CommonEvent.OnShowToast("Register Successfully!"))
+                        }
+                        onNavigate(Title.AUTH_LOGIN)
+                    }
+
+                    is Resource.Failure -> {
+                        Log.d(TAG, "register: ")
+                        viewModelScope.launch {
+                            evenSender.send(CommonEvent.OnShowToast("Register Successfully!"))
+                        }
+                        onNavigate(Title.AUTH_LOGIN)
+                    }
                 }
             }
         }

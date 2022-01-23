@@ -34,9 +34,9 @@
             android:layout_width="@dimen/dp_200"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
             android:orientation="vertical"
             android:weightSum="2"
-            android:layout_marginTop="@dimen/dp_10"
             app:layout_constraintBottom_toBottomOf="@+id/status"
             app:layout_constraintStart_toEndOf="@+id/status"
             app:layout_constraintTop_toTopOf="@+id/status">
@@ -48,9 +48,8 @@
                 android:layout_width="@dimen/dp_200"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semi_bold"
-                android:lineHeight="@dimen/dp_20"
                 android:textColor="@color/black"
-                android:textSize="@dimen/sp_18" />
+                android:textSize="16sp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="@dimen/dp_200"
@@ -71,10 +70,10 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_25"
             android:layout_marginStart="@dimen/dp_30"
-            android:padding="@dimen/dp_5"
             android:layout_marginTop="@dimen/dp_5"
             android:background="@{myEssay.status ==Status.STATUS_1? @drawable/bg_status_name_complete : @drawable/bg_status_name_un_complete}"
             android:fontFamily="@font/poppins_bold"
+            android:padding="@dimen/dp_5"
             android:textSize="@dimen/sp_12"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/linear" />
@@ -97,36 +96,36 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/content"
-            android:layout_marginTop="@dimen/dp_10">
+            app:layout_constraintTop_toBottomOf="@+id/content">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/teacher"
                 android:layout_width="@dimen/dp_150"
                 android:layout_height="wrap_content"
-                android:text="@{@string/teacher(myEssay.teacher_name)}"
-                android:gravity="left"
                 android:layout_gravity="left"
-                android:textSize="@dimen/sp_14"
-                android:textColor="@color/color_0E4DA4"
                 android:fontFamily="@font/poppins_thin"
+                android:gravity="left"
+                android:text="@{@string/teacher(myEssay.teacher_name)}"
+                android:textColor="@color/color_0E4DA4"
+                android:textSize="@dimen/sp_14"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="@dimen/dp_150"
                 android:layout_height="wrap_content"
-                android:text="@{@string/update(myEssay.teacher_name)}"
-                android:gravity="right"
                 android:layout_gravity="right"
-                android:textSize="@dimen/sp_14"
                 android:fontFamily="@font/poppins_thin"
-                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="right"
+                android:text="@{@string/update(myEssay.teacher_name)}"
+                android:textSize="@dimen/sp_14"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/teacher"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
