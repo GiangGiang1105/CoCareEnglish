@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     //Title screen
-    <string name= "text_id_1">Login</string>
-    <string name= "text_id_2">Sign Up</string>
-    <string name= "text_id_3">Auth Introduce</string>
-    <string name= "text_id_4">Home</string>
+    <string name="text_id_1">Login</string>
+    <string name="text_id_2">Sign Up</string>
+    <string name="text_id_3">Auth Introduce</string>
+    <string name="text_id_4">Home</string>
 
-    <string name= "text_id_5">Ielts writing task 1</string>
-    <string name= "text_id_6">Ielts writing task 2</string>
-    <string name= "text_id_7">Home work</string>
+    <string name="text_id_5">Ielts writing task 1</string>
+    <string name="text_id_6">Ielts writing task 2</string>
+    <string name="text_id_7">Home work</string>
 
-    <string name= "text_id_8">Online Lesson</string>
-    <string name= "text_id_9">Writing Tips</string>
-    <string name= "text_id_10">Home work</string>
+    <string name="text_id_8">Online Lesson</string>
+    <string name="text_id_9">Writing Tips</string>
+    <string name="text_id_10">Home work</string>
     <string name="text_id_11">Ielts Writting</string>
 
-    //level list
-
-
+    <!--    level list-->
 
     <string name="login_success">Login Successfully</string>
+    <string name="login_cancel">Login Cancel</string>
+    <string name="login_error">Login Error</string>
 </resources>

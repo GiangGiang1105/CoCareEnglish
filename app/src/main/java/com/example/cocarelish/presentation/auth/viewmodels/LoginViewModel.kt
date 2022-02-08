@@ -1,7 +1,6 @@
 package com.example.cocarelish.presentation.auth.viewmodels
 
 import android.app.Application
-import android.service.quicksettings.Tile
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -13,7 +12,6 @@ import com.example.cocarelish.domain.auth.usecase.LoginUseCase
 import com.example.cocarelish.utils.CoCareLishPrefence
 import com.example.cocarelish.utils.Resource
 import com.example.cocarelish.utils.Title
-import com.example.cocarelish.utils.Title.HOME
 import com.example.cocarelish.utils.Title.LOGIN_SUCCESS
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
@@ -36,7 +34,7 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             when (itemTitle) {
                 Title.AUTH_SIGN_UP -> evenSender.send(CommonEvent.OnNavigation(R.id.action_loginFragment_to_signUpFragment))
-                Title.HOME -> evenSender.send(CommonEvent.OnNavigation(R.id.action_loginFragment_to_homeFragment))
+                Title.HOME_FRAGMENT -> evenSender.send(CommonEvent.OnNavigation(R.id.action_loginFragment_to_homeFragment))
             }
         }
     }
@@ -62,7 +60,7 @@ class LoginViewModel @Inject constructor(
                             init()
                             putIdUser(baseResult.value.user_info.id)
                         }
-                        onNavigate(HOME)
+                        onNavigate(Title.HOME_FRAGMENT)
                     }
                 }
             }

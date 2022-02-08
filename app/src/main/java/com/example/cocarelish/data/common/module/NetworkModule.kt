@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.cocarelish.base.AppHiltModule
 import com.example.cocarelish.data.common.room.AppDataBase
 import com.example.cocarelish.data.common.utils.RequestInterceptor
 import com.example.cocarelish.domain.room.entity.Mission
@@ -23,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-@Module
+@Module(includes = [AppHiltModule::class])
 @InstallIn(SingletonComponent::class)
 class NetworkModule() {
 
@@ -71,6 +72,5 @@ class NetworkModule() {
                 }
             }
         ).build()
-
     }
 }

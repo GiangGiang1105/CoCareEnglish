@@ -19,7 +19,6 @@ class EssayModule {
     @Singleton
     @Provides
     fun provideEssayAPI(retrofit: Retrofit): EssayApi {
-
         return retrofit.create(EssayApi::class.java)
     }
 

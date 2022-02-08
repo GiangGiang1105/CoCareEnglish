@@ -35,7 +35,6 @@ abstract class CommonFragment<T : ViewDataBinding, VM : CommonViewModel> :
     @get:LayoutRes
     abstract val layoutID: Int
 
-//    private val loadingDialog : LoadingDialog by lazy{ LoadingDialog(requireActivity()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -88,9 +87,16 @@ abstract class CommonFragment<T : ViewDataBinding, VM : CommonViewModel> :
     }
 
     private var toast: Toast? = null
-    open fun showToast(content: String, duration: Int) {
+
+    open fun showToast(content: String, duration: Int = Toast.LENGTH_SHORT) {
         toast?.cancel()
         toast = CommonHelper.makeToast(context, content, duration)
+        toast?.show()
+    }
+
+    fun showToast(contentID: Int, duration: Int = Toast.LENGTH_SHORT) {
+        toast?.cancel()
+        toast = CommonHelper.makeToast(context, getString(contentID), duration)
         toast?.show()
     }
 

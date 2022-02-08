@@ -5,7 +5,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs'
-
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -101,11 +101,20 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.19.0'
     //room
-    def room_version = "2.3.0"
+    def room_version = "2.4.1"
 
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$room_version"
 
+    // firebase
+    implementation platform('com.google.firebase:firebase-bom:29.0.4')
+    implementation 'com.google.firebase:firebase-core:20.0.2'
+    implementation 'com.google.firebase:firebase-auth:latest.release'
+    implementation 'com.facebook.android:facebook-login:latest.release'
+    implementation 'com.google.firebase:firebase-firestore'
+
+    // Declare the dependency for the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics'
 }
