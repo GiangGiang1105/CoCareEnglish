@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "24552618046",
+    "firebase_url": "https://cocarelish-default-rtdb.firebaseio.com",
+    "project_id": "cocarelish",
+    "storage_bucket": "cocarelish.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24552618046:android:57abb4231ec05b53c2b96f",
+        "android_client_info": {
+          "package_name": "com.example.cocarelish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24552618046-u3b5dkdh27d38ucotifqp7l9od8acki5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlhIfwWHqT0vwPhMT_AVca2lcn_CIIhjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24552618046-u3b5dkdh27d38ucotifqp7l9od8acki5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
