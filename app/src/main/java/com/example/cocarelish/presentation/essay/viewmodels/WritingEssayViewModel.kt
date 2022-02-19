@@ -2,7 +2,6 @@ package com.example.cocarelish.presentation.essay.viewmodels
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -15,8 +14,9 @@ import com.example.cocarelish.data.essay.remote.dto.Test
 import com.example.cocarelish.domain.essay.usecase.DeadlineUseCase
 import com.example.cocarelish.domain.essay.usecase.SaveEssayUseCase
 import com.example.cocarelish.domain.essay.usecase.TestUseCase
-import com.example.cocarelish.utils.CoCareLishPrefence
+import com.example.cocarelish.utils.CoCareLishPreference
 import com.example.cocarelish.utils.Consts
+import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.Resource
 import com.example.cocarelish.utils.base.CommonCollapseEssayTitle
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,11 +31,12 @@ class WritingEssayViewModel @Inject constructor(
     private val testUseCase: TestUseCase,
     private val deadlineUseCase: DeadlineUseCase,
     private val saveEssayUseCase: SaveEssayUseCase,
+    private val myPreference: MyPreference,
     application: Application
 ) : CommonViewModel(application),
     CommonCollapseEssayTitle {
 
-    private val coCareLishPrefence = CoCareLishPrefence(application.applicationContext)
+    private val coCareLishPreference = CoCareLishPreference(application.applicationContext)
     override val isCollapse = MutableLiveData(true)
     private val _detailEssay: MutableLiveData<Test> = MutableLiveData()
     override val detailEssay: LiveData<Test>
@@ -142,9 +143,8 @@ class WritingEssayViewModel @Inject constructor(
 
     fun userSaveWrittenEssay() {
         Log.d(TAG, "userSaveWrittenEssay: ")
-        coCareLishPrefence.init()
-        val idUser = coCareLishPrefence.getIdUser()
-        val idType = coCareLishPrefence.getIdType()
+        val idUser = myPreference.getUserID()
+        val idType = -1
         val saveEssay =
             totalPriceEssay.value?.let {
                 SaveEssay(

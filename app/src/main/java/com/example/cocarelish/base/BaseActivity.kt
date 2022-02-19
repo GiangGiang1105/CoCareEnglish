@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.viewbinding.ViewBinding
 import com.facebook.FacebookSdk
 import com.google.firebase.auth.FirebaseAuth
@@ -34,6 +35,8 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
         navHostFragment = getNavHostFragment()
         controller = navHostFragment.findNavController()
+        setupActionBarWithNavController(controller)
+        supportActionBar?.hide()
 
         handleTask()
     }

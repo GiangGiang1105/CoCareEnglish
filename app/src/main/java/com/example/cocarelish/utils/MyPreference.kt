@@ -14,17 +14,18 @@ class MyPreference @Inject constructor(@ApplicationContext context: Context) {
     companion object{
         private const val SHARE_PREFERENCE_NAME = "share_preference_name"
 
-        private const val PREF_TOKEN = "user_token"
+        private const val USER_ID = "user_id"
     }
-    val sharedPref: SharedPreferences = context.getSharedPreferences(SHARE_PREFERENCE_NAME, Context.MODE_PRIVATE)
+    private val sharedPref: SharedPreferences = context.getSharedPreferences(SHARE_PREFERENCE_NAME, Context.MODE_PRIVATE)
 
-    fun getToken() : String {
-        return get(PREF_TOKEN, String::class.java)
+    fun getUserID() : String {
+        return get(USER_ID, String::class.java)
     }
 
-    fun saveToken(token: String){
-        put(PREF_TOKEN, token)
+    fun saveUserID(token: String){
+        put(USER_ID, token)
     }
+
 
     private fun <T> put(key: String, data: T){
         val editor = sharedPref.edit()
@@ -53,7 +54,7 @@ class MyPreference @Inject constructor(@ApplicationContext context: Context) {
 
     fun clear() {
         sharedPref.edit().run {
-            remove(PREF_TOKEN)
+            remove(USER_ID)
         }.apply()
     }
 }

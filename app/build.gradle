@@ -114,7 +114,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:latest.release'
     implementation 'com.facebook.android:facebook-login:latest.release'
     implementation 'com.google.firebase:firebase-firestore'
-
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.1'
     // Declare the dependency for the Firebase SDK for Google Analytics
     implementation 'com.google.firebase:firebase-analytics'
+
+    implementation 'nl.joery.animatedbottombar:library:1.1.0'
 }

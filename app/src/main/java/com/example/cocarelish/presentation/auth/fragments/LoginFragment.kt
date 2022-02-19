@@ -31,7 +31,6 @@ class LoginFragment : CommonFragment<FragmentLoginBinding, LoginViewModel>() {
     @Inject
     lateinit var auth: FirebaseAuth
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initFacebookLogin()
@@ -69,25 +68,9 @@ class LoginFragment : CommonFragment<FragmentLoginBinding, LoginViewModel>() {
                 }
 
                 override fun onSuccess(result: LoginResult) {
-                    showToast(Title.LOGIN_SUCCESS)
-                    handleFaceBookAccessToken(result.accessToken)
+                    viewModel.handleFaceBookAccessToken(result.accessToken)
                 }
             })
-    }
-
-    private fun handleFaceBookAccessToken(token: AccessToken) {
-        val credential = FacebookAuthProvider.getCredential(token.token)
-        auth.signInWithCredential(credential).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Log.d(TAG, "signInWithCredential:success")
-                val user = auth.currentUser
-                // TODO: Do something when login successfully
-                viewModel.onNavigate(Title.HOME_FRAGMENT)
-            } else {
-                // If sign in fails, display a message to the user.
-                showToast(Title.LOGIN_ERROR)
-            }
-        }
     }
 
     private fun handleTask() {

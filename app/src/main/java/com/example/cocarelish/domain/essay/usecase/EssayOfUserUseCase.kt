@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class EssayOfUserUseCase @Inject constructor(private val essayRepository: EssayRepository) {
 
-    fun execute(user_id: Int): Flow<Resource<EssayOfUserEntity>> {
+    fun execute(user_id: String): Flow<Resource<EssayOfUserEntity>> {
         return essayRepository.getAllEssayOfUser(user_id)
     }
 }

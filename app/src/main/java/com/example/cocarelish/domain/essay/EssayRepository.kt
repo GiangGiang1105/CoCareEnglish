@@ -17,7 +17,7 @@ abstract class EssayRepository : BaseRepository() {
 
     abstract fun getAllTestById(test_id: Int): Flow<Resource<TestEntity>>
 
-    abstract fun getAllEssayOfUser(essay_id: Int): Flow<Resource<EssayOfUserEntity>>
+    abstract fun getAllEssayOfUser(essay_id: String): Flow<Resource<EssayOfUserEntity>>
 
     abstract fun getAllTestByTopic(id: Int): Flow<Resource<TestByTopicEntity>>
 

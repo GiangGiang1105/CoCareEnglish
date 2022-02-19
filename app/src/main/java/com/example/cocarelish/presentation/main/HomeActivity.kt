@@ -3,18 +3,20 @@ package com.example.cocarelish.presentation.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
 import com.example.cocarelish.R
 import com.example.cocarelish.base.BaseActivity
 import com.example.cocarelish.databinding.ActivityHomeBinding
+import com.example.cocarelish.utils.MyPreference
 import com.facebook.FacebookSdk
-import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeActivity : BaseActivity<ActivityHomeBinding>() {
@@ -22,6 +24,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     private lateinit var topLevelDestination: Set<Int>
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    @Inject
+    lateinit var myPreference: MyPreference
 
     override fun getActivityBinding(layoutInflater: LayoutInflater): ActivityHomeBinding =
         ActivityHomeBinding.inflate(layoutInflater)
@@ -41,9 +45,12 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         }
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         FacebookSdk.sdkInitialize(this)
+        // Fake user
+        myPreference.saveUserID("5")
     }
 
     override fun handleTask() {
@@ -52,9 +59,16 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     }
 
     private fun createBottomNavigation() {
-        binding.bottomNavigationView.setupWithNavController(controller)
+//        binding.bottomNavigationView.setupWithNavController(controller)
 
 //        topLevelDestination = setOf(R.id.homeFragment, R.id.essayFragment, R.id.profileFragment)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        Log.d(TAG, "onCreateOptionsMenu: $menu")
+        menuInflater.inflate(R.menu.bottom_menu, menu)
+        binding.bottomNavigationView.setupWithNavController( menu!!,controller)
+        return true
     }
 
     private fun initListener() {
@@ -68,6 +82,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     }
 
     private fun viewVisibility(visibilityType: Int){
-        binding.bottomAppBar.visibility = visibilityType
+        binding.bottomNavigationView.visibility = visibilityType
     }
 }

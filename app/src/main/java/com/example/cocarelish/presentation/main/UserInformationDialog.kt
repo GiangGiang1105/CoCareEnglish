@@ -3,13 +3,19 @@ package com.example.cocarelish.presentation.main
 import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.*
 import com.example.cocarelish.databinding.UserInformationBinding
 import com.example.cocarelish.presentation.home.viewmodels.ProfileViewModel
-import com.example.cocarelish.utils.CoCareLishPrefence
+import com.example.cocarelish.utils.CoCareLishPreference
+import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.Title
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_payment.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class UserInformationDialog : DialogFragment() {
@@ -17,29 +23,27 @@ class UserInformationDialog : DialogFragment() {
     private val viewModel: ProfileViewModel by activityViewModels()
     private lateinit var binding: UserInformationBinding
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return activity?.let {
-            val builder = AlertDialog.Builder(it)
-            val inflater = requireActivity().layoutInflater
-            context?.let {
-                CoCareLishPrefence(it).apply {
-                    init()
-                    viewModel.getUserInformation(getIdUser())
-                }
-            }
-            binding = UserInformationBinding.inflate(inflater)
-            builder.setView(binding.root)
-            binding.action = viewModel
-            binding.title = Title.TITLE_PROFILE
-            binding.btnBack.setOnClickListener {
+    @Inject
+    lateinit var myPreference: MyPreference
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = UserInformationBinding.inflate(inflater,container, false)
+        binding.apply {
+            lifecycleOwner = this@UserInformationDialog.viewLifecycleOwner
+            action = this@UserInformationDialog.viewModel
+            title = Title.TITLE_PROFILE
+            btnBack.setOnClickListener {
                 dismissDialog()
             }
-            builder.create()
-        } ?: throw IllegalStateException("Activity cannot be null")
+        }
+        return binding.root
     }
 
-    fun dismissDialog()
-    {
+    private fun dismissDialog() {
         dialog?.dismiss()
     }
 

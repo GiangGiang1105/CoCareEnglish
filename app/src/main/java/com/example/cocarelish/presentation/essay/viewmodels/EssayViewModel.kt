@@ -17,10 +17,7 @@ import com.example.cocarelish.presentation.essay.fragments.EssaysByTopicFragment
 import com.example.cocarelish.presentation.essay.fragments.ShowDetailTitleEssayFragment
 import com.example.cocarelish.presentation.essay.fragments.TopicFragment
 import com.example.cocarelish.presentation.essay.fragments.WritingEssayFragment
-import com.example.cocarelish.utils.CoCareLishPrefence
-import com.example.cocarelish.utils.LinkImage
-import com.example.cocarelish.utils.Resource
-import com.example.cocarelish.utils.Title
+import com.example.cocarelish.utils.*
 import com.example.cocarelish.utils.base.CommonCollapseEssayTitle
 import com.example.cocarelish.utils.listTemplate.ItemListModel
 import com.example.cocarelish.utils.listTemplate.ItemListType
@@ -34,6 +31,7 @@ import javax.inject.Inject
 @HiltViewModel
 class EssayViewModel @Inject constructor(
     private val testByTopicUseCase: TestByTopicUseCase,
+    private val myPreference: MyPreference,
     private val topicUseCase: TopicUseCase,
     private val levelUseCase: LevelUseCase,
     private val typeUseCase: TypeUseCase,
@@ -136,7 +134,7 @@ class EssayViewModel @Inject constructor(
         Log.d(TAG, "onClickNormal(): called with direct to normal topic")
         _levelNameCurrent.postValue(listLevels.value?.get(0)?.name)
         listData.value = emptyList
-        listTypes.value?.get(2)?.id?.let { saveTypeId(it) }
+        listTypes.value?.get(2)?.id?.let { saveTypeId(it.toString()) }
         navigate(
             R.id.action_levelFragment_to_topicFragment,
             bundle = bundleOf(TopicFragment.ARG_ID_TOPIC to 3)
@@ -152,7 +150,7 @@ class EssayViewModel @Inject constructor(
         Log.d("TAGG", "onClickIeltsWritingTask1(): called with direct to normal topic")
         _levelNameCurrent.postValue(listTypes.value?.get(0)?.name)
         listData.value = emptyList
-        listTypes.value?.get(0)?.id?.let { saveTypeId(it) }
+        listTypes.value?.get(0)?.id?.let { saveTypeId(it.toString()) }
         navigate(
             R.id.action_levelFragment_to_topicFragment,
             bundle = bundleOf(TopicFragment.ARG_ID_TOPIC to 1)
@@ -163,7 +161,7 @@ class EssayViewModel @Inject constructor(
         Log.d(TAG, "onClickIeltsWritingTask2(): called with direct to normal topic")
         _levelNameCurrent.postValue(listTypes.value?.get(1)?.name)
         listData.value = emptyList
-        listTypes.value?.get(1)?.id?.let { saveTypeId(it) }
+        listTypes.value?.get(1)?.id?.let { saveTypeId(it.toString()) }
         navigate(
             R.id.action_levelFragment_to_topicFragment,
             bundle = bundleOf(TopicFragment.ARG_ID_TOPIC to 2)
@@ -310,11 +308,8 @@ class EssayViewModel @Inject constructor(
     }
 
 
-    private fun saveTypeId(id_type: Int) {
-        CoCareLishPrefence(myApplication.applicationContext).apply {
-            init()
-            putIdType(id_type)
-        }
+    private fun saveTypeId(id_type: String) {
+        myPreference.saveUserID(id_type)
     }
 
     companion object {

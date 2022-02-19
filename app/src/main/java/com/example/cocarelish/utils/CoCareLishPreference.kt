@@ -3,7 +3,7 @@ package com.example.cocarelish.utils
 import android.content.Context
 import android.content.SharedPreferences
 
-class CoCareLishPrefence(private val context: Context) {
+class CoCareLishPreference(private val context: Context) {
 
     lateinit var editor: SharedPreferences.Editor
     lateinit var sharedPref: SharedPreferences

@@ -6,47 +6,48 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.cocarelish.base.CommonViewModel
-import com.example.cocarelish.data.essay.remote.dto.User
-import com.example.cocarelish.domain.auth.usecase.UserUseCase
+import com.example.cocarelish.data.authentication.remote.dto.UserInfo
+import com.example.cocarelish.domain.auth.usecase.LoginUseCase
+import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.Resource
-import com.example.cocarelish.utils.listTemplate.ItemListModel
-import com.example.cocarelish.utils.listTemplate.ItemListType
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val userUseCase: UserUseCase,
-    application: Application
+    private val loginUseCase: LoginUseCase,
+    application: Application,
+    val myPreference: MyPreference
 ) : CommonViewModel(application) {
 
-    private val _userInformation: MutableLiveData<User> = MutableLiveData()
-    val userInformation: LiveData<User>
+    private val _userInformation: MutableLiveData<UserInfo> = MutableLiveData(UserInfo())
+    val userInformation: LiveData<UserInfo>
         get() = _userInformation
 
-    fun getUserInformation(user_id: Int) {
+    init {
+        getUserInformation()
+    }
+
+    private fun getUserInformation() {
         viewModelScope.launch {
             viewModelScope.launch {
-                userUseCase.execute(user_id).onStart {
-                    Log.d(TAG, "getUserInformation: onStart")
+                Log.d(TAG, "getUserInformation: ${myPreference.getUserID()}")
+                loginUseCase.getUserInformation(myPreference.getUserID()).onStart {
                     showLoadingDialog(true)
-                }.catch { exception ->
+                }.collect { data ->
                     showLoadingDialog(false)
-                    Log.d(TAG, "getUserInformation: error with exception: $exception")
-                }.collect { baseResult ->
-                    Log.d(TAG, "getUserInformation: true")
-                    showLoadingDialog(false)
-                    Log.d(TAG, "getUserInformation: success with data = $baseResult")
-                    when (baseResult) {
-                        is Resource.Success -> {
-                            _userInformation.postValue(baseResult.value.users[0])
+                    if (data is Resource.Success) {
+                        data.value?.let {
+                            Log.d(TAG, "getUserInformation: userData -- $it")
+                            _userInformation.value = it
                         }
                     }
                 }
+
             }
         }
     }

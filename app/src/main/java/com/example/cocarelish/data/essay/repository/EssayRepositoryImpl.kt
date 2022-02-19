@@ -45,7 +45,7 @@ class EssayRepositoryImpl @Inject constructor(private val essayApi: EssayApi) : 
         }
     }
 
-    override fun getAllEssayOfUser(user_id: Int): Flow<Resource<EssayOfUserEntity>> {
+    override fun getAllEssayOfUser(user_id: String): Flow<Resource<EssayOfUserEntity>> {
         return flow {
             val response = safeApiCall { essayApi.getAllEssayOfUser(user_id).data }
             Log.d("TAG", "getAllEssayOfUser: $response")

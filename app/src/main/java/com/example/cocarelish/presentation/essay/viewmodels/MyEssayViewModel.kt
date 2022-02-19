@@ -27,7 +27,7 @@ class MyEssayViewModel @Inject constructor(
     val listData: LiveData<List<ItemListModel>>
         get() = _listData
 
-    fun getAllEssayOfUser(user_id: Int) {
+    fun getAllEssayOfUser(user_id: String) {
         Log.d(TAG, "getAllEssayOfUser called with id user = $user_id")
         viewModelScope.launch {
             essayOfUserUseCase.execute(user_id).onStart {

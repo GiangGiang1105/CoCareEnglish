@@ -2,7 +2,6 @@ package com.example.cocarelish.data.essay.remote.api
 
 import com.example.cocarelish.base.BaseResponse
 import com.example.cocarelish.data.essay.remote.dto.SaveEssay
-import com.example.cocarelish.domain.auth.entity.UserEntity
 import com.example.cocarelish.domain.essay.entity.*
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -24,7 +23,7 @@ interface EssayApi {
     suspend fun getDetailTest(@Path("test_id") test_id: Int): BaseResponse<TestEntity>
 
     @GET("my-essay/{id_user}")
-    suspend fun getAllEssayOfUser(@Path("id_user") id_user: Int): BaseResponse<EssayOfUserEntity>
+    suspend fun getAllEssayOfUser(@Path("id_user") id_user: String): BaseResponse<EssayOfUserEntity>
 
     //TODO: Chưa có API
     /*@GET("essay")

@@ -4,6 +4,7 @@ import com.example.cocarelish.data.authentication.remote.api.AuthApi
 import com.example.cocarelish.data.authentication.repository.AuthRepositoryImpl
 import com.example.cocarelish.data.common.module.NetworkModule
 import com.example.cocarelish.domain.auth.AuthRepository
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +23,7 @@ class AuthModule {
 
     @Singleton
     @Provides
-    fun provideLoginRepository(authApi: AuthApi) : AuthRepository {
-        return AuthRepositoryImpl(authApi)
+    fun provideLoginRepository(authApi: AuthApi, firebaseFirestore: FirebaseFirestore) : AuthRepository {
+        return AuthRepositoryImpl(authApi, firebaseFirestore)
     }
 }
