@@ -21,4 +21,9 @@ object Consts {
 
     const val MALE = "Male"
     const val FEMALE = "Female"
+
+    const val NUMBER_COUNT = 3
+    const val PAGE_0 = 0
+    const val PAGE_1 = 1
+    const val PAGE_2 = 2
 }

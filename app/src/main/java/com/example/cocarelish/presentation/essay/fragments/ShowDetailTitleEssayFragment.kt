@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
 import com.example.cocarelish.databinding.FragmentShowDetailEssayTitleBinding
+import com.example.cocarelish.presentation.essay.fragments.dialog.ImageFullScreenDialogFragment
 import com.example.cocarelish.presentation.essay.viewmodels.EssayViewModel
 import com.example.cocarelish.presentation.essay.viewmodels.ShowDetailTitleViewModel
 
@@ -29,6 +30,10 @@ class ShowDetailTitleEssayFragment :
             viewModel.levelName.observe(viewLifecycleOwner) {
                 title = it
                 Log.d(TAG, "title = $it")
+            }
+            btnViewFullScreen.setOnClickListener {
+                Log.d(TAG, "onViewCreated:btnViewFullScreen ")
+                ImageFullScreenDialogFragment().show(childFragmentManager, "fullscreen")
             }
         }
     }

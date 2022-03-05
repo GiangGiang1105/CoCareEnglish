@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.grade.fragment.AssessmentFragment">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_general_comment"
+            style="@style/StyleTitleGradeAndJudge"
+            android:text="@string/text_general_comment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/general_comment"
+            style="@style/StyleGradeAndJugde"
+            android:text="Card layouts can vary to support the types of content they contain. The following elements are commonly found among that variety."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_general_comment" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_feedback"
+            style="@style/StyleTitleGradeAndJudge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_feedback"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/general_comment" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/feedback"
+            style="@style/StyleGradeAndJugde"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Card layouts can vary to support the types of content they contain. The following elements are commonly found among that variety."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_feedback" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

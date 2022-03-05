@@ -74,7 +74,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     private fun initListener() {
         controller.addOnDestinationChangedListener{_, destination, _ ->
             when(destination.id){
-                R.id.authFragment, R.id.loginFragment, R.id.signUpFragment ->
+                R.id.authFragment, R.id.loginFragment, R.id.signUpFragment, R.id.provideExtensionInformationFragment->
                     viewVisibility(View.GONE)
                 else -> viewVisibility(View.VISIBLE)
             }

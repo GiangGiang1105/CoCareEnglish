@@ -23,4 +23,8 @@ object Title {
     const val TITLE_MY_ESSAY = R.string.title_my_essay
     const val TITLE_PROFILE = R.string.title_profile
 
+    const val TITLE_ASSESSMENT = R.string.tab_title_assessment
+    const val TITLE_SCORE = R.string.tab_title_score
+    const val TITLE_FIX_ESSAY = R.string.tab_title_fix_essay
+
 }

@@ -5,10 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
+import com.davemorrissey.labs.subscaleview.ImageSource
 import com.example.cocarelish.utils.Consts
 import com.example.cocarelish.utils.Status
-import org.w3c.dom.Text
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 
 @BindingAdapter("android:visibility")
 fun setVisibility(view: View, isGone: Boolean) {
@@ -32,10 +34,22 @@ fun TextView.setTextTopic(position: Int, typeTopic: String) {
 
 @BindingAdapter(value = ["status_id", "score"])
 fun TextView.setTextStatus(status_id: Int, score: String?) {
-    Log.e("TextView", "setTextStatus: $status_id with $score", )
+    Log.e("TextView", "setTextStatus: $status_id with $score")
     if (status_id == Status.STATUS_1) {
         this.text = Consts.SCORE + score
     } else if (status_id == Status.STATUS_2) {
         this.text = Consts.SENT
     }
+}
+
+@BindingAdapter("data_image")
+fun AppCompatImageView.setImage(data_image: String?) {
+    if (data_image != null)
+        this.setImageBitmap(data_image.convertBase64ToBitmap())
+}
+
+@BindingAdapter("data_image")
+fun SubsamplingScaleImageView.setImage(data_image: String?){
+    if (data_image != null)
+        setImage(ImageSource.bitmap(data_image.convertBase64ToBitmap()))
 }

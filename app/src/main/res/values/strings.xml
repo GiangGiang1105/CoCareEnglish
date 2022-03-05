@@ -36,7 +36,6 @@
     <string name="text_home_3">Writing categories</string>
     <string name="text_home_4">Reading levels</string>
     <string name="text_help_to_us">Help to Us</string>
-    <string name="text_feedback">Feedback</string>
     <string name="text_privacy_policy">Privacy Policy</string>
     <string name="text_share_app">Share App</string>
     <string name="text_rate_us">Rate Us</string>
@@ -191,7 +190,22 @@
     <string name="text_name">Name</string>
     <string name="text_email">Email</string>
     <string name="text_address">Address</string>
-    <string name="text_gender">Gender</string>
     <string name="text_back">Back</string>
     <string name="text_phone">Phone</string>
+    <string name="text_your_content">Your content</string>
+    <string name="tab_title_assessment">Assessment</string>
+    <string name="tab_title_score">Score</string>
+    <string name="tab_title_fix_essay">Fix essay</string>
+    <string name="text_general_comment">General comment</string>
+    <string name="text_feedback">Feedback</string>
+    <string name="text_gender">Gender</string>
+    <string name="text_next">Next</string>
+    <string name="select_your_gender">Select your gender</string>
+
+
+    <string-array name="gender">
+        <item>Gender</item>
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
 </resources>

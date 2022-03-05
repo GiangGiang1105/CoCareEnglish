@@ -15,7 +15,6 @@
     <color name="color_CBFF35">#CBFF35</color>
 
     <color name="mtrl_textinput_default_box_stroke_color">#fff</color>
-    <color name="color_0E77A4">#0E77A4</color>
     <color name="color_D1D1D1">#D1D1D1</color>
     <color name="color_987B7B">#987B7B</color>
     <color name="color_B7E8B9">#B7E8B9</color>
@@ -39,5 +38,8 @@
 
     <color name="color_done">#B38FD7</color>
     <color name="color_not_done">#FFFFFF</color>
+    <color name="color_F3F3F3">#F3F3F3</color>
+    <color name="color_0E77A4">#0E77A4</color>
+    <color name="color_818181">#818181</color>
 
 </resources>

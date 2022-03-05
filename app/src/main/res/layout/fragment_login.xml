@@ -54,7 +54,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iconTitle"
-                style="@style/StyleTitleLogin2" />
+                style="@style/StyleTitleLogin2"
+                android:textSize="@dimen/sp_20"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/userNameOrEmailInput"

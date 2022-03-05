@@ -15,4 +15,8 @@
         <item name="hintTextColor">@color/color_95FFFFFF</item>
         <item name="boxCornerRadiusTopStart">40dp</item>
     </style>
+
+    <style name="TextAllCaps" parent="Base.Widget.Design.TabLayout">
+        <item name="textAllCaps">false</item>
+    </style>
 </resources>

@@ -27,12 +27,14 @@
         <nl.joery.animatedbottombar.AnimatedBottomBar
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFF"
+            android:layout_height="@dimen/dp_50"
+            android:background="#0E77A4"
             app:abb_indicatorAppearance="round"
             app:abb_indicatorHeight="4dp"
             app:abb_indicatorMargin="16dp"
             app:abb_selectedIndex="1"
+            app:abb_indicatorColor="@color/white"
+            app:abb_tabColor="@color/white"
             app:abb_selectedTabType="text"
             app:abb_tabs="@menu/bottom_menu"
             app:layout_constraintBottom_toBottomOf="parent" />

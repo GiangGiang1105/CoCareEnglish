@@ -31,8 +31,8 @@
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/sp_20</item>
     </style>
+
 
     <style name="StyleButtonAuth">
         <item name="android:layout_width">match_parent</item>
@@ -144,5 +144,24 @@
         <item name="android:layout_width">@dimen/dp_48</item>
         <item name="android:layout_height">@dimen/dp_48</item>
         <item name="android:background">@drawable/btn_writing_essay_selector_1</item>
+    </style>
+
+    <style name="StyleTitleGradeAndJudge">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp_20</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:fontFamily">@font/poppins_semi_bold</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="StyleGradeAndJugde">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginHorizontal">@dimen/dp_20</item>
+        <item name="android:layout_marginTop">@dimen/dp_20</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">@dimen/sp_14</item>
     </style>
 </resources>

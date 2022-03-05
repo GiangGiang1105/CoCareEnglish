@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/levelFragment">
 
     <fragment
         android:id="@+id/essayFragment"
@@ -181,4 +181,15 @@
             android:defaultValue="null"
             app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/gradeAndJudgeFragment"
+        android:name="com.example.cocarelish.presentation.grade.fragment.GradeAndJudgeFragment"
+        android:label="GradeAndJudgeFragment" />
+
+
+    <fragment
+        android:id="@+id/provideExtensionInformationFragment"
+        android:name="com.example.cocarelish.presentation.auth.fragments.ProvideExtensionInformationFragment"
+        android:label="ProvideExtensionInformationFragment" />
 </navigation>

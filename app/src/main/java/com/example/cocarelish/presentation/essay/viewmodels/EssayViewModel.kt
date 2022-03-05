@@ -312,6 +312,8 @@ class EssayViewModel @Inject constructor(
         myPreference.saveUserID(id_type)
     }
 
+
+
     companion object {
         private val mapListImageTopic = hashMapOf(
             1 to LinkImage.LINE_GRAPH,
