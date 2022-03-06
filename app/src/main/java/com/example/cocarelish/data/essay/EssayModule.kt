@@ -4,6 +4,7 @@ import com.example.cocarelish.data.common.module.NetworkModule
 import com.example.cocarelish.data.essay.remote.api.EssayApi
 import com.example.cocarelish.data.essay.repository.EssayRepositoryImpl
 import com.example.cocarelish.domain.essay.EssayRepository
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,7 +25,7 @@ class EssayModule {
 
     @Singleton
     @Provides
-    fun provideEssayRepository(essayApi: EssayApi) : EssayRepository {
-        return EssayRepositoryImpl(essayApi)
+    fun provideEssayRepository(essayApi: EssayApi, fireStore: FirebaseFirestore) : EssayRepository {
+        return EssayRepositoryImpl(essayApi, fireStore)
     }
 }

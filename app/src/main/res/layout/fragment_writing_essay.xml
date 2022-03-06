@@ -68,7 +68,6 @@
                 android:layout_height="@dimen/dp_580"
                 android:layout_below="@id/horizontalScrollView"
                 android:layout_marginTop="@dimen/dp_21"
-                android:layout_weight="10"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.2"
                 app:layout_constraintStart_toStartOf="parent"

@@ -2,6 +2,7 @@ package com.example.cocarelish.data.essay.remote.api
 
 import com.example.cocarelish.base.BaseResponse
 import com.example.cocarelish.data.essay.remote.dto.SaveEssay
+import com.example.cocarelish.data.essay.remote.dto.Type
 import com.example.cocarelish.domain.essay.entity.*
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -11,10 +12,10 @@ import retrofit2.http.Path
 interface EssayApi {
 
     @GET("level")
-    suspend fun getAllLevels(): BaseResponse<LevelEntity>
+    suspend fun getAllLevels(): BaseResponse<LevelList>
 
-    @GET("type")
-    suspend fun getAllTypes(): BaseResponse<TypeEntity>
+//    @GET("type")
+//    suspend fun getAllTypes(): BaseResponse<List<Type>>
 
     @GET("topic/{topic_id}")
     suspend fun getAllTopicsById(@Path("topic_id") topic_id: Int): BaseResponse<TopicEntity>

@@ -36,7 +36,8 @@ class LoadingDialog(): DialogFragment() {
         window?.attributes = wlp
         window?.setBackgroundDrawable(inset)
 //        dialog?.show()
-        return AlertDialog.Builder(requireContext()).setView(dialogView).setCancelable(false).create()
+        isCancelable = true
+        return AlertDialog.Builder(requireContext()).setView(dialogView).setCancelable(true).create()
     }
 
 

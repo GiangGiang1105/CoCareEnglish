@@ -21,7 +21,6 @@ class TopicFragment : CommonFragment<FragmentTopicBinding, EssayViewModel>() {
     override val viewModel: EssayViewModel by activityViewModels()
     override val layoutID: Int
         get() = R.layout.fragment_topic
-    private val idTopic by lazy { arguments?.getInt(ARG_ID_TOPIC) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,22 +30,16 @@ class TopicFragment : CommonFragment<FragmentTopicBinding, EssayViewModel>() {
             recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             action = viewModel
             title = Title.IELTS_WRITING_TASK_1
-
         }
         menuAdapter.setOnClickListener {
             Log.e(TAG, "onViewCreated:${it.id} ")
         }
-        viewModel.listData.observe(viewLifecycleOwner) {
+        viewModel.listDataTopic.observe(viewLifecycleOwner) {
             Log.d(TAG, "onViewCreated: $it")
-            menuAdapter.submit(it)
+            if (it != null) {
+                menuAdapter.submit(it)
+            }
         }
-        idTopic?.let {
-            Log.d(TAG, "onViewCreated: ")
-            viewModel.getAllTopics(it)
-        }
-    }
 
-    companion object {
-        const val ARG_ID_TOPIC = "IdTopic"
     }
 }

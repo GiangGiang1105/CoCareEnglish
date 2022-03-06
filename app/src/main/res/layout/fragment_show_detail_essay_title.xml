@@ -23,6 +23,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -48,8 +49,8 @@
                 android:layout_marginTop="28dp"
                 android:text="@string/adjust_your_text_size"
                 android:textColor="@color/color_7D7979"
-                android:textSize="@dimen/sp17"
                 android:textStyle="bold"
+                android:textSize="@{action.textSize}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
@@ -66,16 +67,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView2">
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSmallText"
                     style="@style/ButtonChangeTextSize"
-                    android:layout_marginStart="0dp"
+                    android:onClick="@{() -> action.setTextSize(50)}"
                     android:text="@string/small" />
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnMediumText"
                     style="@style/ButtonChangeTextSize"
+                    android:onClick="@{() -> action.setTextSize(60)}"
                     android:text="@string/medium" />
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnLargeText"
                     style="@style/ButtonChangeTextSize"
+                    android:onClick="@{() -> action.setTextSize(70)}"
                     android:text="@string/large" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -85,6 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_20"
+                android:textSize="@{action.textSize}"
                 app:action="@{action}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@color/white"
+                    android:background="@android:color/transparent"
                     android:text="@string/view_full_screen"
                     android:textColor="@color/color_969090"
                     android:textSize="@dimen/sp15" />

@@ -27,4 +27,10 @@ object Title {
     const val TITLE_SCORE = R.string.tab_title_score
     const val TITLE_FIX_ESSAY = R.string.tab_title_fix_essay
 
+    const val LEVEL_NORMAL =  "Normal"
+    const val LEVEL_IELTS_WRITING = "Ielts writing"
+
+    const val TYPE_NORMAL = "Normal"
+    const val TYPE_IELTS_WRITING_TASK_1 = "Ielts writing task 1"
+    const val TYPE_IELTS_WRITING_TASK_2 = "Ielts writing task 2 "
 }

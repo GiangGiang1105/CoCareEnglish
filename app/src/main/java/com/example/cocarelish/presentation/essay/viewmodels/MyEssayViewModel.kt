@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.cocarelish.base.CommonViewModel
-import com.example.cocarelish.domain.essay.usecase.EssayOfUserUseCase
+import com.example.cocarelish.domain.essay.usecase.EssayOfSystemUseCase
 import com.example.cocarelish.utils.Resource
 import com.example.cocarelish.utils.listTemplate.ItemListModel
 import com.example.cocarelish.utils.listTemplate.ItemListType
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyEssayViewModel @Inject constructor(
-    private val essayOfUserUseCase: EssayOfUserUseCase,
+    private val essayOfUserUseCase: EssayOfSystemUseCase,
     application: Application
 ) : CommonViewModel(application) {
     private var mListItemMyEssay = mutableListOf<ItemListModel>()
@@ -30,7 +30,7 @@ class MyEssayViewModel @Inject constructor(
     fun getAllEssayOfUser(user_id: String) {
         Log.d(TAG, "getAllEssayOfUser called with id user = $user_id")
         viewModelScope.launch {
-            essayOfUserUseCase.execute(user_id).onStart {
+            essayOfUserUseCase.getAllEssayOfUser(user_id).onStart {
                 Log.d(TAG, "getAllEssayOfUser: onStart")
                 showLoadingDialog(true)
             }.catch { exception ->

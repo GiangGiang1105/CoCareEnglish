@@ -28,7 +28,6 @@ class EssaysByTopicFragment :
         idTopic?.let {
             Log.d(TAG, "onViewCreated: ")
             viewModel.getAllTestByTopic(it)
-
         }
 
         binding.apply {
@@ -37,15 +36,12 @@ class EssaysByTopicFragment :
             title = nameTopic
 
         }
-        viewModel.listData.observe(viewLifecycleOwner) {
+        viewModel.listDataTestByTopic.observe(viewLifecycleOwner) {
             Log.d(TAG, "onViewCreated: $it")
-            menuAdapter.submit(it)
+            if (it != null) {
+                menuAdapter.submit(it)
+            }
         }
-    }
-
-    override fun onDestroy() {
-        viewModel.addTopicSource()
-        super.onDestroy()
     }
 
     companion object {

@@ -74,7 +74,6 @@ class SpeakSupportWritingDialogFragment : DialogFragment() {
                     SpeechRecognizer.ERROR_SERVER -> message = "Error from server"
                 }
                 message?.let{Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()}
-
             }
 
             override fun onResults(p0: Bundle?) {

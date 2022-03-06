@@ -16,7 +16,7 @@
 
         <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
             android:id="@+id/imageFullScreen"
-            data_image="@{action.detailEssay.image_base64}"
+            url="@{action.detailEssay.image_link}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/dp_20"

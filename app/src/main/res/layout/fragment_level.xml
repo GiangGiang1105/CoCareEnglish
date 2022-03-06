@@ -72,7 +72,7 @@
                     android:background="@drawable/bg_writting_task"
                     android:fontFamily="@font/poppins_bold"
                     android:onClickListener="@{() -> action.onClickNormal()}"
-                    android:text="@{action.isVisibleType() ? action.listTypes[2].name :action.listLevels[0].name}"
+                    android:text="Normal Essay"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sp_24" />
 
@@ -94,7 +94,7 @@
                         android:background="@android:color/transparent"
                         android:fontFamily="@font/poppins_bold"
                         android:onClickListener="@{()-> action.onClickIeltsWriting()}"
-                        android:text="@{action.listLevels[1].name}"
+                        android:text="Ielt Writing"
                         android:textColor="@color/white"
                         android:textSize="@dimen/sp_24" />
 
@@ -115,7 +115,7 @@
                             android:alpha="0.5"
                             android:fontFamily="@font/poppins_bold"
                             android:onClickListener="@{() ->action.onClickIeltsWritingTask1()}"
-                            android:text="@{action.listTypes[0].name}"
+                            android:text="Ielts writing task 1"
                             android:textAllCaps="false"
                             android:textSize="@dimen/sp_20" />
 
@@ -128,7 +128,7 @@
                             android:alpha="0.5"
                             android:fontFamily="@font/poppins_bold"
                             android:onClickListener="@{() ->action.onClickIeltsWritingTask2()}"
-                            android:text="@{action.listTypes[1].name}"
+                            android:text="Ielts writing task 2"
                             android:textAllCaps="false"
                             android:textSize="@dimen/sp_20" />
 

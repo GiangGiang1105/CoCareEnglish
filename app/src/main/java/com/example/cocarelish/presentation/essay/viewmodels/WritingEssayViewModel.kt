@@ -12,9 +12,8 @@ import com.example.cocarelish.data.essay.remote.dto.Deadline
 import com.example.cocarelish.data.essay.remote.dto.SaveEssay
 import com.example.cocarelish.data.essay.remote.dto.Test
 import com.example.cocarelish.domain.essay.usecase.DeadlineUseCase
+import com.example.cocarelish.domain.essay.usecase.EssayOfSystemUseCase
 import com.example.cocarelish.domain.essay.usecase.SaveEssayUseCase
-import com.example.cocarelish.domain.essay.usecase.TestUseCase
-import com.example.cocarelish.utils.CoCareLishPreference
 import com.example.cocarelish.utils.Consts
 import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.Resource
@@ -28,19 +27,20 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WritingEssayViewModel @Inject constructor(
-    private val testUseCase: TestUseCase,
     private val deadlineUseCase: DeadlineUseCase,
     private val saveEssayUseCase: SaveEssayUseCase,
+    private val essayOfSystemUseCase: EssayOfSystemUseCase,
     private val myPreference: MyPreference,
     application: Application
 ) : CommonViewModel(application),
     CommonCollapseEssayTitle {
-
-    private val coCareLishPreference = CoCareLishPreference(application.applicationContext)
     override val isCollapse = MutableLiveData(true)
     private val _detailEssay: MutableLiveData<Test> = MutableLiveData()
+
     override val detailEssay: LiveData<Test>
         get() = _detailEssay
+
+
     val isRecording = MutableLiveData(false)
     val recordText = MutableLiveData("")
 
@@ -53,9 +53,6 @@ class WritingEssayViewModel @Inject constructor(
     private var _idEssay = -1
     private var _idDeadline = -1
 
-    /*private val _deadlineEssay = MutableLiveData(Consts.DEFAULT_DEADLINE)
-    val deadlineEssay: LiveData<Int>
-        get() = _deadlineEssay*/
 
     private val _listDeadlineEssay: MutableLiveData<List<Deadline>> = MutableLiveData()
     val listDeadlineEssay: LiveData<List<Deadline>>
@@ -80,20 +77,16 @@ class WritingEssayViewModel @Inject constructor(
         _topicName.postValue(topicName)
     }
 
-    private fun setIdEssay(id_essay: Int) {
-        _idEssay = id_essay
-    }
-
     fun imgRecordStateClick() {
         Log.d("TAGG", "imgRecordStateClick: ")
         isRecording.value = isRecording.value?.not()
     }
 
     fun getDetailEssay(id_essay: Int) {
+        _idEssay = id_essay
         Log.d(TAG, "getDetailTest called with id test = $id_essay")
-        setIdEssay(id_essay)
         viewModelScope.launch {
-            testUseCase.execute(id_essay).onStart {
+            essayOfSystemUseCase.getEssayByID(id_essay).onStart {
                 showLoadingDialog(true)
             }.catch { exception ->
                 showLoadingDialog(false)
@@ -104,7 +97,7 @@ class WritingEssayViewModel @Inject constructor(
                     Log.d(TAG, "getDetailTest: success with data = $baseResult")
                     when (baseResult) {
                         is Resource.Success -> {
-                            _detailEssay.postValue(baseResult.value.tests[0])
+                            _detailEssay.postValue(baseResult.value!!)
                             Log.d(TAG, "getDetailTest: ${_detailEssay.value}")
                         }
                     }

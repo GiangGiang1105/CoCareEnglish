@@ -9,6 +9,7 @@ import com.example.cocarelish.domain.auth.AuthRepository
 import com.example.cocarelish.domain.auth.entity.LoginEntity
 import com.example.cocarelish.domain.auth.entity.RegisterEntity
 import com.example.cocarelish.utils.Resource
+import com.example.cocarelish.utils.const.FireBaseConst.COLLECTION_USER
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -26,8 +27,6 @@ class AuthRepositoryImpl @Inject constructor(
 
     companion object {
         const val TAG = "AuthRepository"
-        const val COLLECTION_USERS = "users"
-        const val DOCUMENT_USER_NAME = "UID"
     }
 
     override fun login(loginRequest: LoginRequest): Flow<Resource<LoginEntity>> {
@@ -51,8 +50,7 @@ class AuthRepositoryImpl @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     override suspend fun getUserInformation(user_id: String): Flow<Resource<UserInfo?>> {
         return callbackFlow {
-            var data = UserInfo()
-            firebaseStore.collection(COLLECTION_USERS).document(user_id)
+            firebaseStore.collection(COLLECTION_USER).document(user_id)
                 .get().addOnCompleteListener {
                     it.result.toObject(UserInfo::class.java)?.let { userInfo ->
                         trySend(Resource.Success(userInfo))
@@ -67,7 +65,7 @@ class AuthRepositoryImpl @Inject constructor(
         var data = false
 
         withContext(Dispatchers.IO) {
-            firebaseStore.collection(COLLECTION_USERS).document(userInformation.id)
+            firebaseStore.collection(COLLECTION_USER).document(userInformation.id)
                 .set(userInformation).addOnCompleteListener {
                     data = it.isSuccessful
                 }.addOnFailureListener {

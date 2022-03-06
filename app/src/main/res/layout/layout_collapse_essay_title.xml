@@ -12,6 +12,10 @@
         <variable
             name="action"
             type="com.example.cocarelish.utils.base.CommonCollapseEssayTitle" />
+
+        <variable
+            name = "textSize"
+            type="int"/>
     </data>
 
 
@@ -43,6 +47,7 @@
                     android:id="@+id/question"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="@{textSize}"
                     android:background="@drawable/bg_view_corner"
                     android:text="@{action.detailEssay.question}"
                     android:textStyle="bold|italic" />
@@ -51,12 +56,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/dp_10"
+                    android:textSize="@{textSize}"
                     android:background="@drawable/bg_view_corner"
                     android:text="@string/summarize_title_essay" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="@{textSize}"
                     android:background="@drawable/bg_view_corner"
                     android:text="@string/write_at_least_150_words" />
 
@@ -95,7 +102,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/background_level"
-                    app:data_bitmap="@{action.detailEssay.image_base64}" />
+                    android:scaleType="fitCenter"
+                    app:url="@{action.detailEssay.image_link}" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

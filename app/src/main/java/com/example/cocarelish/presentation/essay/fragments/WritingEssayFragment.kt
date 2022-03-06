@@ -48,7 +48,7 @@ class WritingEssayFragment : CommonFragment<FragmentWritingEssayBinding, Writing
         initView()
         binding.apply {
             action = viewModel
-            Log.e(TAG, "onViewCreated: writing essay fragment ${idEssay}")
+            Log.e(TAG, "onViewCreated: writing essay fragment $idEssay")
             idEssay?.let {
                 viewModel.getDetailEssay(it)
             }

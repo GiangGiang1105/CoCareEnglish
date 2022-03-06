@@ -24,7 +24,7 @@ class MyEssayFragment : CommonFragment<FragmentMyEssayBinding, MyEssayViewModel>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         context?.let {
-            viewModel.getAllEssayOfUser(myPreference.getUserID())
+            viewModel.getAllEssayOfUser("2")
         }
         val menuAdapter = MenuAdapter(viewModel)
         viewModel.listData.observe(viewLifecycleOwner) {

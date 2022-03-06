@@ -43,7 +43,7 @@ class EssaysByTopicViewModel @Inject constructor(
                 Log.d(TAG, "getAllTestByTopic: success with data = $baseResult")
                 when (baseResult) {
                     is Resource.Success -> {
-                        for (item in baseResult.value.tests) {
+                        for (item in baseResult.value) {
                             mListItemListModel.add(
                                 ItemListModel(
                                     itemListType = ItemListType.ITEM_LIST_ESSAY_BY_TOPIC,
