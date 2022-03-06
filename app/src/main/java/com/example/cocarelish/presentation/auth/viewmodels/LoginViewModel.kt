@@ -53,25 +53,38 @@ class LoginViewModel @Inject constructor(
     fun login() {
         val loginRequest = LoginRequest(userName.value ?: "", passWord.value ?: "")
 
-        viewModelScope.launch {
-            authUseCase.execute(loginRequest).onStart {
-                showLoadingDialog(true)
-            }.catch { exception ->
-                showLoadingDialog(false)
-                Log.d(TAG, "Login Extension Error: ${exception.message}")
-            }.collect { baseResult ->
-                showLoading(false)
-                when (baseResult) {
-                    is Resource.Success -> {
-                        showToast(LOGIN_SUCCESS)
-                        showLoadingDialog(false)
-                        Log.e(TAG, "login: with id ${baseResult.value.user_info.id}")
-                        myPreference.saveUserID(baseResult.value.user_info.id)
-                        onNavigate(Title.HOME_FRAGMENT)
-                    }
-                }
-            }
-        }
+       auth.signInWithEmailAndPassword(loginRequest.email, loginRequest.password).addOnCompleteListener { task ->
+           if (task.isSuccessful) {
+               Log.d(TAG, "signInWithCredential:success")
+               firebaseUser = auth.currentUser
+
+               userID = firebaseUser?.uid
+
+               userID?.let { userID ->
+                   Log.d(TAG, "handleFaceBookAccessToken: userID -- $userID")
+                   myPreference.saveUserID(userID )
+                   coroutine.launch {
+                       val a = authUseCase.getUserInformation(userID)
+                       Log.d(TAG, "handleFaceBookAccessToken: user information -- $a")
+
+                       // fake data
+                       val userInfor = UserInfo(
+                           address = "Quảng Bình",
+                           name = "Nam",
+                           id = userID
+                       )
+                       val b = authUseCase.setUserInformation(userInfor)
+                       Log.d(TAG, "handleFaceBookAccessToken: $b")
+                   }
+               }
+               // TODO: Do something when login successfully
+               onNavigate(Title.HOME_FRAGMENT)
+               showToast(LOGIN_SUCCESS)
+           } else {
+               // If sign in fails, display a message to the user.
+               showToast(Title.LOGIN_ERROR)
+           }
+       }
     }
 
     var coroutine = CoroutineScope(Dispatchers.IO)

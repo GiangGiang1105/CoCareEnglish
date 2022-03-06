@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
 
-    <fragment
-        android:id="@+id/essayFragment"
-        android:name="com.example.cocarelish.presentation.home.fragments.EssayFragment"
-        android:label="EssayFragment"
-        tools:layout="@layout/fragment_essay">
-        <action
-            android:id="@+id/action_essayFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.cocarelish.presentation.home.fragments.ProfileFragment"
@@ -31,9 +22,6 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_essayFragment"
-            app:destination="@id/essayFragment" />
         <action
             android:id="@+id/action_homeFragment_to_levelFragment"
             app:destination="@id/levelFragment" />
