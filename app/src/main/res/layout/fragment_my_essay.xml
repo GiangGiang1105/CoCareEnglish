@@ -17,7 +17,7 @@
 
         <variable
             name="action"
-            type="com.example.cocarelish.presentation.essay.viewmodels.MyEssayViewModel" />
+            type="com.example.cocarelish.presentation.grade.viewmodel.MyEssayViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

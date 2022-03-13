@@ -174,7 +174,7 @@
     <string name="large">Large</string>
     <string name="medium">Medium</string>
     <string name="small">Small</string>
-    <string name="word_count_2">Word Count: 2</string>
+    <string name="word_count_2">Word Count: 0</string>
     <string name="text_essay_information">Essay information</string>
     <string name="text_standard">Fix errors, grade and give comments according to 4 criteria</string>
     <string name="text_deadline">Deadline</string>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/profileFragment"
@@ -87,7 +87,7 @@
 
     <fragment
         android:id="@+id/myEssayFragment"
-        android:name="com.example.cocarelish.presentation.essay.fragments.MyEssayFragment"
+        android:name="com.example.cocarelish.presentation.grade.fragment.MyEssayFragment"
         android:label="MyEssayFragment" />
 
     <fragment

@@ -3,17 +3,13 @@ package com.example.cocarelish.utils.listTemplate
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
-import com.bumptech.glide.Glide
 import com.example.cocarelish.R
 import com.example.cocarelish.application.MyApplication.Companion.context
-import com.example.cocarelish.data.essay.remote.dto.EssayOfUser
 import com.example.cocarelish.databinding.*
+import com.example.cocarelish.utils.Status
 import com.example.cocarelish.utils.base.CommonItemMenuAction
-import com.example.cocarelish.utils.databinding.loadImage
-import java.lang.IllegalArgumentException
-import kotlin.math.roundToInt
 
 class MenuAdapter(private val viewModel: CommonItemMenuAction) :
     ListAdapter<ItemListModel, MenuViewHolder<ItemListModel, CommonItemMenuAction>>(
@@ -73,11 +69,15 @@ class MenuAdapter(private val viewModel: CommonItemMenuAction) :
     ) : MenuViewHolder<ItemListModel, CommonItemMenuAction>(binding.root) {
         override fun bindData(data: ItemListModel, viewModel: CommonItemMenuAction) {
             Log.d(TAG, "bindData: ItemEssayByTopicHolder")
-            binding.root.setOnClickListener {
-                onItemCLickListener
-                viewModel.onNavigate(data)
+
+            binding.apply {
+                position = (layoutPosition + 1).toString()
+                root.setOnClickListener {
+                    onItemCLickListener
+                    viewModel.onNavigate(data)
+                }
+                menuItem = data
             }
-            binding.menuItem = data
         }
     }
 
@@ -89,11 +89,41 @@ class MenuAdapter(private val viewModel: CommonItemMenuAction) :
     ) : MenuViewHolder<ItemListModel, CommonItemMenuAction>(binding.root) {
         override fun bindData(data: ItemListModel, viewModel: CommonItemMenuAction) {
             Log.d(TAG, "bindData: ItemEssayByTopicHolder")
-            binding.root.setOnClickListener {
-                onItemCLickListener?.invoke(data)
-                viewModel.onNavigate(data)
+            binding.apply {
+                myEssay = data
+                content.html = data.content
+
+                root.setOnClickListener {
+                    onItemCLickListener?.invoke(data)
+                    viewModel.onNavigate(data)
+                }
+
+                orderPosition = layoutPosition + 1
+
+                when(data.status){
+                    Status.WAITING ->{
+                        imgStatus.setImageResource(R.drawable.ic_order_waiting)
+                        statusName.text = "Waiting"
+                        statusName.background.setTint(ContextCompat.getColor(context,R.color.waiting_status))
+                    }
+                    Status.DONE -> {
+                        imgStatus.setImageResource(R.drawable.ic_order_complete)
+                        if(data.score == -1){
+                            statusName.text = "Done"
+                        }else{
+                            statusName.text = "Điểm ${data.score}"
+                        }
+                        statusName.background.setTint(ContextCompat.getColor(context,R.color.done_status))
+
+                    }
+                    Status.CANCEL ->{
+                        imgStatus.setImageResource(R.drawable.ic_order_cancel)
+                        statusName.text = "Cancel"
+                        statusName.background.setTint(ContextCompat.getColor(context,R.color.cancel_status))
+                    }
+                }
+
             }
-            binding.myEssay = data
         }
     }
 

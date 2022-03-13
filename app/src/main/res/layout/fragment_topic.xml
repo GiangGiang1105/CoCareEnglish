@@ -9,7 +9,7 @@
 
         <variable
             name="title"
-            type="int" />
+            type="String" />
 
         <variable
             name="action"
@@ -25,7 +25,7 @@
             android:id="@+id/appBarLayout"
             layout="@layout/toolbar_collapse"
             app:action="@{action}"
-            app:title="@{title}" />
+            app:text="@{title}" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"

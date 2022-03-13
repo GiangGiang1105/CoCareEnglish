@@ -42,4 +42,8 @@
     <color name="color_0E77A4">#0E77A4</color>
     <color name="color_818181">#818181</color>
 
+    <color name="waiting_status">#0E4DA4</color>
+    <color name="done_status">#FF0808</color>
+    <color name="cancel_status">#818181</color>
+
 </resources>

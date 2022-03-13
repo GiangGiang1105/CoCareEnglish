@@ -23,7 +23,7 @@ class DeadlineAdapter : RecyclerView.Adapter<DeadlineAdapter.ItemDeadline>() {
     }
 
     fun setData(listDeadline: List<Deadline>) {
-        listDeadline?.let {
+        listDeadline.let {
             _listDeadline.clear()
             _listDeadline.addAll(it)
         }

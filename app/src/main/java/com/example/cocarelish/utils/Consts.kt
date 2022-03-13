@@ -17,7 +17,7 @@ object Consts {
     const val STANDARD_IELTS = R.string.text_standard
     const val MAX_DEADLINE = 48
     const val DEFAULT_DEADLINE = 12
-    const val DEFAULT_PRICE = 20000.0
+    const val DEFAULT_PRICE: Long = 20000
 
     const val MALE = "Male"
     const val FEMALE = "Female"

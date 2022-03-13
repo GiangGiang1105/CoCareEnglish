@@ -74,10 +74,4 @@ class AuthRepositoryImpl @Inject constructor(
         }
         return data
     }
-//        flow {
-//            val response = safeApiCall { authApi.getUserInformation(user_id).data }
-//            Log.d("TAG", "getUserInformation: $response ")
-//            emit(response)
-//        }
-
 }

@@ -1,4 +1,4 @@
-package com.example.cocarelish.presentation.essay.fragments
+package com.example.cocarelish.presentation.grade.fragment
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
 import com.example.cocarelish.databinding.FragmentMyEssayBinding
-import com.example.cocarelish.presentation.essay.viewmodels.MyEssayViewModel
+import com.example.cocarelish.presentation.grade.viewmodel.MyEssayViewModel
 import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.listTemplate.MenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,9 +23,6 @@ class MyEssayFragment : CommonFragment<FragmentMyEssayBinding, MyEssayViewModel>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        context?.let {
-            viewModel.getAllEssayOfUser("2")
-        }
         val menuAdapter = MenuAdapter(viewModel)
         viewModel.listData.observe(viewLifecycleOwner) {
             menuAdapter.submit(it)

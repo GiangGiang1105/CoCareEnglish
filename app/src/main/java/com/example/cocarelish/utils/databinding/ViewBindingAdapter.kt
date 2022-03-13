@@ -47,15 +47,15 @@ fun TextView.setTextTopic(position: Int, typeTopic: String) {
 }
 
 
-@BindingAdapter(value = ["status_id", "score"])
-fun TextView.setTextStatus(status_id: Int, score: String?) {
-    Log.e("TextView", "setTextStatus: $status_id with $score")
-    if (status_id == Status.STATUS_1) {
-        this.text = Consts.SCORE + score
-    } else if (status_id == Status.STATUS_2) {
-        this.text = Consts.SENT
-    }
-}
+//@BindingAdapter(value = ["status_id", "score"])
+//fun TextView.setTextStatus(status_id: Int, score: String?) {
+//    Log.e("TextView", "setTextStatus: $status_id with $score")
+//    if (status_id == Status.STATUS_1) {
+//        this.text = Consts.SCORE + score
+//    } else if (status_id == Status.STATUS_2) {
+//        this.text = Consts.SENT
+//    }
+//}
 
 //@BindingAdapter("data_image")
 //fun AppCompatImageView.setImage(data_image: String?) {

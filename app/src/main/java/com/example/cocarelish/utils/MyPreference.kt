@@ -2,6 +2,7 @@ package com.example.cocarelish.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -12,11 +13,23 @@ import javax.inject.Singleton
 @Singleton
 class MyPreference @Inject constructor(@ApplicationContext context: Context) {
     companion object{
+        const val TAG = "MyPreference"
         private const val SHARE_PREFERENCE_NAME = "share_preference_name"
 
         private const val USER_ID = "user_id"
+        private const val IMAGE_LINK = "image_link"
     }
     private val sharedPref: SharedPreferences = context.getSharedPreferences(SHARE_PREFERENCE_NAME, Context.MODE_PRIVATE)
+
+    fun saveImageLink(imagePath: String){
+        Log.d(TAG, "saveImageLink: $imagePath ")
+        put(IMAGE_LINK, imagePath)
+    }
+
+    fun getImageLink(): String{
+        Log.d(TAG, "getImageLink:${get(IMAGE_LINK, String::class.java)} ")
+        return get(IMAGE_LINK, String::class.java)
+    }
 
     fun getUserID() : String {
         return get(USER_ID, String::class.java)

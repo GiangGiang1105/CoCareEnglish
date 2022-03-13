@@ -1,7 +1,6 @@
 package com.example.cocarelish.presentation.order.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,10 +21,9 @@ class PaymentFragment : CommonFragment<FragmentPaymentBinding, WritingEssayViewM
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.apply {
-            listDeadlineEssay.observe(viewLifecycleOwner, {
+            listDeadlineEssay.observe(viewLifecycleOwner) {
                 deadlineAdapter.setData(it)
-            })
-            getAllDeadline()
+            }
         }
         binding.apply {
             title = Title.TITLE_SUBMIT
@@ -40,5 +38,4 @@ class PaymentFragment : CommonFragment<FragmentPaymentBinding, WritingEssayViewM
             viewModel.setDeadlineEssay(it)
         }
     }
-
 }

@@ -1,12 +1,15 @@
-package com.example.cocarelish.presentation.essay.viewmodels
+package com.example.cocarelish.presentation.grade.viewmodel
 
 import android.app.Application
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.cocarelish.base.CommonViewModel
 import com.example.cocarelish.domain.essay.usecase.EssayOfSystemUseCase
+import com.example.cocarelish.domain.order.OrderRepository
+import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.Resource
 import com.example.cocarelish.utils.listTemplate.ItemListModel
 import com.example.cocarelish.utils.listTemplate.ItemListType
@@ -19,18 +22,22 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyEssayViewModel @Inject constructor(
-    private val essayOfUserUseCase: EssayOfSystemUseCase,
+    private val orderRepository: OrderRepository,
+    private val myPreference: MyPreference,
     application: Application
 ) : CommonViewModel(application) {
+    init{
+        getAllEssayOfUser()
+    }
+
     private var mListItemMyEssay = mutableListOf<ItemListModel>()
     private val _listData: MutableLiveData<List<ItemListModel>> = MutableLiveData()
     val listData: LiveData<List<ItemListModel>>
         get() = _listData
 
-    fun getAllEssayOfUser(user_id: String) {
-        Log.d(TAG, "getAllEssayOfUser called with id user = $user_id")
+    private fun getAllEssayOfUser() {
         viewModelScope.launch {
-            essayOfUserUseCase.getAllEssayOfUser(user_id).onStart {
+            orderRepository.getAllOrderByUserId(myPreference.getUserID()).onStart {
                 Log.d(TAG, "getAllEssayOfUser: onStart")
                 showLoadingDialog(true)
             }.catch { exception ->
@@ -42,24 +49,7 @@ class MyEssayViewModel @Inject constructor(
                 Log.d(TAG, "getAllEssayOfUser: success with data = $baseResult")
                 when (baseResult) {
                     is Resource.Success -> {
-                        mListItemMyEssay.clear()
-                        for (item in baseResult.value.orders) {
-                            mListItemMyEssay.add(
-                                ItemListModel(
-                                    itemListType = ItemListType.ITEM_LIST_MY_ESSAY,
-                                    status = item.status,
-                                    id = item.id,
-                                    type_name = item.type_name,
-                                    question_of_test = item.question_of_test,
-                                    content = item.content,
-                                    teacher_name = item.teacher_name,
-                                    updated_at = item.updated_at,
-                                    score = item.score,
-
-                                )
-                            )
-                        }
-                        _listData.postValue(mListItemMyEssay)
+                        _listData.postValue(baseResult.value!!)
                     }
                 }
             }

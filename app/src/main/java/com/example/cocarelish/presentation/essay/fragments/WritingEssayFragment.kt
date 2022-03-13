@@ -13,8 +13,10 @@ import androidx.fragment.app.activityViewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
 import com.example.cocarelish.databinding.FragmentWritingEssayBinding
+import com.example.cocarelish.presentation.essay.fragments.dialog.ImageFullScreenDialogFragment
 import com.example.cocarelish.presentation.essay.fragments.dialog.SpeakSupportWritingDialogFragment
 import com.example.cocarelish.presentation.essay.viewmodels.WritingEssayViewModel
+import com.github.onecode369.wysiwyg.WYSIWYG
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -55,8 +57,11 @@ class WritingEssayFragment : CommonFragment<FragmentWritingEssayBinding, Writing
             btnComplete.setOnClickListener {
                 viewModel.navigationWritingEssayFragmentToPaymentFragment(binding.editor.html)
             }
+            btnViewFullScreen.setOnClickListener {
+                ImageFullScreenDialogFragment().show(childFragmentManager, "fullscreen")
+            }
         }
-        levelName?.let {
+        levelName?.let { 
             Log.d(TAG, "onViewCreated:level name  $it")
             viewModel.setLevelName(it)
         }
@@ -137,6 +142,15 @@ class WritingEssayFragment : CommonFragment<FragmentWritingEssayBinding, Writing
 
     private fun initView() {
         val wysiwygEditor = binding.editor
+        wysiwygEditor.setOnTextChangeListener(object : WYSIWYG.OnTextChangeListener {
+            override fun onTextChange(text: String?) {
+                val words = text.toString().trim()
+                val regex = "(<br>)+$"
+                val numberOfInputWords =
+                    words.replace(regex.toRegex(), "").split("(\\s|<br>)+".toRegex()).size
+                binding.wordCount.text = "Word Count: $numberOfInputWords"
+            }
+        })
         wysiwygEditor.setEditorHeight(200)
         wysiwygEditor.setEditorFontSize(16)
         wysiwygEditor.setPadding(10, 10, 10, 10)

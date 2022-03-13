@@ -9,11 +9,10 @@ import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonEvent
 import com.example.cocarelish.base.CommonViewModel
 import com.example.cocarelish.data.essay.remote.dto.Deadline
-import com.example.cocarelish.data.essay.remote.dto.SaveEssay
 import com.example.cocarelish.data.essay.remote.dto.Test
-import com.example.cocarelish.domain.essay.usecase.DeadlineUseCase
+import com.example.cocarelish.data.order.dto.Order
 import com.example.cocarelish.domain.essay.usecase.EssayOfSystemUseCase
-import com.example.cocarelish.domain.essay.usecase.SaveEssayUseCase
+import com.example.cocarelish.domain.order.OrderRepository
 import com.example.cocarelish.utils.Consts
 import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.Resource
@@ -23,17 +22,22 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
 class WritingEssayViewModel @Inject constructor(
-    private val deadlineUseCase: DeadlineUseCase,
-    private val saveEssayUseCase: SaveEssayUseCase,
+    private val orderUseCase: OrderRepository,
     private val essayOfSystemUseCase: EssayOfSystemUseCase,
     private val myPreference: MyPreference,
     application: Application
 ) : CommonViewModel(application),
     CommonCollapseEssayTitle {
+
+    init {
+        getAllDeadline()
+    }
+
     override val isCollapse = MutableLiveData(true)
     private val _detailEssay: MutableLiveData<Test> = MutableLiveData()
 
@@ -59,7 +63,7 @@ class WritingEssayViewModel @Inject constructor(
         get() = _listDeadlineEssay
 
     private val _totalPriceEssay = MutableLiveData(Consts.DEFAULT_PRICE)
-    val totalPriceEssay: LiveData<Double>
+    val totalPriceEssay: LiveData<Long>
         get() = _totalPriceEssay
 
     private var content: String = ""
@@ -105,10 +109,10 @@ class WritingEssayViewModel @Inject constructor(
         }
     }
 
-    fun getAllDeadline() {
+    private fun getAllDeadline() {
         Log.d(TAG, "getAllDeadline: ")
         viewModelScope.launch {
-            deadlineUseCase.execute().onStart {
+            orderUseCase.getDeadLineOrder().onStart {
                 Log.d(TAG, "getAllDeadline: onstart()")
             }.catch { exception ->
                 Log.d(TAG, "getDetailTest: error with exception $exception")
@@ -116,7 +120,7 @@ class WritingEssayViewModel @Inject constructor(
                 Log.d(TAG, "getAllDeadline: with data = $it")
                 when (it) {
                     is Resource.Success -> {
-                        _listDeadlineEssay.postValue(it.value.deadlines)
+                        _listDeadlineEssay.postValue(it.value!!)
                         Log.d(
                             TAG,
                             "getAllDeadline: post value success with ${_listDeadlineEssay.value}"
@@ -140,34 +144,32 @@ class WritingEssayViewModel @Inject constructor(
         val idType = -1
         val saveEssay =
             totalPriceEssay.value?.let {
-                SaveEssay(
-                    user_id = idUser,
-                    type_id = idType,
-                    deadline_id = _idDeadline,
-                    test_id = _idEssay,
-                    total_price = it,
-                    content = content
+                Order(
+                    id = UUID.randomUUID().toString(),
+                    uid = myPreference.getUserID(),
+                    dead_line = _idDeadline,
+                    status_id = 0,
+                    time_post = System.currentTimeMillis(),
+                    content = content,
+                    price = it,
+                    essay_id = _idEssay
                 )
             }
         Log.d(TAG, "userSaveWrittenEssay: saveEssay = $saveEssay")
         viewModelScope.launch {
             saveEssay?.let {
-                saveEssayUseCase.execute(it).onStart {
+                orderUseCase.setUpEssayOrder(it).onStart {
                     Log.d(TAG, "userSaveWrittenEssay: onstart()")
                     showLoadingDialog(true)
                 }.catch { exception ->
                     Log.d(TAG, "getDetailTest: error with exception $exception")
                     showLoadingDialog(false)
-                }.collect {
+                }.collect { it1 ->
                     showLoadingDialog(false)
-                    when (it) {
-                        is Resource.Success -> {
-                            if (it.value.success) {
-                                viewModelScope.launch {
-                                    evenSender.send(CommonEvent.OnShowToast(it.value.data))
-                                    evenSender.send(CommonEvent.OnBackScreen)
-                                }
-                            }
+                    if (it1) {
+                        viewModelScope.launch {
+                            evenSender.send(CommonEvent.OnShowToast("Post order successfully"))
+                            evenSender.send(CommonEvent.OnBackScreen)
                         }
                     }
                 }

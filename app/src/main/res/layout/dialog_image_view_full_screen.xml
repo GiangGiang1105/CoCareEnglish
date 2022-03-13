@@ -6,7 +6,7 @@
 
         <variable
             name="action"
-            type="com.example.cocarelish.presentation.essay.viewmodels.EssayViewModel" />
+            type="com.example.cocarelish.presentation.essay.viewmodels.dialog.ImageFullScreenViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,7 +16,7 @@
 
         <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
             android:id="@+id/imageFullScreen"
-            url="@{action.detailEssay.image_link}"
+            url="@{action.imageLink}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/dp_20"

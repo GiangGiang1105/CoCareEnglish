@@ -11,7 +11,7 @@
         <import type="com.example.cocarelish.utils.Status" />
 
         <variable
-            name="position"
+            name="orderPosition"
             type="int" />
     </data>
 
@@ -22,10 +22,9 @@
         android:padding="@dimen/dp_15">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/status"
+            android:id="@+id/imgStatus"
             android:layout_width="@dimen/dp_40"
             android:layout_height="@dimen/dp_40"
-            android:src="@{myEssay.status == Status.STATUS_1  ? @drawable/ic_complete : @drawable/ic_un_complete }"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,13 +36,13 @@
             android:layout_marginTop="@dimen/dp_10"
             android:orientation="vertical"
             android:weightSum="2"
-            app:layout_constraintBottom_toBottomOf="@+id/status"
-            app:layout_constraintStart_toEndOf="@+id/status"
-            app:layout_constraintTop_toTopOf="@+id/status">
+            app:layout_constraintBottom_toBottomOf="@+id/imgStatus"
+            app:layout_constraintStart_toEndOf="@+id/imgStatus"
+            app:layout_constraintTop_toTopOf="@+id/imgStatus">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/titleTopic"
-                position="@{myEssay.id}"
+                position="@{orderPosition}"
                 type_topic="@{myEssay.type_name}"
                 android:layout_width="@dimen/dp_200"
                 android:layout_height="wrap_content"
@@ -64,22 +63,20 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:background="@drawable/bg_circle_background"
             android:id="@+id/status_name"
-            score="@{myEssay.score}"
-            status_id="@{myEssay.status}"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_25"
             android:layout_marginStart="@dimen/dp_30"
             android:layout_marginTop="@dimen/dp_5"
-            android:background="@{myEssay.status ==Status.STATUS_1? @drawable/bg_status_name_complete : @drawable/bg_status_name_un_complete}"
+            android:textColor="@color/white"
             android:fontFamily="@font/poppins_bold"
             android:padding="@dimen/dp_5"
             android:textSize="@dimen/sp_12"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/linear" />
 
-
-        <androidx.appcompat.widget.AppCompatTextView
+        <com.github.onecode369.wysiwyg.WYSIWYG
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,7 +85,6 @@
             android:ellipsize="end"
             android:fontFamily="@font/poppins_extra_light"
             android:maxLines="3"
-            android:text="@{myEssay.content}"
             android:textSize="@dimen/sp_16"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linear" />
@@ -103,28 +99,14 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/teacher"
-                android:layout_width="@dimen/dp_150"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:fontFamily="@font/poppins_thin"
-                android:gravity="left"
                 android:text="@{@string/teacher(myEssay.teacher_name)}"
-                android:textColor="@color/color_0E4DA4"
+                android:textStyle="bold"
+                android:textColor="#0D2F5E"
                 android:textSize="@dimen/sp_14"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="@dimen/dp_150"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:fontFamily="@font/poppins_thin"
-                android:gravity="right"
-                android:text="@{@string/update(myEssay.teacher_name)}"
-                android:textSize="@dimen/sp_14"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/teacher"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

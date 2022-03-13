@@ -8,13 +8,17 @@ import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.databinding.DialogImageViewFullScreenBinding
 import com.example.cocarelish.presentation.essay.viewmodels.EssayViewModel
+import com.example.cocarelish.presentation.essay.viewmodels.dialog.ImageFullScreenViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ImageFullScreenDialogFragment : DialogFragment() {
     private lateinit var binding: DialogImageViewFullScreenBinding
-    val viewModel: EssayViewModel by activityViewModels()
+    val viewModel: ImageFullScreenViewModel by activityViewModels()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = DataBindingUtil.inflate(

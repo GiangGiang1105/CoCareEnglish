@@ -1,6 +1,8 @@
 package com.example.cocarelish.utils
 
 object Status{
-    const val STATUS_1 = 1
-    const val STATUS_2 = 0
+    const val WAITING = 0
+    const val DONE = 1
+    const val CANCEL = 2
+    const val SAVED = 3
 }

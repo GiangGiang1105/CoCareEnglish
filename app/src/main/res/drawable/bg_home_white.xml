@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-<!--    &lt;!&ndash; Gray shadow. &ndash;&gt;-->
-<!--    <item android:top="@dimen/dp_5">-->
-<!--        <shape>-->
-<!--            <corners-->
-<!--               android:radius="@dimen/dp_15" />-->
-<!--            <solid android:color="#1B0B1027" />-->
-<!--        </shape>-->
-<!--    </item>-->
-    <!-- White foreground. -->
     <item android:bottom="5dp"
         android:right="3dp">
         <shape>

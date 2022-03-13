@@ -1,10 +1,8 @@
 package com.example.cocarelish.data.essay.repository
 
 import android.util.Log
-import com.example.cocarelish.base.BaseResponse
 import com.example.cocarelish.data.essay.remote.api.EssayApi
 import com.example.cocarelish.data.essay.remote.dto.Level
-import com.example.cocarelish.data.essay.remote.dto.SaveEssay
 import com.example.cocarelish.data.essay.remote.dto.Test
 import com.example.cocarelish.data.essay.remote.dto.Topic
 import com.example.cocarelish.domain.essay.EssayRepository
@@ -111,14 +109,6 @@ class EssayRepositoryImpl @Inject constructor(
         return flow {
             val response = safeApiCall { essayApi.getAllDeadline().data }
             Log.d("TAG", "getAllDeadline: $response")
-            emit(response)
-        }
-    }
-
-    override fun userSaveWrittenEssay(saveEssay: SaveEssay): Flow<Resource<BaseResponse<String>>> {
-        return flow {
-            val response = safeApiCall { essayApi.userSaveWrittenEssay(saveEssay) }
-            Log.d("TAG", "userSaveWrittenEssay:$response")
             emit(response)
         }
     }

@@ -17,9 +17,6 @@ class ShowDetailTitleEssayFragment :
     override val viewModel: EssayViewModel by activityViewModels()
     override val layoutID: Int
         get() = R.layout.fragment_show_detail_essay_title
-    private val idEssay by lazy {
-        arguments?.getInt(ARG_ID_ESSAY)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,35 +28,9 @@ class ShowDetailTitleEssayFragment :
                 ImageFullScreenDialogFragment().show(childFragmentManager, "fullscreen")
             }
         }
-
-//        setupOnClickListener()
     }
-
-//    private fun setupOnClickListener() {
-//        binding.apply {
-//            btnSmallText.setOnClickListener(this@ShowDetailTitleEssayFragment)
-//            btnMediumText.setOnClickListener(this@ShowDetailTitleEssayFragment)
-//            btnLargeText.setOnClickListener(this@ShowDetailTitleEssayFragment)
-//        }
-//    }
-
 
     companion object {
         const val ARG_ID_ESSAY = "IdEssay"
     }
-
-//    override fun onClick(p0: View?) {
-//        when(p0){
-//            binding.btnSmallText ->{
-//            includeTitleContent.texts
-//            }
-//        }
-//    }
-//
-//    private fun setTextSizeForScreen(size: Int){
-//        binding.apply {
-//
-//        }
-//    }
-
 }

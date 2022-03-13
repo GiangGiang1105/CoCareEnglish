@@ -12,10 +12,12 @@ import com.example.cocarelish.utils.Title
 import com.example.cocarelish.utils.validate.ValidateExtend.validate
 import com.example.cocarelish.utils.validate.isValidEmail
 import com.example.cocarelish.utils.validate.isValidPassword
-import com.facebook.*
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.FacebookSdk
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
-import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

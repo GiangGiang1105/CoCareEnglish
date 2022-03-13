@@ -9,9 +9,9 @@ object Title {
     const val HOME_FRAGMENT = R.string.text_id_4
     const val IELTS_WRITING = R.string.text_id_11
 
-    const val IELTS_WRITING_TASK_1 = R.string.text_id_5
-    const val IELTS_WRITING_TASK_2 = R.string.text_id_6
-    const val HOME_WORK = R.string.text_id_7
+    const val IELTS_WRITING_TASK_1 = "Ielts Writing Task 1"
+    const val IELTS_WRITING_TASK_2 = "Ielts Writing Task 2"
+    const val NORMAL = "Normal"
 
 
     const val LOGIN_SUCCESS = R.string.login_success

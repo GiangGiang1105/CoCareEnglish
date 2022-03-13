@@ -210,7 +210,11 @@ class EssayViewModel @Inject constructor(
             ItemListType.ITEM_LIST_ESSAY_BY_TOPIC -> {
                 Log.d(TAG, "onNavigate: ${itemListModel.id}")
                 currentDetailEssayId = itemListModel.id
-                _detailEssay.postValue(listTestByTopicID.find { it.id == itemListModel.id })
+                val currentEssay = listTestByTopicID.find { it.id == itemListModel.id }
+                currentEssay?.let{
+                    _detailEssay.postValue(it)
+                    myPreference.saveImageLink(it.image_link)
+                }
                 navigate(
                     R.id.action_essaysByTopicFragment_to_showDetailEssayTitleFragment,
                 )

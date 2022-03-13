@@ -23,5 +23,4 @@ abstract class EssayRepository : BaseRepository() {
 
     abstract fun getAllDeadline(): Flow<Resource<DeadlineEntity>>
 
-    abstract fun userSaveWrittenEssay(saveEssay: SaveEssay): Flow<Resource<BaseResponse<String>>>
 }
