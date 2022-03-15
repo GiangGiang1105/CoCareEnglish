@@ -16,9 +16,9 @@ class GradeAdapter(fm: FragmentActivity) : FragmentStateAdapter(fm) {
     override fun getItemCount(): Int = NUMBER_COUNT
 
     override fun createFragment(position: Int): Fragment = when (position) {
-        PAGE_0 -> AssessmentFragment.newInstance()
-        PAGE_1 -> YourScoreFragment.newInstance()
-        PAGE_2 -> FixEssayFragment.newInstance()
+        PAGE_0 -> AssessmentFragment()
+        PAGE_1 -> YourScoreFragment()
+        PAGE_2 -> FixEssayFragment()
         else -> throw IndexOutOfBoundsException("Not find fragment correct with position!")
     }
 }

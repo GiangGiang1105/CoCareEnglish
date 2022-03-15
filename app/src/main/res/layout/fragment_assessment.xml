@@ -5,11 +5,15 @@
 
     <data>
 
+        <variable
+            name="action"
+            type="com.example.cocarelish.presentation.grade.viewmodel.GradeAndJudgeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:context=".presentation.grade.fragment.AssessmentFragment">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -23,7 +27,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/general_comment"
             style="@style/StyleGradeAndJugde"
-            android:text="Card layouts can vary to support the types of content they contain. The following elements are commonly found among that variety."
+            android:text="@{action.detailResult.general_comment}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_general_comment" />
@@ -43,7 +47,7 @@
             style="@style/StyleGradeAndJugde"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Card layouts can vary to support the types of content they contain. The following elements are commonly found among that variety."
+            android:text="@{action.detailResult.feedback}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title_feedback" />

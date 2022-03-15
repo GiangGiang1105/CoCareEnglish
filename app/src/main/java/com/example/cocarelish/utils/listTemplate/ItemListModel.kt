@@ -10,7 +10,7 @@ class ItemListModel(
     var title: String = "",
     var image: String = "",
     var id: Int = -1,
-    var idOfMyEssay: String = "",
+    var orderId: String = "",
     val user_id: Int = -1,
     val status: Int = 0,
     val type_name: String = "",

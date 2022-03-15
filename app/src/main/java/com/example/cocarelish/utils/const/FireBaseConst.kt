@@ -9,4 +9,5 @@ object FireBaseConst {
 
     const val COLLECTION_QUESTION = "essay"
     const val COLLECTION_ORDER_RESULT = "result"
+    const val COLLECTION_DETAIL_RESULT = "detail_result"
 }

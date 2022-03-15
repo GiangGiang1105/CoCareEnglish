@@ -3,12 +3,15 @@ package com.example.cocarelish.presentation.grade.viewmodel
 import android.app.Application
 import android.content.SharedPreferences
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonViewModel
 import com.example.cocarelish.domain.essay.usecase.EssayOfSystemUseCase
 import com.example.cocarelish.domain.order.OrderRepository
+import com.example.cocarelish.presentation.grade.fragment.GradeAndJudgeFragment.Companion.ARGUMENT_ODER_ID
 import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.Resource
 import com.example.cocarelish.utils.listTemplate.ItemListModel
@@ -54,5 +57,15 @@ class MyEssayViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+
+    override fun onNavigate(itemListModel: ItemListModel) {
+        navigate(
+            R.id.action_myEssayFragment_to_gradeAndJudgeFragment,
+            bundleOf(
+                ARGUMENT_ODER_ID to itemListModel.orderId
+            )
+        )
     }
 }

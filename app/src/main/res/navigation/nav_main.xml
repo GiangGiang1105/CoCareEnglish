@@ -88,7 +88,11 @@
     <fragment
         android:id="@+id/myEssayFragment"
         android:name="com.example.cocarelish.presentation.grade.fragment.MyEssayFragment"
-        android:label="MyEssayFragment" />
+        android:label="MyEssayFragment">
+        <action
+            android:id="@+id/action_myEssayFragment_to_gradeAndJudgeFragment"
+            app:destination="@id/gradeAndJudgeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/showDetailTitleFragment"
@@ -169,4 +173,8 @@
             android:defaultValue="null"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/gradeAndJudgeFragment"
+        android:name="com.example.cocarelish.presentation.grade.fragment.GradeAndJudgeFragment"
+        android:label="GradeAndJudgeFragment" />
 </navigation>

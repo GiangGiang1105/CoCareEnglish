@@ -43,6 +43,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -57,34 +58,52 @@
                     <include
                         android:id="@+id/include"
                         layout="@layout/layout_collapse_essay_title"
+                        android:textSize="@{50}"
+                        app:action="@{action}"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/include"
+                        android:layout_marginHorizontal="20dp"
+                        android:background="@drawable/bg_view_corner"
+                        app:cardCornerRadius="@dimen/dp_5"
+                        app:cardElevation="@dimen/dp_10"
+                        app:layout_constraintTop_toBottomOf="@+id/include">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnViewFullScreen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@android:color/transparent"
+                            android:text="@string/view_full_screen"
+                            android:textColor="@color/color_969090"
+                            android:textSize="@dimen/sp15" />
+                    </androidx.cardview.widget.CardView>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/text_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_10"
                         android:fontFamily="@font/poppins_bold"
                         android:text="@string/text_your_content"
                         android:textAlignment="center"
                         android:textSize="@dimen/sp_22"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/include" />
+                        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <com.github.onecode369.wysiwyg.WYSIWYG
                         android:id="@+id/your_content"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/dp_20"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:ellipsize="middle"
-                        android:maxLength="10"
-                        android:scrollHorizontally="true"
-                        android:text="@string/large_text"
+                        android:layout_height="300dp"
+                        android:layout_marginTop="@dimen/dp_21"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_1" />

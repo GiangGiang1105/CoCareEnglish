@@ -90,8 +90,13 @@ class MenuAdapter(private val viewModel: CommonItemMenuAction) :
         override fun bindData(data: ItemListModel, viewModel: CommonItemMenuAction) {
             Log.d(TAG, "bindData: ItemEssayByTopicHolder")
             binding.apply {
+                root.setOnClickListener {
+                    viewModel.onNavigate(data)
+                }
+
                 myEssay = data
                 content.html = data.content
+                content.isEnabled = false
 
                 root.setOnClickListener {
                     onItemCLickListener?.invoke(data)

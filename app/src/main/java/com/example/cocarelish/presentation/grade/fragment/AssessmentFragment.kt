@@ -5,20 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.example.cocarelish.R
+import com.example.cocarelish.base.CommonFragment
+import com.example.cocarelish.databinding.FragmentAssessmentBinding
+import com.example.cocarelish.presentation.grade.viewmodel.GradeAndJudgeViewModel
 
-class AssessmentFragment : Fragment() {
+class AssessmentFragment : CommonFragment<FragmentAssessmentBinding, GradeAndJudgeViewModel>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_assessment, container, false)
-    }
+    override val viewModel: GradeAndJudgeViewModel by activityViewModels()
+    override val layoutID: Int
+        get() = R.layout.fragment_assessment
 
-    companion object {
-
-        fun newInstance() = AssessmentFragment()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            action = viewModel
+        }
     }
 }

@@ -67,13 +67,13 @@ class EssayRepositoryImpl @Inject constructor(
 
     }
 
-    override fun getTestById(test_id: Int): Flow<Resource<Test>> {
+    override fun getTestById(test_id: Int): Flow<Test> {
         return callbackFlow {
             firebaseStore.collection(COLLECTION_QUESTION).document(test_id.toString()).get()
                 .addOnCompleteListener {
                     it.result.toObject(Test::class.java)?.let { test ->
                         Log.d(TAG, "getTestById: $test")
-                        trySend(Resource.Success(test))
+                        trySend(test)
                     }
                 }
             awaitClose { }

@@ -1,16 +1,13 @@
 package com.example.cocarelish.data.order.repository
 
 import android.util.Log
-import com.example.cocarelish.data.authentication.remote.dto.UserInfo
 import com.example.cocarelish.data.authentication.repository.AuthRepositoryImpl
 import com.example.cocarelish.data.essay.remote.dto.Deadline
-import com.example.cocarelish.data.essay.remote.dto.Test
-import com.example.cocarelish.data.essay.remote.dto.Type
+import com.example.cocarelish.data.order.dto.DetailResult
 import com.example.cocarelish.data.order.dto.Order
 import com.example.cocarelish.data.order.dto.OrderResult
 import com.example.cocarelish.domain.essay.usecase.EssayOfSystemUseCase
 import com.example.cocarelish.domain.order.OrderRepository
-import com.example.cocarelish.utils.Consts
 import com.example.cocarelish.utils.Resource
 import com.example.cocarelish.utils.Title
 import com.example.cocarelish.utils.const.FireBaseConst
@@ -58,7 +55,26 @@ class OrderRepositoryImpl @Inject constructor(
                             list.add(it1)
                         }
                     }
-                    trySend(list[0])
+                    if(list.isNotEmpty()){
+                        trySend(list[0])
+                    }
+                }
+            awaitClose { }
+        }
+    }
+
+    override suspend fun getDetailResultByID(detailResultID: String): Flow<DetailResult> {
+        return callbackFlow {
+            val lista = mutableListOf<DetailResult>()
+            firebaseStore.collection(FireBaseConst.COLLECTION_DETAIL_RESULT)
+                .whereEqualTo("id", detailResultID).get()
+                .addOnSuccessListener {
+                    for (document in it.documents) {
+                        document.toObject(DetailResult::class.java)?.let { it1 ->
+                            lista.add(it1)
+                        }
+                    }
+                    trySend(lista[0])
                 }
             awaitClose { }
         }
@@ -75,37 +91,50 @@ class OrderRepositoryImpl @Inject constructor(
                             CoroutineScope(Dispatchers.IO).launch {
                                 essayOfSystemUseCase.getEssayByID(order.essay_id)
                                     .collect { result ->
-                                        when (result) {
-                                            is Resource.Success -> {
-                                                val item = ItemListModel(
-                                                    itemListType = ItemListType.ITEM_LIST_MY_ESSAY,
-                                                    status = order.status_id,
-                                                    idOfMyEssay = order.id,
-                                                    question_of_test = result.value.question,
-                                                    content = order.content,
-                                                    type_name = getTypeEssayByTopicID(result.value.topic_id),
-                                                    teacher_name = "Nguyễn Ngọc Hà Giang",
-                                                )
-                                                list.add(
-                                                    item
-                                                )
-                                                if (order.status_id == STATUS_DONE) {
-                                                    getOrderResultByOrderID(order.id).collect { orderResult ->
-                                                        list.remove(item)
-                                                        item.score = orderResult.score
-                                                        list.add(item)
-                                                        trySend(Resource.Success(list.toList()))
-                                                    }
-                                                }
-
+                                        val item = ItemListModel(
+                                            itemListType = ItemListType.ITEM_LIST_MY_ESSAY,
+                                            status = order.status_id,
+                                            orderId = order.id,
+                                            question_of_test = result.question,
+                                            content = order.content,
+                                            type_name = getTypeEssayByTopicID(result.topic_id),
+                                            teacher_name = "Nguyễn Ngọc Hà Giang",
+                                        )
+                                        list.add(
+                                            item
+                                        )
+                                        if (order.status_id == STATUS_DONE) {
+                                            getOrderResultByOrderID(order.id).collect { orderResult ->
+                                                list.remove(item)
+                                                item.score = orderResult.score
+                                                list.add(item)
                                                 trySend(Resource.Success(list.toList()))
                                             }
                                         }
+
+                                        trySend(Resource.Success(list.toList()))
+
                                     }
                             }
                         }
                     }
                 }
+            awaitClose { }
+        }
+    }
+
+    override suspend fun getOrderByOrderId(orderID: String): Flow<Order> {
+        return callbackFlow {
+            val list = mutableListOf<Order>()
+            firebaseStore.collection(FireBaseConst.COLLECTION_ORDER).whereEqualTo("id", orderID)
+                .get().addOnSuccessListener {
+                for (document in it.documents) {
+                    document.toObject(Order::class.java)?.let { it1 ->
+                        list.add(it1)
+                    }
+                }
+                trySend(list[0])
+            }
             awaitClose { }
         }
     }

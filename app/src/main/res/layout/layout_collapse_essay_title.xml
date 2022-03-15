@@ -4,11 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <variable
-            name="viewModel"
-            type="com.example.cocarelish.presentation.essay.viewmodels.EssayViewModel" />
-
         <variable
             name="action"
             type="com.example.cocarelish.utils.base.CommonCollapseEssayTitle" />

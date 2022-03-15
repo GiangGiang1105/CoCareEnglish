@@ -95,17 +95,13 @@ class WritingEssayViewModel @Inject constructor(
             }.catch { exception ->
                 showLoadingDialog(false)
                 Log.d(TAG, "getDetailTest: error with exception $exception")
+            }.collect { baseResult ->
+                showLoadingDialog(false)
+                Log.d(TAG, "getDetailTest: success with data = $baseResult")
+
+                _detailEssay.postValue(baseResult!!)
+                Log.d(TAG, "getDetailTest: ${_detailEssay.value}")
             }
-                .collect { baseResult ->
-                    showLoadingDialog(false)
-                    Log.d(TAG, "getDetailTest: success with data = $baseResult")
-                    when (baseResult) {
-                        is Resource.Success -> {
-                            _detailEssay.postValue(baseResult.value!!)
-                            Log.d(TAG, "getDetailTest: ${_detailEssay.value}")
-                        }
-                    }
-                }
         }
     }
 

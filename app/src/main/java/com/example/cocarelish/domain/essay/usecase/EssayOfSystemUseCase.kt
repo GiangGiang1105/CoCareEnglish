@@ -30,7 +30,7 @@ class EssayOfSystemUseCase @Inject constructor(private val essayRepository: Essa
         return essayRepository.getAllQuestionByTopicId(topic_id)
     }
 
-    fun getEssayByID(test_id: Int): Flow<Resource<Test>> {
+    fun getEssayByID(test_id: Int): Flow<Test> {
         return essayRepository.getTestById(test_id)
     }
 }
