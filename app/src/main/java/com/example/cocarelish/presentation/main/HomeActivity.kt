@@ -16,10 +16,11 @@ import com.example.cocarelish.databinding.ActivityHomeBinding
 import com.example.cocarelish.utils.MyPreference
 import com.facebook.FacebookSdk
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.FieldPosition
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeActivity : BaseActivity<ActivityHomeBinding>() {
+class HomeActivity : BaseActivity<ActivityHomeBinding>(), IHomeActivity {
 
     private lateinit var topLevelDestination: Set<Int>
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -77,6 +78,14 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
                 R.id.authFragment, R.id.loginFragment, R.id.signUpFragment->
                     viewVisibility(View.GONE)
                 else -> viewVisibility(View.VISIBLE)
+            }
+        }
+    }
+
+    override fun navigateToTab(position: Int) {
+        if(position < binding.bottomNavigationView.tabs.count()){
+            binding.bottomNavigationView.apply {
+                selectTab(tabs[position])
             }
         }
     }

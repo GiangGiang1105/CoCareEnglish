@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.example.cocarelish.presentation.main.IHomeActivity
 import com.example.cocarelish.presentation.main.LoadingDialog
 import com.example.cocarelish.utils.base.CommonHelper
 import kotlinx.coroutines.Job
@@ -35,6 +36,7 @@ abstract class CommonFragment<T : ViewDataBinding, VM : CommonViewModel> :
     @get:LayoutRes
     abstract val layoutID: Int
 
+    lateinit var homeActivity: IHomeActivity
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,7 +46,7 @@ abstract class CommonFragment<T : ViewDataBinding, VM : CommonViewModel> :
         Log.e("TAG", "onCreateView: $layoutID")
         _binding = DataBindingUtil.inflate(inflater, layoutID, container, false)
         controller = findNavController()
-
+        homeActivity = activity as IHomeActivity
         return binding.apply { lifecycleOwner = viewLifecycleOwner }.root
     }
 
@@ -84,6 +86,10 @@ abstract class CommonFragment<T : ViewDataBinding, VM : CommonViewModel> :
 
     fun onClearViewModelInScopeActivity() {
         activity?.viewModelStore?.clear()
+    }
+
+    fun navigateToSelectedTabIndex(position: Int){
+        homeActivity.navigateToTab(position)
     }
 
     private var toast: Toast? = null

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="sentence"
+            type="com.example.cocarelish.presentation.grade.adapter.Sentence" />
+
+        <variable
+            name="position"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_20"
+        android:background="@drawable/ic_bg_test">
+
+        <TextView
+            android:id="@+id/txtPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{position}"
+            app:layout_constraintBottom_toBottomOf="@+id/txtPosition2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtPosition2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@{sentence.content}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/txtPosition"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtPosition3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{sentence.comment}"
+            android:textColor="@color/red"
+            app:layout_constraintEnd_toStartOf="@+id/txtPosition"
+            app:layout_constraintHorizontal_bias="0.153"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPosition2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -39,7 +39,6 @@ class MyPreference @Inject constructor(@ApplicationContext context: Context) {
         put(USER_ID, token)
     }
 
-
     private fun <T> put(key: String, data: T){
         val editor = sharedPref.edit()
 

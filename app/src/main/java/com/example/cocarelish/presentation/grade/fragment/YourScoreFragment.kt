@@ -23,8 +23,4 @@ class YourScoreFragment : CommonFragment<FragmentYourScoreBinding, GradeAndJudge
             action = viewModel
         }
     }
-    companion object {
-
-        fun newInstance() = YourScoreFragment()
-    }
 }

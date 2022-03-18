@@ -65,6 +65,7 @@ class OrderRepositoryImpl @Inject constructor(
 
     override suspend fun getDetailResultByID(detailResultID: String): Flow<DetailResult> {
         return callbackFlow {
+            Log.d(TAG, "getDetailResultByID: by id $detailResultID")
             val lista = mutableListOf<DetailResult>()
             firebaseStore.collection(FireBaseConst.COLLECTION_DETAIL_RESULT)
                 .whereEqualTo("id", detailResultID).get()
@@ -74,6 +75,7 @@ class OrderRepositoryImpl @Inject constructor(
                             lista.add(it1)
                         }
                     }
+//                    Log.d(TAG, "getDetailResultByID: ${lista[0].review}")
                     trySend(lista[0])
                 }
             awaitClose { }

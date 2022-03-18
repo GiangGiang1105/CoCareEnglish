@@ -1,7 +1,6 @@
 package com.example.cocarelish.presentation.grade.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -13,11 +12,11 @@ import com.example.cocarelish.data.order.dto.OrderResult
 import com.example.cocarelish.data.order.repository.OrderRepositoryImpl.Companion.STATUS_DONE
 import com.example.cocarelish.domain.essay.usecase.EssayOfSystemUseCase
 import com.example.cocarelish.domain.order.OrderRepository
+import com.example.cocarelish.presentation.grade.adapter.Sentence
 import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.base.CommonCollapseEssayTitle
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -42,6 +41,7 @@ class GradeAndJudgeViewModel @Inject constructor(
 
     var detailResult = MutableLiveData(DetailResult())
     var thisOrder = MutableLiveData(Order())
+    var listSentenceReview = MutableLiveData(listOf<Sentence>())
 
     fun setOrderID(orderID: String) {
         mOrderID = orderID
@@ -66,7 +66,6 @@ class GradeAndJudgeViewModel @Inject constructor(
         }
     }
 
-
     private fun getDetailEssay(essayID: Int) = viewModelScope.launch {
         essayOfSystemUseCase.getEssayByID(essayID).collect {
             showLoadingDialog(false)
@@ -82,7 +81,16 @@ class GradeAndJudgeViewModel @Inject constructor(
 
             if(it.status_id == STATUS_DONE){
                 getOrderDetail()
+                listSentenceReview.value = listSentence
             }
         }
+    }
+
+    companion object{
+        val listSentence = listOf(
+            Sentence(orderSentence = 0, content = "abc", comment = "123"),
+            Sentence(orderSentence = 1, content = "abcd", comment = "123"),
+            Sentence(orderSentence = 2, content = "abcd", comment = "123"),
+        )
     }
 }

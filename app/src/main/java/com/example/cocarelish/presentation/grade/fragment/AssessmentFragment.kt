@@ -1,10 +1,7 @@
 package com.example.cocarelish.presentation.grade.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
