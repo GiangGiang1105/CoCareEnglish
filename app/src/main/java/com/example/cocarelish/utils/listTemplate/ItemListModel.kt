@@ -18,9 +18,12 @@ class ItemListModel(
     val type_name: String = "",
     val question_of_test: String = "",
     val teacher_name: String? = "",
-    val content: String? = "",
+    val content: String = "",
     var score: Int = -1,
-    val updated_at: String = ""
+    val updated_at: String = "",
+    val status_id: Int = -1,
+    val essay_id: Int = -1 ,
+    val price: Long = 0
 )
 
 enum class ItemListType {

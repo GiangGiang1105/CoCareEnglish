@@ -15,13 +15,21 @@
             name="imageResource"
             type="int" />
 
+        <variable
+            name="isCancel"
+            type="int" />
+
+        <import type="com.example.cocarelish.utils.Status" />
+
         <import type="com.example.cocarelish.utils.Title" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:background="@color/white"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <include
             android:id="@+id/appBarLayout"
@@ -115,6 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_10"
                         android:background="@drawable/bg_tab_layout"
+                        android:visibility="@{isCancel == Status.WAITING ?View.GONE : View.VISIBLE}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/your_content"
@@ -126,11 +135,27 @@
                         android:id="@+id/viewPager"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="@{isCancel == Status.WAITING ?View.GONE : View.VISIBLE}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_40"
+                    android:layout_marginBottom="@dimen/dp_30"
+                    android:background="@color/red"
+                    android:fontFamily="@font/rubik_regular"
+                    android:text="@string/text_cancel"
+                    android:onClick="@{()-> action.cancelEssay()}"
+                    android:textAllCaps="false"
+                    android:visibility="@{isCancel == Status.WAITING ?View.VISIBLE : View.GONE}"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

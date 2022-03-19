@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.cocarelish.base.CommonEvent
 import com.example.cocarelish.base.CommonViewModel
 import com.example.cocarelish.data.essay.remote.dto.Test
 import com.example.cocarelish.data.order.dto.DetailResult
@@ -31,7 +32,7 @@ class GradeAndJudgeViewModel @Inject constructor(
     CommonViewModel(application), CommonCollapseEssayTitle {
 
     private val _detailEssay = MutableLiveData<Test>()
-    override var isCollapse= MutableLiveData(false)
+    override var isCollapse = MutableLiveData(false)
         private set
     override val detailEssay: LiveData<Test>
         get() = _detailEssay
@@ -79,14 +80,24 @@ class GradeAndJudgeViewModel @Inject constructor(
             thisOrder.value = it
             getDetailEssay(it.essay_id)
 
-            if(it.status_id == STATUS_DONE){
+            if (it.status_id == STATUS_DONE) {
                 getOrderDetail()
                 listSentenceReview.value = listSentence
             }
         }
     }
 
-    companion object{
+    fun cancelEssay() {
+        viewModelScope.launch {
+            orderRepository.cancelEssay(myPreference.getOrderId()).collect {
+                if (it) {
+                    evenSender.send(CommonEvent.OnShowToast("You cancel my essay successfully!"))
+                }
+            }
+        }
+    }
+
+    companion object {
         val listSentence = listOf(
             Sentence(orderSentence = 0, content = "abc", comment = "123"),
             Sentence(orderSentence = 1, content = "abcd", comment = "123"),

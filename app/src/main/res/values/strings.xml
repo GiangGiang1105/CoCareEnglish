@@ -201,6 +201,7 @@
     <string name="text_gender">Gender</string>
     <string name="text_next">Next</string>
     <string name="text_save">Save</string>
+    <string name="text_cancel">Cancel</string>
     <string name="select_your_gender">Select your gender</string>
     <string name="my_account">My account</string>
     <string name="my_essay">My essay</string>

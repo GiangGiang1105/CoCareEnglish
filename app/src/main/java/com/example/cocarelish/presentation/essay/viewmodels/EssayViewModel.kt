@@ -182,7 +182,6 @@ class EssayViewModel @Inject constructor(
                                         itemListType = ItemListType.ITEM_LIST_ESSAY_BY_TOPIC,
                                         message = item.question,
                                         id = item.id,
-                                        isFavourite = item.is_favourite,
                                         topic_id = item.topic_id
                                     )
                                 )
@@ -191,22 +190,6 @@ class EssayViewModel @Inject constructor(
                         }
                     }
                 }
-            }
-        }
-    }
-
-    fun editFavouriteEssay(essay: Test) {
-        viewModelScope.launch {
-            essayOfUserUseCase.editFavouriteEssay(essay).collect {
-                if (it && essay.is_favourite == 1) evenSender.send(
-                    CommonEvent.OnShowToast(
-                        getString(
-                            R.string.message_favourite
-                        )
-                    )
-                )
-                else evenSender.send(CommonEvent.OnShowToast(getString(R.string.message_un_favourite)))
-                getAllTestByTopic(essay.topic_id)
             }
         }
     }

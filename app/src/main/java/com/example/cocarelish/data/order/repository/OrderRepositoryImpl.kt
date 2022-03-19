@@ -9,6 +9,7 @@ import com.example.cocarelish.data.order.dto.OrderResult
 import com.example.cocarelish.domain.essay.usecase.EssayOfSystemUseCase
 import com.example.cocarelish.domain.order.OrderRepository
 import com.example.cocarelish.utils.Resource
+import com.example.cocarelish.utils.Status
 import com.example.cocarelish.utils.Title
 import com.example.cocarelish.utils.const.FireBaseConst
 import com.example.cocarelish.utils.listTemplate.ItemListModel
@@ -55,7 +56,7 @@ class OrderRepositoryImpl @Inject constructor(
                             list.add(it1)
                         }
                     }
-                    if(list.isNotEmpty()){
+                    if (list.isNotEmpty()) {
                         trySend(list[0])
                     }
                 }
@@ -130,13 +131,13 @@ class OrderRepositoryImpl @Inject constructor(
             val list = mutableListOf<Order>()
             firebaseStore.collection(FireBaseConst.COLLECTION_ORDER).whereEqualTo("id", orderID)
                 .get().addOnSuccessListener {
-                for (document in it.documents) {
-                    document.toObject(Order::class.java)?.let { it1 ->
-                        list.add(it1)
+                    for (document in it.documents) {
+                        document.toObject(Order::class.java)?.let { it1 ->
+                            list.add(it1)
+                        }
                     }
+                    trySend(list[0])
                 }
-                trySend(list[0])
-            }
             awaitClose { }
         }
     }
@@ -166,6 +167,19 @@ class OrderRepositoryImpl @Inject constructor(
                         }
                     }
                     trySend(Resource.Success(list.toList()))
+                }
+            awaitClose { }
+        }
+    }
+
+    override suspend fun cancelEssay(orderID: String): Flow<Boolean> {
+        return callbackFlow {
+            firebaseStore.collection(FireBaseConst.COLLECTION_ORDER).document(orderID)
+                .update("status_id", Status.CANCEL)
+                .addOnCompleteListener {
+                    trySend(it.isSuccessful)
+                }.addOnFailureListener {
+                    Log.d(AuthRepositoryImpl.TAG, "setUpUserInformation: ${it.message}")
                 }
             awaitClose { }
         }

@@ -13,9 +13,11 @@ import com.example.cocarelish.presentation.grade.viewmodel.GradeAndJudgeViewMode
 import com.example.cocarelish.utils.Consts.PAGE_0
 import com.example.cocarelish.utils.Consts.PAGE_1
 import com.example.cocarelish.utils.Consts.PAGE_2
+import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.Title
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class GradeAndJudgeFragment :
@@ -25,6 +27,9 @@ class GradeAndJudgeFragment :
         get() = R.layout.fragment_grade_and_judge
 
     private val orderId by lazy { arguments?.getString(ARGUMENT_ODER_ID) ?: "" }
+
+    @Inject
+    lateinit var myPreference: MyPreference
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,6 +41,7 @@ class GradeAndJudgeFragment :
                 ImageFullScreenDialogFragment().show(childFragmentManager, "fullscreen")
             }
             yourContent.isEnabled = false
+            isCancel = myPreference.getIsCancelEssay()
         }
         viewModel.thisOrder.observe(viewLifecycleOwner) {
             binding.yourContent.html = it.content
@@ -58,5 +64,6 @@ class GradeAndJudgeFragment :
 
     companion object {
         const val ARGUMENT_ODER_ID = "order_id"
+        const val ARGUMENT_IS_CANCEL = "is_cancel"
     }
 }

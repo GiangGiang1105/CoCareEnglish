@@ -9,11 +9,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonViewModel
+import com.example.cocarelish.data.order.dto.Order
 import com.example.cocarelish.domain.essay.usecase.EssayOfSystemUseCase
 import com.example.cocarelish.domain.order.OrderRepository
+import com.example.cocarelish.presentation.grade.fragment.GradeAndJudgeFragment.Companion.ARGUMENT_IS_CANCEL
 import com.example.cocarelish.presentation.grade.fragment.GradeAndJudgeFragment.Companion.ARGUMENT_ODER_ID
 import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.Resource
+import com.example.cocarelish.utils.Status
 import com.example.cocarelish.utils.listTemplate.ItemListModel
 import com.example.cocarelish.utils.listTemplate.ItemListType
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,7 +32,7 @@ class MyEssayViewModel @Inject constructor(
     private val myPreference: MyPreference,
     application: Application
 ) : CommonViewModel(application) {
-    init{
+    init {
         getAllEssayOfUser()
     }
 
@@ -52,6 +55,7 @@ class MyEssayViewModel @Inject constructor(
                 Log.d(TAG, "getAllEssayOfUser: success with data = $baseResult")
                 when (baseResult) {
                     is Resource.Success -> {
+                        Log.d(TAG, "getAllEssayOfUser: success with data = ${baseResult.value}")
                         _listData.postValue(baseResult.value!!)
                     }
                 }
@@ -61,10 +65,14 @@ class MyEssayViewModel @Inject constructor(
 
 
     override fun onNavigate(itemListModel: ItemListModel) {
+        Log.d(TAG, "onNavigate:${itemListModel.status} ")
+        myPreference.saveIsCancelEssay(itemListModel.status)
+        myPreference.saveOrderId(itemListModel.orderId)
         navigate(
             R.id.action_myEssayFragment_to_gradeAndJudgeFragment,
             bundleOf(
-                ARGUMENT_ODER_ID to itemListModel.orderId
+                ARGUMENT_ODER_ID to itemListModel.orderId,
+                ARGUMENT_IS_CANCEL to itemListModel.status
             )
         )
     }

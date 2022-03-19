@@ -32,5 +32,6 @@ class MyEssayFragment : CommonFragment<FragmentMyEssayBinding, MyEssayViewModel>
             imageResource = R.drawable.ic_back
             myEssayRecyclerView.adapter = menuAdapter
         }
+
     }
 }

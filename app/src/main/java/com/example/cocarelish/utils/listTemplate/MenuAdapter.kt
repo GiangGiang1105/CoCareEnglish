@@ -88,9 +88,11 @@ class MenuAdapter(private val viewModel: CommonItemMenuAction) :
     ) : MenuViewHolder<ItemListModel, CommonItemMenuAction>(binding.root) {
         override fun bindData(data: ItemListModel, viewModel: CommonItemMenuAction) {
             Log.d(TAG, "bindData: ItemEssayByTopicHolder")
+            var isShowTeacher = true
             binding.apply {
                 root.setOnClickListener {
                     viewModel.onNavigate(data)
+                    onItemCLickListener?.invoke(data)
                 }
 
                 myEssay = data
@@ -104,29 +106,46 @@ class MenuAdapter(private val viewModel: CommonItemMenuAction) :
 
                 orderPosition = layoutPosition + 1
 
-                when(data.status){
-                    Status.WAITING ->{
+                when (data.status) {
+                    Status.WAITING -> {
                         imgStatus.setImageResource(R.drawable.ic_order_waiting)
                         statusName.text = "Waiting"
-                        statusName.background.setTint(ContextCompat.getColor(context,R.color.waiting_status))
+                        statusName.background.setTint(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.waiting_status
+                            )
+                        )
+                        isShowTeacher = false
                     }
                     Status.DONE -> {
                         imgStatus.setImageResource(R.drawable.ic_order_complete)
-                        if(data.score == -1){
+                        if (data.score == -1) {
                             statusName.text = "Done"
-                        }else{
+                        } else {
                             statusName.text = "Điểm ${data.score}"
                         }
-                        statusName.background.setTint(ContextCompat.getColor(context,R.color.done_status))
+                        statusName.background.setTint(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.done_status
+                            )
+                        )
 
                     }
-                    Status.CANCEL ->{
+                    Status.CANCEL -> {
                         imgStatus.setImageResource(R.drawable.ic_order_cancel)
                         statusName.text = "Cancel"
-                        statusName.background.setTint(ContextCompat.getColor(context,R.color.cancel_status))
+                        statusName.background.setTint(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.cancel_status
+                            )
+                        )
+                        isShowTeacher = false
                     }
                 }
-
+                binding.isShowteacher = isShowTeacher
             }
         }
     }
@@ -165,7 +184,7 @@ class MenuAdapter(private val viewModel: CommonItemMenuAction) :
             ItemEssayByTopicHolder(parent)
         }
         ItemListType.ITEM_LIST_MY_ESSAY.ordinal -> {
-            Log.e(TAG, "onCreateViewHolder: ItemMyEssayHolder", )
+            Log.e(TAG, "onCreateViewHolder: ItemMyEssayHolder")
             ItemMyEssayHolder(parent)
         }
         ItemListType.ITEM_GENERAL_ESSAY.ordinal -> {
