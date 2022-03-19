@@ -4,57 +4,181 @@
 
     <data>
 
+        <import type="com.example.cocarelish.utils.SymbolId" />
+
+        <import type="com.example.cocarelish.utils.Title" />
+
         <variable
             name="action"
             type="com.example.cocarelish.presentation.home.viewmodels.ProfileViewModel" />
     </data>
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/color_F6F4F4">
 
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_layout_home"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_avatar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:src="@drawable/avatar" />
+            android:layout_height="@dimen/dp_200"
+            android:background="@color/color_0E77A4"
+            android:paddingTop="@dimen/dp_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btnShow"
+                android:id="@+id/imgBtnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/dp_10"
-                android:layout_marginEnd="@dimen/dp_30"
+                android:layout_marginLeft="@dimen/dp_30"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_pencil" />
+                android:src="@drawable/ic_back_1" />
+        </FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_60"
+            android:background="@drawable/bg_profile_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_50"
+                android:layout_marginRight="@dimen/dp_30"
+                android:onClick="@{()->action.onNavigate(Title.EDIT_ACCOUNT)}"
+                android:src="@drawable/ic_edit_account"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageProfile"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
+                android:layout_marginTop="@dimen/dp_20"
+                android:src="@drawable/avatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
+                android:id="@+id/nameProfile"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/dp_10"
-                android:layout_marginStart="@dimen/dp_20"
-                android:layout_toEndOf="@id/img_avatar"
-                android:fontFamily="@font/poppins_semi_bold"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_50"
+                android:fontFamily="@font/rubik_regular"
                 android:text="@{action.userInformation.name}"
-                android:textColor="@color/white"
-                android:textSize="@dimen/sp_18"
+                android:textAlignment="center"
+                android:textColor="@color/color_1e1928"
+                android:textSize="@dimen/sp_20"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/emailProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@{action.userInformation.email}"
+                android:textAlignment="center"
+                android:textColor="@color/color_1e1928"
+                android:textSize="@dimen/sp_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameProfile" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginBottom="@dimen/dp_30"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line">
+
+                <include
+                    android:id="@+id/my_account"
+                    iconItem="@{SymbolId.IC_ACCOUNT}"
+                    layout="@layout/layout_item_profile"
+                    nameItem="@{Title.MY_ACCOUNT}"
+                    action="@{action}"
+                    android:onClick="@{()->action.onNavigate(Title.MY_ACCOUNT)}" />
+
+                <include
+                    iconItem="@{SymbolId.IC_ESSAY}"
+                    layout="@layout/layout_item_profile"
+                    nameItem="@{Title.MY_ESSAY}"
+                    action="@{action}"
+                    android:onClick="@{()->action.onNavigate(Title.TITLE_MY_ESSAY)}" />
+
+                <include
+                    iconItem="@{SymbolId.IC_FAVOURITE}"
+                    layout="@layout/layout_item_profile"
+                    nameItem="@{Title.MY_FAVOURITE}"
+                    action="@{action}"
+                    android:onClick="@{()->action.onNavigate(Title.MY_FAVOURITE)}" />
+
+                <include
+                    iconItem="@{SymbolId.IC_LOGOUT}"
+                    layout="@layout/layout_item_profile"
+                    nameItem="@{Title.MY_LOGOUT}"
+                    action="@{action}"
+                    android:onClick="@{()->action.onNavigate(Title.MY_LOGOUT)}" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/dp_20"
+                android:layout_marginVertical="@dimen/dp_20"
+                android:background="@color/color_cccccc"
+                app:layout_constraintBottom_toTopOf="@+id/linear"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.55"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/emailProfile" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_959595"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/dp_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_co_care_lish" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_regular"
+                android:text="@string/app_version"
+                android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
-
-        </RelativeLayout>
-
-        <include layout="@layout/sub_fragment_profile" />
-
-    </LinearLayout>
-
-
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

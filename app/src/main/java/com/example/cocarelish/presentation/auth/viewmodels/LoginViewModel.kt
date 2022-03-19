@@ -46,6 +46,11 @@ class LoginViewModel @Inject constructor(
             when (itemTitle) {
                 Title.AUTH_SIGN_UP -> evenSender.send(CommonEvent.OnNavigation(R.id.action_loginFragment_to_signUpFragment))
                 Title.HOME_FRAGMENT -> evenSender.send(CommonEvent.OnNavigation(R.id.action_loginFragment_to_homeFragment))
+                Title.TITLE_PROVIDE_EXTENSION_INFORMATION -> evenSender.send(
+                    CommonEvent.OnNavigation(
+                        R.id.action_loginFragment_to_provideExtensionInformationFragment
+                    )
+                )
             }
         }
     }
@@ -53,46 +58,8 @@ class LoginViewModel @Inject constructor(
     fun login() {
         val loginRequest = LoginRequest(userName.value ?: "", passWord.value ?: "")
 
-       auth.signInWithEmailAndPassword(loginRequest.email, loginRequest.password).addOnCompleteListener { task ->
-           if (task.isSuccessful) {
-               Log.d(TAG, "signInWithCredential:success")
-               firebaseUser = auth.currentUser
-
-               userID = firebaseUser?.uid
-
-               userID?.let { userID ->
-                   Log.d(TAG, "handleFaceBookAccessToken: userID -- $userID")
-                   myPreference.saveUserID(userID )
-                   coroutine.launch {
-                       val a = authUseCase.getUserInformation(userID)
-                       Log.d(TAG, "handleFaceBookAccessToken: user information -- $a")
-
-                       // fake data
-                       val userInfor = UserInfo(
-                           address = "Quảng Bình",
-                           name = "Nam",
-                           id = userID
-                       )
-                       val b = authUseCase.setUserInformation(userInfor)
-                       Log.d(TAG, "handleFaceBookAccessToken: $b")
-                   }
-               }
-               // TODO: Do something when login successfully
-               onNavigate(Title.HOME_FRAGMENT)
-               showToast(LOGIN_SUCCESS)
-           } else {
-               // If sign in fails, display a message to the user.
-               showToast(Title.LOGIN_ERROR)
-           }
-       }
-    }
-
-    var coroutine = CoroutineScope(Dispatchers.IO)
-
-    fun handleFaceBookAccessToken(token: AccessToken) {
-        viewModelScope.launch {
-            val credential = FacebookAuthProvider.getCredential(token.token)
-            auth.signInWithCredential(credential).addOnCompleteListener { task ->
+        auth.signInWithEmailAndPassword(loginRequest.email, loginRequest.password)
+            .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
                     firebaseUser = auth.currentUser
@@ -101,7 +68,7 @@ class LoginViewModel @Inject constructor(
 
                     userID?.let { userID ->
                         Log.d(TAG, "handleFaceBookAccessToken: userID -- $userID")
-                        myPreference.saveUserID(userID )
+                        myPreference.saveUserID(userID)
                         coroutine.launch {
                             val a = authUseCase.getUserInformation(userID)
                             Log.d(TAG, "handleFaceBookAccessToken: user information -- $a")
@@ -118,6 +85,45 @@ class LoginViewModel @Inject constructor(
                     }
                     // TODO: Do something when login successfully
                     onNavigate(Title.HOME_FRAGMENT)
+                    showToast(LOGIN_SUCCESS)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    showToast(Title.LOGIN_ERROR)
+                }
+            }
+    }
+
+    var coroutine = CoroutineScope(Dispatchers.IO)
+
+    fun handleFaceBookAccessToken(token: AccessToken) {
+        viewModelScope.launch {
+            val credential = FacebookAuthProvider.getCredential(token.token)
+            auth.signInWithCredential(credential).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "signInWithCredential:success")
+                    firebaseUser = auth.currentUser
+
+                    userID = firebaseUser?.uid
+
+                    userID?.let { userID ->
+                        Log.d(TAG, "handleFaceBookAccessToken: userID -- $userID")
+                        myPreference.saveUserID(userID)
+                        coroutine.launch {
+                            val a = authUseCase.getUserInformation(userID)
+                            Log.d(TAG, "handleFaceBookAccessToken: user information -- $a")
+
+                            // fake data
+                            val userInfor = UserInfo(
+                                address = "Quảng Bình",
+                                name = "Nam",
+                                id = userID
+                            )
+                            val b = authUseCase.setUserInformation(userInfor)
+                            Log.d(TAG, "handleFaceBookAccessToken: $b")
+                        }
+                    }
+                    // TODO: Do something when login successfully
+                    onNavigate(Title.TITLE_PROVIDE_EXTENSION_INFORMATION)
                     showToast(LOGIN_SUCCESS)
                 } else {
                     // If sign in fails, display a message to the user.

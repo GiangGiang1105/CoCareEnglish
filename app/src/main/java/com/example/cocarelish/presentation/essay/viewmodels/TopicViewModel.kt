@@ -3,7 +3,6 @@ package com.example.cocarelish.presentation.essay.viewmodels
 import android.app.Application
 import android.util.Log
 import androidx.core.os.bundleOf
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.cocarelish.R

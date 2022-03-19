@@ -31,14 +31,14 @@ class UserInformationDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = UserInformationBinding.inflate(inflater,container, false)
+        binding = UserInformationBinding.inflate(inflater, container, false)
         binding.apply {
             lifecycleOwner = this@UserInformationDialog.viewLifecycleOwner
             action = this@UserInformationDialog.viewModel
             title = Title.TITLE_PROFILE
-            btnBack.setOnClickListener {
-                dismissDialog()
-            }
+              btnBack.setOnClickListener {
+                  dismissDialog()
+              }
         }
         return binding.root
     }
@@ -48,6 +48,7 @@ class UserInformationDialog : DialogFragment() {
     }
 
     override fun show(manager: FragmentManager, tag: String?) {
+        Log.d("TAG", "show: hahahahha")
         try {
             val ft: FragmentTransaction = manager.beginTransaction()
             ft.add(this, tag)

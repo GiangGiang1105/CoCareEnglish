@@ -15,6 +15,7 @@ import com.example.cocarelish.utils.Title
 import com.example.cocarelish.utils.listTemplate.MenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GeneralEssayFragment : CommonFragment<FragmentGeneralEssayBinding, GeneralEssayViewModel>() {
     override val viewModel: GeneralEssayViewModel by viewModels()
     override val layoutID: Int

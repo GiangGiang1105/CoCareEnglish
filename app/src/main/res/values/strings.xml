@@ -22,8 +22,8 @@
     <string name="text_button_login">Login</string>
     <string name="text_sign_up_2">Already have an account?</string>
     <string name="text_input_rewrite_password">Rewrite Password</string>
-    <string name="text_input_email">Email</string>
-    <string name="text_input_username">Username</string>
+    <string name="text_input_email">  Email</string>
+    <string name="text_input_username"> Username</string>
     <string name="title_home">Home</string>
     <string name="title_essay">Essay</string>
     <string name="title_profile">Profile</string>
@@ -200,9 +200,16 @@
     <string name="text_feedback">Feedback</string>
     <string name="text_gender">Gender</string>
     <string name="text_next">Next</string>
+    <string name="text_save">Save</string>
     <string name="select_your_gender">Select your gender</string>
-
-
+    <string name="my_account">My account</string>
+    <string name="my_essay">My essay</string>
+    <string name="my_favourite">My favourite</string>
+    <string name="app_version">V 0.0.1</string>
+    <string name="my_logout">Logout</string>
+    <string name="my_edit">Edit Profile</string>
+    <string name="message_favourite">You have successfully added the essay to favorites! </string>
+    <string name="message_un_favourite">You was successfully abort to the essay from the favourite item!  </string>
     <string-array name="gender">
         <item>Gender</item>
         <item>Female</item>

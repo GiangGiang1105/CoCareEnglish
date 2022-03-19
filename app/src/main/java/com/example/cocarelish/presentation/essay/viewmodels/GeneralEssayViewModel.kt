@@ -1,17 +1,29 @@
 package com.example.cocarelish.presentation.essay.viewmodels
 
 import android.app.Application
-import androidx.lifecycle.viewModelScope
 import com.example.cocarelish.R
-import com.example.cocarelish.base.CommonEvent
 import com.example.cocarelish.base.CommonViewModel
+import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.Title
 import com.example.cocarelish.utils.listTemplate.ItemListModel
 import com.example.cocarelish.utils.listTemplate.ItemListType
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class GeneralEssayViewModel(application: Application) : CommonViewModel(application) {
+@HiltViewModel
+class GeneralEssayViewModel @Inject constructor(
+    private val myPreference: MyPreference,
+    application: Application,
+) : CommonViewModel(application) {
+
+    init {
+        myPreference.getNavigationToMyEssay().apply {
+            if (this) {
+                navigate(R.id.action_generalEssayFragment_to_myEssayFragment)
+                myPreference.saveNavigationToMyEssay(false)
+            }
+        }
+    }
 
     val listData = listOf(
         ItemListModel(

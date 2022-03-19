@@ -7,7 +7,9 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import com.davemorrissey.labs.subscaleview.ImageSource
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
@@ -92,4 +94,9 @@ fun SubsamplingScaleImageView.setImageUrl(urlPath: String){
 
         })
 
+}
+
+@BindingAdapter("android:src")
+fun AppCompatImageView.setImageViewResource(resource: Int) {
+    setImageResource(resource)
 }

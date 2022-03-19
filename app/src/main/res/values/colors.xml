@@ -39,8 +39,11 @@
     <color name="color_done">#B38FD7</color>
     <color name="color_not_done">#FFFFFF</color>
     <color name="color_F3F3F3">#F3F3F3</color>
-    <color name="color_0E77A4">#0E77A4</color>
     <color name="color_818181">#818181</color>
+    <color name="color_62F168">#62F168</color>
+    <color name="color_F6F4F4">#F6F4F4</color>
+    <color name="color_0E77A4">#0E77A4</color>
+    <color name="color_1e1928">#1e1928</color>
 
     <color name="waiting_status">#0E4DA4</color>
     <color name="done_status">#FF0808</color>

@@ -61,17 +61,15 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
 
-    override suspend fun setUpUserInformation(userInformation: UserInfo): Boolean {
-        var data = false
-
-        withContext(Dispatchers.IO) {
-            firebaseStore.collection(COLLECTION_USER).document(userInformation.id)
-                .set(userInformation).addOnCompleteListener {
-                    data = it.isSuccessful
-                }.addOnFailureListener {
-                    Log.d(TAG, "setUpUserInformation: ${it.message}")
-                }
+    override suspend fun setUpUserInformation(userInformation: UserInfo): Flow<Boolean> {
+       return callbackFlow {
+           firebaseStore.collection(COLLECTION_USER).document(userInformation.id)
+               .set(userInformation).addOnCompleteListener {
+                    trySend(it.isSuccessful)
+                   }.addOnFailureListener {
+                   Log.d(TAG, "setUpUserInformation: ${it.message}")
+               }
+           awaitClose {  }
         }
-        return data
     }
 }

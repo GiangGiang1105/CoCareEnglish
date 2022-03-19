@@ -13,6 +13,18 @@
         <action
             android:id="@+id/action_profileFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@+id/loginFragment" />
+
+        <action
+            android:id="@+id/action_profileFragment_to_myEssayFragment"
+            app:destination="@+id/myEssayFragment" />
+
+        <action
+            android:id="@+id/action_profileFragment_to_editUserFragment"
+            app:destination="@+id/editUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -62,6 +74,10 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+
+        <action
+            android:id="@+id/action_loginFragment_to_provideExtensionInformationFragment"
+            app:destination="@+id/provideExtensionInformationFragment" />
     </fragment>
     <fragment
         android:id="@+id/levelFragment"
@@ -177,4 +193,24 @@
         android:id="@+id/gradeAndJudgeFragment"
         android:name="com.example.cocarelish.presentation.grade.fragment.GradeAndJudgeFragment"
         android:label="GradeAndJudgeFragment" />
+
+    <fragment
+        android:id="@+id/provideExtensionInformationFragment"
+        android:name="com.example.cocarelish.presentation.auth.fragments.ProvideExtensionInformationFragment"
+        android:label="ProvideExtensionInformationFragment">
+
+        <action
+            android:id="@+id/action_provideExtensionInformationFragment_to_homeFragment"
+            app:destination="@+id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editUserFragment"
+        android:name="com.example.cocarelish.presentation.auth.fragments.EditUserFragment"
+        android:label="EditUserFragment" >
+
+        <action
+            android:id="@+id/action_editUserFragment_to_profileFragment"
+            app:destination="@+id/profileFragment" />
+    </fragment>
 </navigation>

@@ -17,5 +17,5 @@ abstract class AuthRepository : BaseRepository() {
 
     abstract suspend fun getUserInformation(user_id: String): Flow<Resource<UserInfo?>>
 
-    abstract suspend fun setUpUserInformation(userInformation: UserInfo): Boolean
+    abstract suspend fun setUpUserInformation(userInformation: UserInfo): Flow<Boolean>
 }

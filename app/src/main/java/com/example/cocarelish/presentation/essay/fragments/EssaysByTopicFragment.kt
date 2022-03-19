@@ -6,10 +6,12 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
+import com.example.cocarelish.data.essay.remote.dto.Test
 import com.example.cocarelish.databinding.FragmentEssaysByTopicBinding
 import com.example.cocarelish.presentation.essay.viewmodels.EssayViewModel
 import com.example.cocarelish.utils.listTemplate.MenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_topic.*
 
 @AndroidEntryPoint
 class EssaysByTopicFragment :

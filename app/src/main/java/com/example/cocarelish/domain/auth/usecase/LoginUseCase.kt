@@ -21,7 +21,7 @@ class LoginUseCase @Inject constructor(private val authRepository: AuthRepositor
         return authRepository.getUserInformation(userID)
     }
 
-    suspend fun setUserInformation(data: UserInfo): Boolean{
+    suspend fun setUserInformation(data: UserInfo): Flow<Boolean>{
         return authRepository.setUpUserInformation(data)
     }
 

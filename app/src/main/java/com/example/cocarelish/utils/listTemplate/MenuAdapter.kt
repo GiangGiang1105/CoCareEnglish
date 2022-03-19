@@ -73,7 +73,6 @@ class MenuAdapter(private val viewModel: CommonItemMenuAction) :
             binding.apply {
                 position = (layoutPosition + 1).toString()
                 root.setOnClickListener {
-                    onItemCLickListener
                     viewModel.onNavigate(data)
                 }
                 menuItem = data

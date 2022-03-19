@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.cocarelish.R
+import com.example.cocarelish.base.CommonEvent
 import com.example.cocarelish.base.CommonViewModel
 import com.example.cocarelish.data.essay.remote.dto.Level
 import com.example.cocarelish.data.essay.remote.dto.Test
@@ -65,8 +66,8 @@ class EssayViewModel @Inject constructor(
                 title = item.name,
                 itemListType = ItemListType.ITEM_TOPIC,
                 message = item.description,
-                image = mapListImageTopic[item.id]?:LinkImage.LINE_GRAPH,
-                id = item.id
+                image = mapListImageTopic[item.id] ?: LinkImage.LINE_GRAPH,
+                id = item.id,
             )
         }
     }
@@ -172,7 +173,7 @@ class EssayViewModel @Inject constructor(
                 Log.d(TAG, "getAllTestByTopic: success with data = $baseResult")
                 when (baseResult) {
                     is Resource.Success -> {
-                        if(baseResult.value.isNotEmpty()){
+                        if (baseResult.value.isNotEmpty()) {
                             listTestByTopicID = baseResult.value!!
                             mListItemTestByTopic.clear()
                             for (item in baseResult.value) {
@@ -180,7 +181,9 @@ class EssayViewModel @Inject constructor(
                                     ItemListModel(
                                         itemListType = ItemListType.ITEM_LIST_ESSAY_BY_TOPIC,
                                         message = item.question,
-                                        id = item.id
+                                        id = item.id,
+                                        isFavourite = item.is_favourite,
+                                        topic_id = item.topic_id
                                     )
                                 )
                             }
@@ -188,6 +191,22 @@ class EssayViewModel @Inject constructor(
                         }
                     }
                 }
+            }
+        }
+    }
+
+    fun editFavouriteEssay(essay: Test) {
+        viewModelScope.launch {
+            essayOfUserUseCase.editFavouriteEssay(essay).collect {
+                if (it && essay.is_favourite == 1) evenSender.send(
+                    CommonEvent.OnShowToast(
+                        getString(
+                            R.string.message_favourite
+                        )
+                    )
+                )
+                else evenSender.send(CommonEvent.OnShowToast(getString(R.string.message_un_favourite)))
+                getAllTestByTopic(essay.topic_id)
             }
         }
     }
@@ -211,7 +230,7 @@ class EssayViewModel @Inject constructor(
                 Log.d(TAG, "onNavigate: ${itemListModel.id}")
                 currentDetailEssayId = itemListModel.id
                 val currentEssay = listTestByTopicID.find { it.id == itemListModel.id }
-                currentEssay?.let{
+                currentEssay?.let {
                     _detailEssay.postValue(it)
                     myPreference.saveImageLink(it.image_link)
                 }
@@ -243,10 +262,9 @@ class EssayViewModel @Inject constructor(
     val textSize = MutableLiveData(50)
 
 
-    fun setTextSize(size: Int){
+    fun setTextSize(size: Int) {
         textSize.value = size
     }
-
 
 
     companion object {

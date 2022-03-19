@@ -1,7 +1,10 @@
 package com.example.cocarelish.presentation.auth.fragments
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
@@ -9,22 +12,25 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonFragment
+import com.example.cocarelish.databinding.FragmentEditUserBinding
 import com.example.cocarelish.databinding.FragmentProvideExtensionInformationBinding
 import com.example.cocarelish.presentation.auth.viewmodels.ProvideExtensionInformationViewModel
+import com.example.cocarelish.utils.Title
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_provide_extension_information.*
 
 @AndroidEntryPoint
-class ProvideExtensionInformationFragment :
-    CommonFragment<FragmentProvideExtensionInformationBinding, ProvideExtensionInformationViewModel>() {
+class EditUserFragment :
+    CommonFragment<FragmentEditUserBinding, ProvideExtensionInformationViewModel>() {
     override val viewModel: ProvideExtensionInformationViewModel by viewModels()
     override val layoutID: Int
-        get() = R.layout.fragment_provide_extension_information
+        get() = R.layout.fragment_edit_user
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             action = viewModel
+            titleID = Title.EDIT_ACCOUNT
         }
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -53,14 +59,14 @@ class ProvideExtensionInformationFragment :
                         (parent.getChildAt(0) as TextView).setTextColor(
                             ContextCompat.getColor(
                                 requireContext(),
-                                R.color.color_95FFFFFF
+                                R.color.color_1e1928
                             )
                         )
                     } else {
                         (parent.getChildAt(0) as TextView).setTextColor(
                             ContextCompat.getColor(
                                 requireContext(),
-                                R.color.white
+                                R.color.color_1e1928
                             )
                         )
                     }

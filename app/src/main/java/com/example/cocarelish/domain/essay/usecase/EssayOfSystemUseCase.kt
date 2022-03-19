@@ -33,4 +33,8 @@ class EssayOfSystemUseCase @Inject constructor(private val essayRepository: Essa
     fun getEssayByID(test_id: Int): Flow<Test> {
         return essayRepository.getTestById(test_id)
     }
+
+    fun editFavouriteEssay(essay: Test): Flow<Boolean> {
+        return essayRepository.editFavouriteEssay(essay)
+    }
 }

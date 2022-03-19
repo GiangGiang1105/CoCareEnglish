@@ -1,6 +1,7 @@
 package com.example.cocarelish.data.essay.repository
 
 import android.util.Log
+import com.example.cocarelish.data.authentication.repository.AuthRepositoryImpl
 import com.example.cocarelish.data.essay.remote.api.EssayApi
 import com.example.cocarelish.data.essay.remote.dto.Level
 import com.example.cocarelish.data.essay.remote.dto.Test
@@ -10,6 +11,7 @@ import com.example.cocarelish.domain.essay.entity.DeadlineEntity
 import com.example.cocarelish.domain.essay.entity.EssayOfUserEntity
 import com.example.cocarelish.domain.essay.entity.TopicEntity
 import com.example.cocarelish.utils.Resource
+import com.example.cocarelish.utils.const.FireBaseConst
 import com.example.cocarelish.utils.const.FireBaseConst.COLLECTION_LEVEL
 import com.example.cocarelish.utils.const.FireBaseConst.COLLECTION_QUESTION
 import com.example.cocarelish.utils.const.FireBaseConst.COLLECTION_TYPE
@@ -110,6 +112,18 @@ class EssayRepositoryImpl @Inject constructor(
             val response = safeApiCall { essayApi.getAllDeadline().data }
             Log.d("TAG", "getAllDeadline: $response")
             emit(response)
+        }
+    }
+
+    override fun editFavouriteEssay(essay: Test): Flow<Boolean> {
+        return callbackFlow {
+            firebaseStore.collection(COLLECTION_QUESTION).document(essay.id.toString())
+                .set(essay).addOnCompleteListener {
+                    trySend(it.isSuccessful)
+                }.addOnFailureListener {
+                    Log.d(AuthRepositoryImpl.TAG, "setUpUserInformation: ${it.message}")
+                }
+            awaitClose {  }
         }
     }
 }

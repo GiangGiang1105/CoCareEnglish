@@ -20,6 +20,7 @@ import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -47,7 +48,7 @@ class LoginFragment : CommonFragment<FragmentLoginBinding, LoginViewModel>() {
                 LoginManager.getInstance().logInWithReadPermissions(
                     this@LoginFragment,
                     callbackManager,
-                    arrayListOf("email", "public_profile")
+                    arrayListOf("email", "public_profile", "user_friends")
                 )
             }
         }

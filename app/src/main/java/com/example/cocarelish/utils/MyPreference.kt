@@ -18,6 +18,7 @@ class MyPreference @Inject constructor(@ApplicationContext context: Context) {
 
         private const val USER_ID = "user_id"
         private const val IMAGE_LINK = "image_link"
+        private const val NAVIGATION_MY_ESSAY = "navigation_my_essay"
     }
     private val sharedPref: SharedPreferences = context.getSharedPreferences(SHARE_PREFERENCE_NAME, Context.MODE_PRIVATE)
 
@@ -37,6 +38,14 @@ class MyPreference @Inject constructor(@ApplicationContext context: Context) {
 
     fun saveUserID(token: String){
         put(USER_ID, token)
+    }
+
+    fun saveNavigationToMyEssay(isNavigation: Boolean){
+        put(NAVIGATION_MY_ESSAY, isNavigation)
+    }
+
+    fun getNavigationToMyEssay(): Boolean{
+        return get(NAVIGATION_MY_ESSAY, Boolean::class.java)
     }
 
     private fun <T> put(key: String, data: T){

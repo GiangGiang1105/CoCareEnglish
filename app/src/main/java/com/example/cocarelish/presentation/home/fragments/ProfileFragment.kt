@@ -14,7 +14,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ProfileFragment : CommonFragment<FragmentProfileBinding, ProfileViewModel>() {
+class ProfileFragment : CommonFragment<FragmentProfileBinding, ProfileViewModel>(),
+    ProfileViewModel.ShowUserInformationDialog {
     override val viewModel: ProfileViewModel by activityViewModels()
     override val layoutID: Int
         get() = R.layout.fragment_profile
@@ -24,12 +25,27 @@ class ProfileFragment : CommonFragment<FragmentProfileBinding, ProfileViewModel>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel.apply {
+            setShowUserInformationDialog(this@ProfileFragment)
+            isNavigation.observe(viewLifecycleOwner) {
+                if (it){
+                    navigateToSelectedTabIndex(1)
+                    myPreference.saveNavigationToMyEssay(true)
+                }
+                viewModel.isNavigation.postValue(false)
+            }
+        }
         binding.apply {
             action = viewModel
-            btnShow.setOnClickListener {
-                UserInformationDialog().show(childFragmentManager, "userInformation")
-            }
+            /*  btnShow.setOnClickListener {
+                  UserInformationDialog().show(childFragmentManager, "userInformation")
+              }*/
+        }
+    }
+
+    override fun showDialog(isShow: Boolean) {
+        if (isShow) {
+            UserInformationDialog().show(childFragmentManager, "userInformation")
         }
     }
 }
