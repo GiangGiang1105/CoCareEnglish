@@ -1,10 +1,7 @@
 package com.example.cocarelish.presentation.grade.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cocarelish.R
@@ -34,11 +31,12 @@ class FixEssayFragment : CommonFragment<FragmentFixEssayBinding, GradeAndJudgeVi
             btnNext.setOnClickListener {
                 var position =
                     (recyclerView2.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
-                if (position < length) {
+                if (position < length - 1) {
                     position += 1
                 } else {
                     position = 0
                 }
+                viewModel.getOrderSentence(position)
                 recyclerView2.smoothScrollToPosition(position)
                 setContent(position + 1)
             }
@@ -50,6 +48,7 @@ class FixEssayFragment : CommonFragment<FragmentFixEssayBinding, GradeAndJudgeVi
                 } else {
                     position = length - 1
                 }
+                viewModel.getOrderSentence(position)
                 recyclerView2.smoothScrollToPosition(position)
                 setContent(position + 1)
             }
@@ -63,6 +62,6 @@ class FixEssayFragment : CommonFragment<FragmentFixEssayBinding, GradeAndJudgeVi
     }
 
     private fun setContent(position: Int) {
-        binding.content.text = "$position/${length + 1}"
+        binding.content.text = "$position/$length"
     }
 }

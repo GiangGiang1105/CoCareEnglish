@@ -4,18 +4,23 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.cocarelish.R
 import com.example.cocarelish.base.CommonEvent
 import com.example.cocarelish.base.CommonViewModel
+import com.example.cocarelish.base.Event
 import com.example.cocarelish.data.essay.remote.dto.Deadline
 import com.example.cocarelish.data.essay.remote.dto.Test
 import com.example.cocarelish.data.order.dto.Order
 import com.example.cocarelish.domain.essay.usecase.EssayOfSystemUseCase
 import com.example.cocarelish.domain.order.OrderRepository
+import com.example.cocarelish.presentation.grade.viewmodel.combine
 import com.example.cocarelish.utils.Consts
 import com.example.cocarelish.utils.MyPreference
 import com.example.cocarelish.utils.Resource
+import com.example.cocarelish.utils.Title.IELTS_WRITING_TASK_1
+import com.example.cocarelish.utils.Title.IELTS_WRITING_TASK_2
 import com.example.cocarelish.utils.base.CommonCollapseEssayTitle
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
@@ -46,7 +51,7 @@ class WritingEssayViewModel @Inject constructor(
 
 
     val isRecording = MutableLiveData(false)
-    val recordText = MutableLiveData("")
+    val recordText = MutableLiveData(Event(""))
 
     private val _levelName = MutableLiveData("")
     val levelName: LiveData<String>
@@ -56,24 +61,39 @@ class WritingEssayViewModel @Inject constructor(
         get() = _topicName
     private var _idEssay = -1
     private var _idDeadline = -1
+    var firstPrice = _levelName.map {
+        if(it == IELTS_WRITING_TASK_1 || it == IELTS_WRITING_TASK_2){
+            20000
+        }else
+            10000
+    }
 
+    var secondPrice = MutableLiveData<Long>(10000)
+
+    var secondName = MutableLiveData("8 hours")
+
+    private var speakingTest = MutableLiveData("")
 
     private val _listDeadlineEssay: MutableLiveData<List<Deadline>> = MutableLiveData()
     val listDeadlineEssay: LiveData<List<Deadline>>
         get() = _listDeadlineEssay
 
-    private val _totalPriceEssay = MutableLiveData(Consts.DEFAULT_PRICE)
+    private val _totalPriceEssay = firstPrice.combine(secondPrice) {it1 , it2 ->
+        Consts.DEFAULT_PRICE  + it2 + it1
+    }
     val totalPriceEssay: LiveData<Long>
         get() = _totalPriceEssay
 
     private var content: String = ""
 
     fun setDeadlineEssay(deadline: Deadline) {
-        _totalPriceEssay.postValue(Consts.DEFAULT_PRICE + deadline.deadline_price)
+        secondPrice.postValue(deadline.deadline_price)
+        secondName.postValue(deadline.deadline_name)
         _idDeadline = deadline.id
     }
 
     fun setLevelName(levelName: String) {
+        Log.d("TAGG", "setLevelName: $levelName")
         _levelName.postValue(levelName)
     }
 
@@ -127,6 +147,10 @@ class WritingEssayViewModel @Inject constructor(
         }
     }
 
+    fun navigateToInvoice(){
+        navigate(R.id.action_paymentFragment_to_invoicePaymentDialog)
+    }
+
     fun navigationWritingEssayFragmentToPaymentFragment(content: String?) {
         content?.let {
             this.content = content
@@ -165,7 +189,7 @@ class WritingEssayViewModel @Inject constructor(
                     if (it1) {
                         viewModelScope.launch {
                             evenSender.send(CommonEvent.OnShowToast("Post order successfully"))
-                            evenSender.send(CommonEvent.OnBackScreen)
+                            navigate(R.id.action_invoicePaymentDialog_to_myEssayFragment)
                         }
                     }
                 }

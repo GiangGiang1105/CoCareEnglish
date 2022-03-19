@@ -18,11 +18,11 @@ data class Mission(
     companion object {
         const val tableName = "mission"
 
-        val listMissionInit = listOf<Mission>(
+        val listMissionInit = listOf(
             Mission(
                 missionType = MissionType.EssayDone.name,
-                count = 0,
-                max = 10,
+                count = 5,
+                max = 5,
                 missionContent = "Write your 5 essays today"
             ),
             Mission(

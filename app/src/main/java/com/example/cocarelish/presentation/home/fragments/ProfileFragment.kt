@@ -37,9 +37,7 @@ class ProfileFragment : CommonFragment<FragmentProfileBinding, ProfileViewModel>
         }
         binding.apply {
             action = viewModel
-            /*  btnShow.setOnClickListener {
-                  UserInformationDialog().show(childFragmentManager, "userInformation")
-              }*/
+
         }
     }
 

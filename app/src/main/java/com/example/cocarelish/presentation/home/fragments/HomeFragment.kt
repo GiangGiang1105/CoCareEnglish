@@ -1,8 +1,10 @@
 package com.example.cocarelish.presentation.home.fragments
 
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +19,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : CommonFragment<FragmentHomeBinding, HomeViewModel>(){
 
-    override val viewModel: HomeViewModel by viewModels()
+    override val viewModel: HomeViewModel by activityViewModels()
     override val layoutID: Int
         get() = R.layout.fragment_home
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,12 +31,11 @@ class HomeFragment : CommonFragment<FragmentHomeBinding, HomeViewModel>(){
                 layoutManager = LinearLayoutManager(this@HomeFragment.requireContext(), LinearLayoutManager.VERTICAL,false)
             }
         }
-
+        (binding.imgLogo.background as AnimationDrawable).start()
         lifecycleScope.launch {
-            viewModel.getAllMission().observe(viewLifecycleOwner,{
-                Log.d(TAG, "onViewCreated: $it")
+            viewModel.listMission.observe(viewLifecycleOwner) {
                 missionAdapter.submitList(it)
-            })
+            }
         }
     }
 }

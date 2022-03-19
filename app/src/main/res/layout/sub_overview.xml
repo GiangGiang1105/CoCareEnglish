@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -26,6 +27,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp                            "
+            android:layout_marginStart="4dp"
+            android:src="@drawable/ic_hand"
+            app:layout_constraintBottom_toBottomOf="@+id/text_1"
+            app:layout_constraintStart_toEndOf="@+id/text_1"
+            app:layout_constraintTop_toTopOf="@+id/text_1"
+            app:layout_constraintVertical_bias="0.0" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
@@ -36,7 +47,7 @@
             android:shadowDx="3"
             android:shadowDy="3"
             android:shadowRadius="1"
-            android:text="Nguyễn Ngọc Hà Giang"
+            android:text="Trần Đình Nam"
             android:textColor="@color/white"
             android:textSize="@dimen/sp_22"
             app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +140,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/StyleHomeLinearText2"
-                android:text="12 essays" />
+                android:text="5 essays" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

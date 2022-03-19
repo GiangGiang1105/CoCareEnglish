@@ -61,7 +61,14 @@ class WritingEssayFragment : CommonFragment<FragmentWritingEssayBinding, Writing
                 ImageFullScreenDialogFragment().show(childFragmentManager, "fullscreen")
             }
         }
-        levelName?.let { 
+        viewModel.recordText.observe(viewLifecycleOwner) {
+            val a = it.getContentIfNotHandled()
+            if (a.isNullOrEmpty()) return@observe
+            binding.editor.apply {
+               html = if(html.isNullOrEmpty()) a else html + a
+            }
+        }
+        levelName?.let {
             Log.d(TAG, "onViewCreated:level name  $it")
             viewModel.setLevelName(it)
         }
@@ -138,7 +145,6 @@ class WritingEssayFragment : CommonFragment<FragmentWritingEssayBinding, Writing
             Log.d("TAGG", "setupListener: ")
         }
     }
-
 
     private fun initView() {
         val wysiwygEditor = binding.editor

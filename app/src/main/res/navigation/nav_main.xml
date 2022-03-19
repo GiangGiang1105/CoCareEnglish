@@ -180,7 +180,7 @@
 
     </fragment>
 
-    <fragment
+     <fragment
         android:id="@+id/paymentFragment"
         android:name="com.example.cocarelish.presentation.order.fragment.PaymentFragment"
         android:label="PaymentFragment">
@@ -188,6 +188,12 @@
             android:name="LevelName"
             android:defaultValue="null"
             app:argType="string" />
+        <action
+            android:id="@+id/action_paymentFragment_to_myEssayFragment"
+            app:destination="@id/myEssayFragment" />
+        <action
+            android:id="@+id/action_paymentFragment_to_invoicePaymentDialog"
+            app:destination="@id/invoicePaymentDialog" />
     </fragment>
     <fragment
         android:id="@+id/gradeAndJudgeFragment"
@@ -212,5 +218,13 @@
         <action
             android:id="@+id/action_editUserFragment_to_profileFragment"
             app:destination="@+id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/invoicePaymentDialog"
+        android:name="com.example.cocarelish.presentation.order.fragment.InvoicePaymentDialog"
+        android:label="InvoicePaymentDialog" >
+        <action
+            android:id="@+id/action_invoicePaymentDialog_to_myEssayFragment"
+            app:destination="@id/myEssayFragment" />
     </fragment>
 </navigation>

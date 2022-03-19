@@ -17,6 +17,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.example.cocarelish.R
+import com.example.cocarelish.base.Event
 import com.example.cocarelish.databinding.FragmentSpeakSupportWritingBinding
 import com.example.cocarelish.presentation.essay.viewmodels.WritingEssayViewModel
 import java.util.*
@@ -82,7 +83,7 @@ class SpeakSupportWritingDialogFragment : DialogFragment() {
                 var text = data?.get(0)
                 text = text?.let{
                     it.replaceRange(0,1, it.first().uppercase())}
-                viewModel.recordText.value = text
+                binding.edtContent.setText(text)
             }
 
             override fun onPartialResults(p0: Bundle?) {
@@ -118,6 +119,10 @@ class SpeakSupportWritingDialogFragment : DialogFragment() {
             }
 
             btnBack.setOnClickListener {
+                dialog?.dismiss()
+            }
+            btnAccept.setOnClickListener {
+                viewModel.recordText.postValue(Event(edtContent.text.toString()))
                 dialog?.dismiss()
             }
         }

@@ -211,6 +211,8 @@
     <string name="my_edit">Edit Profile</string>
     <string name="message_favourite">You have successfully added the essay to favorites! </string>
     <string name="message_un_favourite">You was successfully abort to the essay from the favourite item!  </string>
+    <string name="price">%d d</string>
+    <string name="deadline">DEADLINE: %s</string>
     <string-array name="gender">
         <item>Gender</item>
         <item>Female</item>

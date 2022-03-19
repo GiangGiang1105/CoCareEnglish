@@ -3,7 +3,7 @@ package com.example.cocarelish.data.order.dto
 data class Order(
     val uid: String = "",
     val id: String = "",
-    val content: String = "",
+    var content: String = "",
     val dead_line: Int = 2,
     val status_id: Int = -1,
     val time_post: Long = 0,

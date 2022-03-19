@@ -208,14 +208,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_3" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSummit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_30"
+                android:onClick="@{() -> action.navigateToInvoice()}"
                 android:layout_marginBottom="@dimen/dp_40"
                 android:background="@drawable/bg_btn_submit"
                 android:fontFamily="@font/poppins_semi_bold"
-                android:onClick="@{()->action.userSaveWrittenEssay()}"
                 android:text="@string/text_submit"
                 android:textAllCaps="false"
                 android:textColor="@color/color_0E4DA4"

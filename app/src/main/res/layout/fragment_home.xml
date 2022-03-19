@@ -20,6 +20,21 @@
                 android:id="@+id/sub_overview"
                 layout="@layout/sub_overview" />
 
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="135dp"
+                android:layout_gravity="center"
+                android:layout_height="169dp"
+                android:background="@drawable/mascot_animation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.3"
+                app:layout_constraintHorizontal_bias="0.467"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
             <include
                 android:id="@+id/sub_home_writting"
                 layout="@layout/sub_home_writing" />

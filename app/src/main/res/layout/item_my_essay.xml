@@ -84,7 +84,7 @@
         <com.github.onecode369.wysiwyg.WYSIWYG
             android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginTop="@dimen/dp_10"
             android:layout_marginEnd="@dimen/dp_30"
             android:ellipsize="end"

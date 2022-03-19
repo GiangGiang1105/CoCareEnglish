@@ -43,7 +43,7 @@ class GradeAndJudgeFragment :
             yourContent.isEnabled = false
             isCancel = myPreference.getIsCancelEssay()
         }
-        viewModel.thisOrder.observe(viewLifecycleOwner) {
+        viewModel.displayOrder.observe(viewLifecycleOwner) {
             binding.yourContent.html = it.content
         }
         viewModel.setOrderID(orderId)

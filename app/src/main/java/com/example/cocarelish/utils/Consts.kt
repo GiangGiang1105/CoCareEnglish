@@ -18,6 +18,8 @@ object Consts {
     const val MAX_DEADLINE = 48
     const val DEFAULT_DEADLINE = 12
     const val DEFAULT_PRICE: Long = 20000
+    const val IELTS_WRITING_PRICE : Long = 20000
+    const val NORMAL_PRICE : Long = 10000
 
     const val MALE = "Male"
     const val FEMALE = "Female"

@@ -68,7 +68,7 @@ class LoginViewModel @Inject constructor(
 
                     userID?.let { userID ->
                         Log.d(TAG, "handleFaceBookAccessToken: userID -- $userID")
-                        myPreference.saveUserID(userID)
+                        myPreference.saveUserID("5")
                         coroutine.launch {
                             val a = authUseCase.getUserInformation(userID)
                             Log.d(TAG, "handleFaceBookAccessToken: user information -- $a")
@@ -107,7 +107,7 @@ class LoginViewModel @Inject constructor(
 
                     userID?.let { userID ->
                         Log.d(TAG, "handleFaceBookAccessToken: userID -- $userID")
-                        myPreference.saveUserID(userID)
+                        myPreference.saveUserID("5")
                         coroutine.launch {
                             val a = authUseCase.getUserInformation(userID)
                             Log.d(TAG, "handleFaceBookAccessToken: user information -- $a")
