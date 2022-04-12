@@ -142,6 +142,7 @@ inline fun <T1, T2, R> LiveData<T1>.combine(
         args[1] as T2
     )
 }
+
 inline fun <R> combineLiveData(
     vararg varargLiveData: LiveData<*>,
     crossinline transform: (Array<*>) -> R

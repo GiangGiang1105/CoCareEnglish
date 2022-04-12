@@ -7,13 +7,13 @@ import androidx.annotation.StringRes
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class MyApplication: Application(){
+class MyApplication : Application() {
     companion object {
-                /**
+        /**
          * @param context An Activity or Application Context.
          * @param stringRes A string resource that to be displayed inside a Toast.
          */
-                private const val TAG = "MyApplication"
+        private const val TAG = "MyApplication"
         lateinit var instance: MyApplication private set
         val context: Context get() = instance.applicationContext
         fun showToast(context: Context, @StringRes stringRes: Int) {
